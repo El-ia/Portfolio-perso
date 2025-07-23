@@ -1,0 +1,179 @@
+@use '../../styles/main' as *; 
+@use '../../styles/variables' as *; 
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;    
+  background-color: $background-primary-color;
+  // background-image: url("https://www.transparenttextures.com/patterns/rice-paper-3.png");
+  // background-image: url("https://www.transparenttextures.com/patterns/redox-02.png");
+  // background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  overflow: hidden; 
+}
+
+.topBar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 3rem 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $font-tertiary-color;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 2;
+}
+
+.role {
+  text-align: right;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-size: 25px;
+  color: $font-tertiary-color;
+  text-transform: uppercase;
+  border: 2px solid $font-tertiary-color;
+  padding: 1.5rem 5rem;
+  white-space: nowrap;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
+  width: 45vw;
+  max-height: 100vh;
+  z-index: 0;
+}
+
+.imageWrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ctaLink {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: $font-tertiary-color;
+  font-size: $secondary-font-size;
+  letter-spacing: 0.1em;
+  z-index: 2;
+  gap: 1rem;
+}
+
+.ctaLine {
+  width: 1px;
+  height: 2rem;
+  background-color: $font-tertiary-color;
+}
+
+.ctaLink:hover {
+  color: $font-primary-color;
+}
+
+//Responsive
+
+@media (max-width: 1050px) {
+  .hero {
+    display: grid;
+    grid-template-areas:
+      "topbar"
+      "title"
+      "image"
+      "cta";
+    grid-template-rows: auto auto 1fr auto;
+    justify-items: center;
+    padding-bottom: 2rem;
+    height: 100vh !important;
+    overflow: hidden;
+  }
+
+  .topBar {
+    grid-area: topbar;
+    position: static;
+    width: 100%;
+    padding: 2rem 2.5rem;
+  }
+
+  .title {
+    grid-area: title;
+    position: static;
+    transform: none;
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    font-size: 25px;
+    white-space: normal;
+  }
+
+  .imageWrapper {
+    grid-area: image;
+    position: static;
+    transform: translateY(-6%) translateX(3%);
+    width: 60vw;
+    max-height: 50vh;
+    margin: 1rem 0;
+    justify-self: end;
+    z-index: 0;
+  }
+
+  .imageWrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ctaLink {
+    grid-area: cta;
+    position: static;
+    transform: none;
+    margin: 1rem 0;
+  }
+}
+
+
+@media (max-width: 810px) {
+
+  .imageWrapper {
+    transform: translateY(2%) translateX(3%);
+    width: 65vw;
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .imageWrapper {
+    transform: translateY(7%) translateX(3%);
+    width: 83vw;
+  }
+
+}
+
+
+@media (max-width: 370px) {
+
+  .imageWrapper {
+    transform: translateY(0%) translateX(3%);
+    width: 84vw;
+  }
+
+}
+
+
