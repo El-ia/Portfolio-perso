@@ -15,7 +15,6 @@ export default function App() {
     <>
       <Hero />
       <NavBar />
-      <FloatingMenu />
       <About />
       <Skills />
       <ProjectsCarousel />
@@ -23,6 +22,7 @@ export default function App() {
       <Timeline />
       <Contact />
       <Footer />
+      <FloatingMenu />
     </>
   );
 }
