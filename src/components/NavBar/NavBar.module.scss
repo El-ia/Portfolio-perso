@@ -1,7 +1,8 @@
-// src/components/NavBar/NavBar.module.scss
+@use '../../styles/main.scss' as *;
+@use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-/* ——— Barre principale (desktop) ——— */
+/* ——— Desktop Navigation Bar ——— */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -13,22 +14,21 @@
   display: flex;
   align-items: center;
   z-index: 100;
-
-  @media (max-width: 1050px) {
-    display: none;
-  }
 }
 
 .visible {
+  /* Makes the navbar semi-transparent once visible */
   opacity: .7;
   transform: translateY(0);
 }
 
 .nav:hover {
+  /* Full opacity on hover */
   opacity: 1;
 }
 
 .navList {
+  /* Layout for the list of nav links */
   display: flex;
   align-items: center;
   width: 100%;
@@ -39,11 +39,13 @@
 }
 
 .navItem:first-child {
+  /* Pushes the first item (logo) to the left */
   margin-right: auto;
 }
 
 .navLink,
 .navLinkLogo {
+  /* Base styles for links */
   font-size: vars.$primary-font-size;
   font-weight: 500;
   color: vars.$font-primary-color;
@@ -52,6 +54,7 @@
 }
 
 .navLinkLogo {
+  /* Logo link (flex container) */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -59,91 +62,82 @@
 
 .navLink:hover,
 .navLinkLogo:hover {
+  /* Link hover color */
   color: vars.$font-secondary-color;
 }
 
 .logoImage {
+  /* Logo image size */
   width: 3rem;
   height: auto;
 }
 
-/* ——— Bouton “☰” pour ouvrir la sidebar (mobile) ——— */
+/* ——— Mobile “☰” Toggle Button ——— */
 .tabHandle {
   display: none;
-  @media (max-width: 1050px) {
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background: vars.$background-secondary-color;
-    opacity: .7;
-    border: none;
-    padding: .5rem 1rem;
-    font-size: 1.5rem;
-    color: vars.$font-primary-color;
-    cursor: pointer;
-    z-index: 111;
-    border-top-right-radius: .5rem;
-    border-bottom-right-radius: .5rem;
-    transition: left .3s ease, opacity .3s ease;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  &.sidebarOpen {
-    left: 12.5rem;
-  }
+  background: vars.$background-secondary-color;
+  opacity: .7;
+  border: none;
+  padding: .5rem .5rem;
+  font-size: 1.5rem;
+  color: vars.$font-primary-color;
+  cursor: pointer;
+  z-index: 111;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  transition: left .3s ease, opacity .3s ease;
 }
 
-/* ——— Overlay clic en dehors ——— */
+.tabHandle.sidebarOpen {
+  /* Moves toggle button to the edge of the open sidebar */
+  left: 12.5rem;
+}
+
+.tabHandle:hover {
+  /* Full opacity on hover */
+  opacity: 1;
+}
+
+/* ——— Clickable Overlay for Closing Sidebar ——— */
 .overlay {
   display: none;
-  @media (max-width: 1050px) {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0);
-    z-index: 100;
-
-    &.active {
-      display: block;
-    }
-  }
+  background: rgba(0,0,0,0);
+  z-index: 100;
 }
 
-/* ——— Sidebar (mobile) ——— */
+.overlay.active {
+  /* Show overlay when sidebar is open */
+  display: block;
+}
+
+/* ——— Mobile Sidebar Container ——— */
 .sidebar {
   display: none;
-  @media (max-width: 1050px) {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0; left: 0;
-    height: 100vh;
-    width: 0;
-    background: vars.$background-secondary-color;
-    opacity: .7;
-    overflow: hidden;
-    transition: width .3s ease, opacity .3s ease;
-    z-index: 105;
-
-    justify-content: center; /* centre verticalement */
-    align-items: center;     /* centre horizontalement */
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  &.open {
-    width: 12.5rem; 
-  }
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 0;
+  background: vars.$background-secondary-color;
+  opacity: .7;
+  overflow: hidden;
+  transition: width .3s ease, opacity .3s ease;
+  z-index: 105;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ——— En-tête de la sidebar ——— */
+.sidebar.open {
+  /* Width when the sidebar is expanded */
+  width: 12.5rem;
+}
+
+.sidebar:hover {
+  /* Full opacity on hover */
+  opacity: 1;
+}
+
+/* ——— Sidebar Header with Logo ——— */
 .sidebarHeader {
   position: absolute;
   top: 1rem;
@@ -159,7 +153,7 @@
   }
 }
 
-/* on pousse la liste vers le bas pour pas chevaucher l’en-tête */
+/* ——— Sidebar Navigation Links ——— */
 .sidebarList {
   margin-top: 4rem;
   list-style: none;
@@ -178,5 +172,32 @@
 
   &:hover {
     color: vars.$font-secondary-color;
+  }
+}
+
+/* ——— Responsive Media Queries ——— */
+
+@media (max-width: 1050px) {
+  .nav {
+    display: none;
+  }
+
+  .tabHandle {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+  }
+
+  .sidebar {
+    display: flex;
   }
 }

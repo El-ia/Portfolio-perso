@@ -1,12 +1,14 @@
-// src/components/NavBar/NavBar.tsx
 import React, { useState, useEffect } from 'react'
 import logo from '../../assets/logo.png'
 import styles from './NavBar.module.scss'
 
 export default function NavBar() {
+  // State to track whether the navbar should be visible on scroll
   const [visible, setVisible] = useState(false)
+  // State to track whether the mobile sidebar is open
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
+  // Add scroll listener to toggle navbar visibility after scrolling down 60px
   useEffect(() => {
     const handleScroll = () => setVisible(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -15,12 +17,13 @@ export default function NavBar() {
 
   return (
     <>
-      {/* ——— Barre horizontale (desktop) ——— */}
+      {/* ——— Desktop horizontal navbar ——— */}
       <nav
         className={`${styles.nav} ${visible ? styles.visible : ''}`}
         aria-label="Main navigation"
       >
         <ul className={styles.navList}>
+          {/* Logo and site name link */}
           <li className={styles.navItem}>
             <a href="#hero" className={styles.navLinkLogo}>
               <img
@@ -31,6 +34,7 @@ export default function NavBar() {
               <span className={styles.siteName}>ELIA BERTHIER</span>
             </a>
           </li>
+          {/* Navigation links */}
           <li className={styles.navItem}>
             <a href="#about" className={styles.navLink}>À PROPOS</a>
           </li>
@@ -49,7 +53,7 @@ export default function NavBar() {
         </ul>
       </nav>
 
-      {/* ——— Bouton hamburger (mobile) ——— */}
+      {/* ——— Mobile hamburger button to open sidebar ——— */}
       <button
         className={`${styles.tabHandle} ${sidebarOpen ? styles.sidebarOpen : ''}`}
         onClick={() => setSidebarOpen(o => !o)}
@@ -58,18 +62,18 @@ export default function NavBar() {
         ☰
       </button>
 
-      {/* ——— Overlay clic en dehors ——— */}
+      {/* ——— Transparent overlay to close sidebar when clicking outside ——— */}
       <div
         className={`${styles.overlay} ${sidebarOpen ? styles.active : ''}`}
         onClick={() => setSidebarOpen(false)}
       />
 
-      {/* ——— Sidebar (mobile) ——— */}
+      {/* ——— Mobile sidebar panel ——— */}
       <aside
         className={`${styles.sidebar} ${sidebarOpen ? styles.open : ''}`}
         aria-hidden={!sidebarOpen}
       >
-        {/* En-tête dans la sidebar */}
+        {/* Sidebar header with logo */}
         <div className={styles.sidebarHeader}>
           <a
             href="#hero"
@@ -85,6 +89,7 @@ export default function NavBar() {
           </a>
         </div>
 
+        {/* Sidebar navigation links */}
         <ul className={styles.sidebarList}>
           <li><a href="#about" onClick={() => setSidebarOpen(false)}>À PROPOS</a></li>
           <li><a href="#projects" onClick={() => setSidebarOpen(false)}>PROJETS</a></li>

@@ -1,30 +1,28 @@
-// src/components/About/About.module.scss
-
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
+// About section container (flex layout for visual and text)
 .about {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin: 7rem 6rem;
-  gap: 13rem;
+  gap: 3rem;
 }
 
+// Visual wrapper for photo + rotating loop
 .visual {
   position: relative;
   flex-shrink: 0;
   margin-left: 2rem;
-
-  /* container = photo (26.625rem) + 2 × loop-gap (2rem) */
   width: 30.625rem;
   height: 30.625rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+// Central profile photo styling
 .photo {
   width: 26.625rem;
   height: 26.625rem;
@@ -33,6 +31,7 @@
   z-index: 1;
 }
 
+// Rotating text around the photo
 .curvedLoop {
   position: absolute;
   top: 50%;
@@ -44,20 +43,21 @@
   overflow: hidden;
 
   text {
-    font-size: 7px;
-    fill: vars.$font-primary-color;
-    font-weight: 500;
-    letter-spacing: 0.096em;
-    text-transform: uppercase;
-    font-feature-settings: "kern" 1;
-    text-rendering: geometricPrecision;
-  }
+      font-size: 7px;
+      fill: vars.$font-primary-color;
+      font-weight: 500;
+      letter-spacing: 0.096em;
+      text-transform: uppercase;
+      font-feature-settings: "kern" 1;
+      text-rendering: geometricPrecision;
+    }
 
   textPath {
-    animation: textFlow 30s linear infinite;
-  }
+      animation: textFlow 30s linear infinite;
+    }
 }
 
+// Keyframes for text movement and loop rotation
 @keyframes textFlow {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(360deg); }
@@ -67,12 +67,13 @@
   to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+// Text content block styling
 .text {
   flex: 1;
   max-width: 32rem;
 }
 
-/* Titre avec trait à droite */
+/* Section title with right-hand line decoration */
 .title {
   position: relative;
   font-size: vars.$primary-font-size;
@@ -83,20 +84,20 @@
   display: inline-block;
 
   &::after {
-    content: '';
-    position: absolute;
-    top: 83%;
-    left: 100%;
-    transform: translateY(-50%);
-    margin-left: 0.5rem;
-    width: 2rem;
-    height: 1px;
-    background-color: vars.$font-primary-color;
-    transition: width .2s ease, background-color .2s;
-  }
+      content: '';
+      position: absolute;
+      top: 83%;
+      left: 100%;
+      transform: translateY(-50%);
+      margin-left: 0.5rem;
+      width: 2rem;
+      height: 1px;
+      background-color: vars.$font-primary-color;
+      transition: width .2s ease, background-color .2s;
+    }
 }
 
-/* Bloc de copie avec trait vertical */
+/* Copy block with vertical decorative line */
 .copy {
   position: relative;
   background: vars.$background-primary-color;
@@ -107,25 +108,25 @@
   font-size: vars.$secondary-font-size;
   margin-bottom: 1.87rem;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 10%;
-    right: -0.875rem;
-    width: 2px;
-    height: 54%;
-    background-color: vars.$font-primary-color;
-  }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      right: -0.875rem;
+      width: 2px;
+      height: 54%;
+      background-color: vars.$font-primary-color;
+    }
 
   p {
-    margin: 0;
-  }
+      margin: 0;
+    }
   p + p {
-    margin-top: 1.2rem;
-  }
+      margin-top: 1.2rem;
+    }
 }
 
-/* Localisation avec trait à gauche */
+/* Location line with left-hand horizontal decoration */
 .location {
   display: flex;
   align-items: center;
@@ -135,101 +136,132 @@
   font-weight: bold;
   color: vars.$font-primary-color;
   position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    /* calculé pour coller au texte */
-    left: 56.5%;
-    top: 83%;
-    width: 2rem;
-    height: 1px;
-    background-color: vars.$font-primary-color;
-  }
 }
 
-/* ————— Responsive Tablette (≤1024px) ————— */
+// Wrapper for location text to hold the left-line pseudo-element
+.locationText {
+    position: relative;
+    display: inline-block;
+    padding-left: 0.5rem;
+    &::before { 
+      content: '';
+      position: absolute;
+      left: -2%;
+      top: 84%;
+      transform: translate(-100%, -50%);
+      width: 2rem;
+      height: 1px;
+      background-color: vars.$font-primary-color;
+    }
+}
+
+/* ——— Responsive Media Queries ——— */
+
+@media (max-width: 1285px) {
+  .about {
+      margin: 5rem 3rem;
+      gap: 3rem;
+    }
+}
+
 @media (max-width: 1024px) {
   .about {
-    margin: 5rem 3rem;
-    gap: 3rem;
-  }
+      margin: 5rem 3rem;
+      gap: 3rem;
+    }
 
   .visual {
-    /* photo 20rem + 2 × loop-gap 1.5rem = 23rem */
-    width: 23rem;
-    height: 23rem;
-    margin-left: 1.5rem;
-  }
+      width: 23rem;
+      height: 23rem;
+      margin-left: 1.5rem;
+    }
 
   .photo {
-    width: 20rem;
-    height: 20rem;
-  }
+      width: 20rem;
+      height: 20rem;
+    }
 
   .curvedLoop text {
-    font-size: 5.5px;
-    letter-spacing: 0.08em;
-  }
+      font-size: 7.5px;
+      letter-spacing: 0.05em;
+    }
 }
 
-/* ————— Responsive Mobile (≤768px) ————— */
-@media (max-width: 768px) {
+@media (max-width: 980px) {
   .about {
-    flex-direction: column;
-    margin: 3rem 1rem;
-    gap: 2rem;
-  }
+      flex-direction: column;
+      margin: 3rem 5rem;
+      gap: 2rem;
+    }
 
   .visual {
-    /* photo 18rem + 2 × loop-gap 1rem = 20rem */
-    width: 20rem;
-    height: 20rem;
-    margin-left: 1rem;
-  }
+      width: 20rem;
+      height: 20rem;
+      margin-left: 1rem;
+    }
 
   .photo {
-    width: 18rem;
-    height: 18rem;
-  }
+      width: 18rem;
+      height: 18rem;
+    }
+
+  /* add padding around loop for spacing from photo */
+  .curvedLoop {
+      width: calc(100% + 1.5rem);
+      height: calc(100% + 1.5rem);
+    }
 
   .curvedLoop text {
-    font-size: 4.5px;
-    letter-spacing: 0.06em;
-  }
-
-  .title {
-    text-align: center;
-
-    &::after {
-      margin-left: 0.25rem;
-      width: 1.2rem;
-    }
-  }
-
-  .copy {
-    padding: 1.5rem;
-
-    &::before {
-      right: -0.25rem;
-      height: 70%;
+      font-size: 7.5px;
+      letter-spacing: 0.05em;
     }
 
-    p + p {
-      margin-top: 1rem;
+    .title {
+      text-align: center;
+
+      &::after {
+        margin-left: 0.25rem;
+        width: 1.2rem;
+      }
     }
-  }
+
+    .copy {
+      padding: 1.5rem;
+
+      p + p {
+          margin-top: 1rem;
+      }
+    }
 
   .text {
-    max-width: 100%;
-  }
-
-  .location {
-    justify-content: center;
-
-    &::before {
-      left: calc(100% - (0.25rem + 1.2rem));
-      width: 1.2rem;
+      max-width: 100%;
     }
-  }
+}
+
+@media (max-width: 500px) {
+  .about {
+      margin: 3rem 2rem;
+      gap: 2rem;
+    }
+
+  .visual {
+      width: 14.5rem;
+      height: 14.5rem;
+      margin-left: 0.5rem;
+    }
+
+  .photo {
+      width: 14rem;
+      height: 14rem;
+    }
+
+  .curvedLoop {
+      width: calc(100% + 1.5rem);
+      height: calc(100% + 1.5rem);
+    }
+
+  .curvedLoop text {
+      font-size: 7.5px;
+      letter-spacing: 0.05em;
+    }
 }

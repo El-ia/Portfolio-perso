@@ -3,17 +3,17 @@ import photo from '../../assets/profil-picture.png'
 import styles from './About.module.scss'
 
 export default function About() {
-  // Texte très long pour garantir qu'il fasse le tour complet + débordement
-  // Le débordement sera masqué et créera l'effet de continuité parfaite
+  // A long repeating string to ensure the loop completes a full circle
   const loopText = 'DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ '
 
   return (
     <section id="about" className={styles.about}>
+      {/* Visual container: photo + rotating text loop */}
       <div className={styles.visual}>
-        {/* Photo au centre */}
+        {/* Centered profile photo */}
         <img src={photo} alt="Elia Berthier" className={styles.photo} />
         
-        {/* Cercle de texte tournant */}
+        {/* SVG loop of text around the photo */}
         <svg viewBox="0 0 200 200" className={styles.curvedLoop} aria-hidden="true">
           <defs>
             <path
@@ -34,9 +34,12 @@ export default function About() {
         </svg>
       </div>
 
+      {/* Textual content: title, copy and location */}
       <div className={styles.text}>
+        {/* Section heading */}
         <h2 className={styles.title}>À PROPOS</h2>
 
+        {/* Main copy block */}
         <div className={styles.copy}>
           <p>
             Bonjour ! Je m'appelle Elia et j'aime créer des choses qui 
@@ -62,8 +65,11 @@ export default function About() {
           </p>
         </div>
 
+        {/* Location line with decorative horizontal rule to the left */}
         <div className={styles.location}>
-          Île de France • Full remote
+          <span className={styles.locationText}>
+            Île de France • Full remote
+          </span>
         </div>
       </div>
     </section>
