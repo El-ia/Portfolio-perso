@@ -1,19 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import logo from '../../assets/logo.png'
-import styles from './NavBar.module.scss'
+import React, { useState, useEffect } from 'react';
+import logo from '../../assets/logo.png';
+import styles from './NavBar.module.scss';
 
-export default function NavBar() {
-  // State to track whether the navbar should be visible on scroll
-  const [visible, setVisible] = useState(false)
-  // State to track whether the mobile sidebar is open
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+// Functional component for the main navigation bar
+export default function NavBar(): JSX.Element {
+  // Tracks whether the navbar should appear after scrolling past 60px
+  const [visible, setVisible] = useState<boolean>(false);
 
-  // Add scroll listener to toggle navbar visibility after scrolling down 60px
+  // Tracks whether the mobile sidebar is open or closed
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+  // Adds a scroll listener to toggle navbar visibility
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = (): void => {
+      setVisible(window.scrollY > 60);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -34,6 +42,7 @@ export default function NavBar() {
               <span className={styles.siteName}>ELIA BERTHIER</span>
             </a>
           </li>
+
           {/* Navigation links */}
           <li className={styles.navItem}>
             <a href="#about" className={styles.navLink}>À PROPOS</a>
@@ -53,10 +62,10 @@ export default function NavBar() {
         </ul>
       </nav>
 
-      {/* ——— Mobile hamburger button to open sidebar ——— */}
+      {/* ——— Mobile hamburger button to toggle sidebar ——— */}
       <button
         className={`${styles.tabHandle} ${sidebarOpen ? styles.sidebarOpen : ''}`}
-        onClick={() => setSidebarOpen(o => !o)}
+        onClick={() => setSidebarOpen(prev => !prev)}
         aria-label={sidebarOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
       >
         ☰
@@ -99,5 +108,5 @@ export default function NavBar() {
         </ul>
       </aside>
     </>
-  )
+  );
 }

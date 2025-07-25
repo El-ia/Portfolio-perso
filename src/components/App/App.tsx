@@ -16,9 +16,9 @@ export default function App() {
       <Hero />
       <NavBar />
       <About />
-      <Skills />
       <ProjectsCarousel />
       <ProjectModal />
+      <Skills />
       <Timeline />
       <Contact />
       <Footer />

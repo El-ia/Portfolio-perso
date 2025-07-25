@@ -1,21 +1,24 @@
-import React from 'react'
-import photo from '../../assets/profil-picture.png'
-import styles from './About.module.scss'
+import React from 'react';
+import photo from '../../assets/profil-picture.png';
+import styles from './About.module.scss';
 
-export default function About() {
-  // A long repeating string to ensure the loop completes a full circle
-  const loopText = 'DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ '
+// Functional component for the "À PROPOS" section
+export default function About(): JSX.Element {
+  // Long repeated string to create a continuous circular text effect
+  const loopText: string =
+    'DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦';
 
   return (
     <section id="about" className={styles.about}>
-      {/* Visual container: photo + rotating text loop */}
+      {/* Visual content: profile photo and circular text loop */}
       <div className={styles.visual}>
-        {/* Centered profile photo */}
+        {/* Centered profile picture */}
         <img src={photo} alt="Elia Berthier" className={styles.photo} />
-        
-        {/* SVG loop of text around the photo */}
+
+        {/* SVG loop text wrapping around the photo */}
         <svg viewBox="0 0 200 200" className={styles.curvedLoop} aria-hidden="true">
           <defs>
+            {/* Circular path for the text to follow */}
             <path
               id="text-circle"
               d="
@@ -34,12 +37,12 @@ export default function About() {
         </svg>
       </div>
 
-      {/* Textual content: title, copy and location */}
+      {/* Text section: heading, description, and location */}
       <div className={styles.text}>
-        {/* Section heading */}
+        {/* Section title */}
         <h2 className={styles.title}>À PROPOS</h2>
 
-        {/* Main copy block */}
+        {/* Paragraph block introducing Elia */}
         <div className={styles.copy}>
           <p>
             Bonjour ! Je m'appelle Elia et j'aime créer des choses qui 
@@ -65,7 +68,7 @@ export default function About() {
           </p>
         </div>
 
-        {/* Location line with decorative horizontal rule to the left */}
+        {/* Location line with visual separation */}
         <div className={styles.location}>
           <span className={styles.locationText}>
             Île de France • Full remote
@@ -73,5 +76,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

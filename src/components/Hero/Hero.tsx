@@ -3,15 +3,24 @@ import { Typewriter } from 'react-simple-typewriter';
 import heroImage from '../../assets/hero-image.png';
 import styles from './Hero.module.scss';
 
-export default function Hero() {
+// Functional component for the hero section
+export default function Hero(): JSX.Element {
   // State to track whether the hero section has scrolled past 60px
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    // Listen for window scroll and update visibility
-    const onScroll = () => setVisible(window.scrollY > 60);
+    // Scroll handler function
+    const onScroll = (): void => {
+      setVisible(window.scrollY > 60);
+    };
+
+    // Add scroll event listener
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   return (
@@ -21,11 +30,11 @@ export default function Hero() {
       <header className={styles.topBar}>
         {/* Name displayed over two lines */}
         <div className={styles.name}>
-          Elia<br/>Berthier
+          Elia<br />Berthier
         </div>
         {/* Role displayed on the right */}
         <div className={styles.role}>
-          Développeuse web<br/>full stack
+          Développeuse web<br />full stack
         </div>
       </header>
 

@@ -1,2 +1,78 @@
 @use '../../styles/main' as *;
-@use '../../styles/variables' as *;
+@use '../../styles/variables' as vars;
+
+.carouselSection {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: vars.$background-primary-color
+    url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.heading {
+  font-size: vars.$primary-font-size;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: vars.$font-primary-color;
+}
+
+.swiperContainer {
+  width: 100%;
+  padding-bottom: 3rem;
+  overscroll-behavior: none; /* prevent native bounce */
+}
+
+/* smoother timing for slide container */
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.swiperSlide {
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: vars.$font-tertiary-color;
+  overflow: hidden;
+  text-align: center;
+  transition: opacity .4s ease;  /* smoother opacity change */
+  will-change: opacity;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  padding: 2rem;
+  font-size: vars.$secondary-font-size;
+  color: vars.$font-secondary-color;
+}
+
+/* pagination bullets coloration */
+:global(.swiper-pagination-bullet) {
+  background: vars.$font-primary-color !important;
+}
+:global(.swiper-pagination-bullet-active) {
+  background: vars.$font-primary-color !important;
+}
+
+/* — Dim non-active slides — */
+:global(.swiper-slide:not(.swiper-slide-active)) .card {
+  opacity: 0.3;
+}
+
+/* — Highlight active slide — */
+:global(.swiper-slide-active) .card {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .swiperSlide {
+    width: 80%;  /* wider card on mobile */
+  }
+}
