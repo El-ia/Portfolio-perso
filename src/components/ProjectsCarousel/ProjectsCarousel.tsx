@@ -1,15 +1,24 @@
-import React from 'react';
+// src/components/ProjectsCarousel/ProjectsCarousel.tsx
+
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Mousewheel, FreeMode } from 'swiper';
+import {
+  EffectCoverflow,
+  Pagination,
+  Mousewheel,
+  FreeMode,
+} from 'swiper';
+
+// Import Swiper core styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
+
 import styles from './ProjectsCarousel.module.scss';
 import studiolabCloud from '../../assets/studiolab-cloud-preview.png';
 import incoming from '../../assets/incoming-website.png';
 
-// Define the shape of a project item
 type Project = {
   id: number;
   title: string;
@@ -18,68 +27,116 @@ type Project = {
 };
 
 export default function ProjectsCarousel(): JSX.Element {
-  // Array of projects to display in the carousel, strictly typed
+  // Reference to the Swiper instance for controlling navigation programmatically
+  const swiperRef = useRef<any>(null);
+
+  // List of project items to render in the carousel
   const projects: Project[] = [
-    { id: 1, title: 'StudioLab Cloud', img: studiolabCloud, alt: 'StudioLab Cloud project preview' },
-    { id: 2, title: 'COMING SOON', img: incoming, alt: 'browser mockup with a plant' },
-    { id: 3, title: 'COMING SOON', img: incoming, alt: 'browser mockup with a plant' },
-    { id: 4, title: 'COMING SOON', img: incoming, alt: 'browser mockup with a plant' },
-    { id: 5, title: 'COMING SOON', img: incoming, alt: 'browser mockup with a plant' },
-    { id: 6, title: 'COMING SOON', img: incoming, alt: 'browser mockup with a plant' },
+    { id: 1, title: 'StudioLab Cloud', img: studiolabCloud, alt: 'StudioLab Cloud preview' },
+    { id: 2, title: 'COMING SOON',     img: incoming,       alt: 'Browser mockup' },
+    { id: 3, title: 'COMING SOON',     img: incoming,       alt: 'Browser mockup' },
+    { id: 4, title: 'COMING SOON',     img: incoming,       alt: 'Browser mockup' },
+    { id: 5, title: 'COMING SOON',     img: incoming,       alt: 'Browser mockup' },
+    { id: 6, title: 'COMING SOON',     img: incoming,       alt: 'Browser mockup' },
   ];
 
-  // Return the JSX layout for the carousel section
   return (
     <section id="projectsCarousel" className={styles.carouselSection}>
-      {/* Section heading */}
-      <h2 className={styles.heading}>PROJECTS</h2>
+      {/* Section title */}
+      <h2 className={styles.title}>PROJECTS</h2>
 
-      {/* Swiper component used to create the carousel */}
+      {/* Navigation arrows container */}
+      <div className={styles.navButtons}>
+        {/* Previous button */}
+        <button
+          className={styles.prevBtn}
+          onClick={() => swiperRef.current?.slidePrev()}
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        {/* Next button */}
+        <button
+          className={styles.nextBtn}
+          onClick={() => swiperRef.current?.slideNext()}
+          aria-label="Next"
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Swiper carousel */}
       <Swiper
-        modules={[EffectCoverflow, Pagination, Mousewheel, FreeMode]} // Swiper modules being used
-        effect="coverflow" // Coverflow-style carousel effect
-        freeMode={{
-          enabled: true,     // Allows free scrolling
-          sticky: true,      // Slides stick into place after scrolling
-          momentumRatio: 0.5 // Scroll momentum
-        }}
-        mousewheel={{
-          forceToAxis: false,     // Allows free scrolling in all directions
-          releaseOnEdges: true    // Stops scroll at the edge of the Swiper
-        }}
-        centeredSlides           // Centers the active slide
-        slidesPerView={3}        // Number of visible slides
-        spaceBetween={-100}      // Overlap between slides
+        // Core modules to power coverflow effect, pagination, free scrolling & mouse wheel
+        modules={[EffectCoverflow, Pagination, Mousewheel, FreeMode]}
+
+        // Enable coverflow 3D effect
+        effect="coverflow"
         coverflowEffect={{
-          rotate: 50,            // Rotation angle
-          stretch: -100,         // How much the slides stretch
-          depth: 100,            // Depth perspective
-          modifier: 1,           // Effect intensity
-          slideShadows: false    // Disables shadow on slides
+          rotate: 50,        // rotation angle of side slides
+          stretch: -100,     // spacing between slides
+          depth: 100,        // slide depth
+          modifier: 1,       // effect intensity
+          slideShadows: false,
         }}
-        pagination={{ clickable: true }} // Enables clickable dots
-        className={styles.swiperContainer} // Custom styling
+
+        // Free mode configuration for smooth, momentum-based scrolling
+        freeMode={{
+          enabled: true,
+          sticky: true,            // snap to nearest slide
+          momentumRatio: 0.8,      // momentum strength
+          momentumBounce: false,   // disable bounce
+        }}
+
+        // Enable navigation via mouse wheel
+        mousewheel={{
+          forceToAxis: true,       // lock scroll axis
+          releaseOnEdges: true,    // allow scroll release at edges
+          sensitivity: 1,          // scroll sensitivity
+        }}
+
+        // Clicking on a slide will focus it
+        slideToClickedSlide
+
+        // Center the active slide in the viewport
+        centeredSlides
+
+        // Let Swiper calculate how many slides fit
+        slidesPerView="auto"
+
+        // Negative space to overlap neighboring cards
+        spaceBetween={-100}
+
+        // Speed of slide transition in ms
+        speed={500}
+
+        // Enable pagination bullets at the bottom
+        pagination={{ clickable: true }}
+
+        // Capture Swiper instance
+        onSwiper={(swiper) => { swiperRef.current = swiper; }}
+
+        // Custom container classname for SCSS styling
+        className={styles.swiperContainer}
+
+        // Responsive breakpoints
         breakpoints={{
-          // Responsive breakpoints
-          320: {
-            slidesPerView: 1.5,
-            spaceBetween: -50,
-          },
-          768: {
-            slidesPerView: 2.5,
-            spaceBetween: -80,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: -100,
-          }
+          320:  { slidesPerView: 1.5, },
+          768:  { slidesPerView: 2.5, },
+          1024: { slidesPerView: 3,   },
         }}
       >
-        {/* Render each project as a slide */}
-        {projects.map((project: Project) => (
-          <SwiperSlide key={project.id} className={styles.swiperSlide}>
+        {/* Render each project slide */}
+        {projects.map((project, idx) => (
+          <SwiperSlide
+            key={project.id}
+            className={styles.swiperSlide}
+            onClick={() => swiperRef.current?.slideTo(idx)} // Focus on clicked slide
+          >
             <div className={styles.card}>
-              <img src={project.img} alt={project.title} />
+              {/* Project image */}
+              <img src={project.img} alt={project.alt ?? project.title} />
+              {/* Project title caption */}
               <p className={styles.caption}>{project.title}</p>
             </div>
           </SwiperSlide>

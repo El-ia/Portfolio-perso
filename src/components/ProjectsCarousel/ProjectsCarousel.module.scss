@@ -1,78 +1,154 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
+/* wrapper */
 .carouselSection {
-  padding: 4rem 2rem;
-  text-align: center;
+  position: relative;        
+  padding: 10.1rem 2rem;    
   background: vars.$background-primary-color
     url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  overflow-x: hidden;            // hide horizontal overflow
+  overflow-y: visible;          
+
+  /* Top-left decorative line (2/3 width) */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    left: 3.4rem;
+    width: 45%;                 
+    height: 2px;
+    background-color: vars.$font-primary-color;
+    z-index: 1;
+  }
+
+  /* Bottom-right decorative line */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 1.5rem;
+    right: 3.4rem;
+    width: 45%;                     
+    height: 2px;
+    background-color: vars.$font-primary-color;
+    z-index: 1;
+  }
 }
 
-.heading {
+/* Title positioned at top-left inside carousel */
+.title {
+  position: absolute;
+  top: 2.43rem;
+  left: 3.43rem;
   font-size: vars.$primary-font-size;
   font-weight: 600;
-  margin-bottom: 2rem;
-  color: vars.$font-primary-color;
+  color: vars.$font-tertiary-color;
+  text-align: left;            
 }
 
+/* Container for custom navigation arrows */
+.navButtons {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;  
+  pointer-events: none;         
+  z-index: 100;
+}
+
+/* Styling for Prev/Next buttons */
+.prevBtn,
+.nextBtn {
+  pointer-events: all;     
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 2.5rem; height: 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  color: vars.$font-primary-color;
+  transition: background .2s;    
+  margin: 0 1rem;
+  z-index: 101;
+}
+.prevBtn:hover,
+.nextBtn:hover {
+  background: vars.$font-tertiary-color; 
+}
+
+/* Swiper container settings */
 .swiperContainer {
   width: 100%;
-  padding-bottom: 3rem;
-  overscroll-behavior: none; /* prevent native bounce */
+  overscroll-behavior: none;        // disable native bounce
+  overflow: visible !important;    // show angled edges
+  scroll-behavior: smooth;          // smooth scrolling
+  -webkit-overflow-scrolling: touch; // momentum on iOS
 }
 
-/* smoother timing for slide container */
+/* Ensure swiper internals also allow overflow */
+:global(.swiper),
+:global(.swiper-wrapper) {
+  overflow: visible !important;
+}
+
+/* Timing function for slide transitions */
 .swiper-wrapper {
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition-timing-function: cubic-bezier(0.25,0.8,0.25,1) !important;
 }
 
+/* Individual slide container */
 .swiperSlide {
   width: 20rem;
-  display: flex;
-  justify-content: center;
+  display: flex; justify-content: center;
+  overflow: visible;              // show full card
 }
 
+/* Position pagination bullets lower */
+:global(.swiper-pagination) {
+  bottom: -50px !important;
+}
+
+/* Card styling with smooth opacity/scale */
 .card {
   background: vars.$font-tertiary-color;
   overflow: hidden;
   text-align: center;
-  transition: opacity .4s ease;  /* smoother opacity change */
-  will-change: opacity;
+  transition: opacity .4s ease, transform .4s ease;  // animate opacity & scaling
+  will-change: opacity, transform;
 }
 
 .card img {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 100%; height: auto; display: block;
 }
 
+/* Caption below the image */
 .caption {
   padding: 2rem;
   font-size: vars.$secondary-font-size;
-  color: vars.$font-secondary-color;
+  color: vars.$font-primary-color;
 }
 
-/* pagination bullets coloration */
-:global(.swiper-pagination-bullet) {
-  background: vars.$font-primary-color !important;
-}
+/* Bullet colors for pagination */
+:global(.swiper-pagination-bullet),
 :global(.swiper-pagination-bullet-active) {
   background: vars.$font-primary-color !important;
 }
 
-/* — Dim non-active slides — */
+/* Dimming & scaling non-active slides */
 :global(.swiper-slide:not(.swiper-slide-active)) .card {
   opacity: 0.3;
+  transform: scale(0.9);           // smaller non-active cards
 }
 
-/* — Highlight active slide — */
+/* Active slide styling */
 :global(.swiper-slide-active) .card {
   opacity: 1;
+  transform: scale(1);             
 }
 
-/* Responsive */
+// Responsive
+
+/* Mobile breakpoint: larger slides for touch */
 @media (max-width: 768px) {
-  .swiperSlide {
-    width: 80%;  /* wider card on mobile */
-  }
+  .swiperSlide { width: 80%; }
 }

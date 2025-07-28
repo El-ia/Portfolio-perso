@@ -48,7 +48,7 @@ export default function NavBar(): JSX.Element {
             <a href="#about" className={styles.navLink}>À PROPOS</a>
           </li>
           <li className={styles.navItem}>
-            <a href="#projects" className={styles.navLink}>PROJETS</a>
+            <a href="#projectsCarousel" className={styles.navLink}>PROJETS</a>
           </li>
           <li className={styles.navItem}>
             <a href="#skills" className={styles.navLink}>COMPÉTENCES</a>
