@@ -1,6 +1,7 @@
+@use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-/* ——— Barre principale (desktop) ——— */
+/* ——— Main navigation bar (desktop) ——— */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -12,12 +13,9 @@
   display: flex;
   align-items: center;
   z-index: 100;
-
-  @media (max-width: 1050px) {
-    display: none;
-  }
 }
 
+/* Make nav visible when scrolled past threshold */
 .visible {
   opacity: .7;
   transform: translateY(0);
@@ -27,6 +25,7 @@
   opacity: 1;
 }
 
+/* Container for nav items */
 .navList {
   display: flex;
   align-items: center;
@@ -37,6 +36,7 @@
   gap: 2rem;
 }
 
+/* Push the first item (logo) to the left */
 .navItem:first-child {
   margin-right: auto;
 }
@@ -50,100 +50,51 @@
   transition: color .2s;
 }
 
+/* Logo link container */
 .navLinkLogo {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Hover color change for links */
 .navLink:hover,
 .navLinkLogo:hover {
   color: vars.$font-secondary-color;
 }
 
+/* Logo image sizing */
 .logoImage {
   width: 3rem;
   height: auto;
 }
 
-/* ——— Bouton “☰” pour ouvrir la sidebar (mobile) ——— */
+/* ——— Mobile hamburger toggle button ——— */
 .tabHandle {
   display: none;
-  @media (max-width: 1050px) {
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background: vars.$background-secondary-color;
-    opacity: .7;
-    border: none;
-    padding: .5rem .5rem;
-    font-size: 1.5rem;
-    color: vars.$font-primary-color;
-    cursor: pointer;
-    z-index: 111;
-    border-top-right-radius: .5rem;
-    border-bottom-right-radius: .5rem;
-    transition: left .3s ease, opacity .3s ease;
 
-    &:hover {
-      opacity: 1;
-    }
-  }
-
+  /* Shift when sidebar is open */
   &.sidebarOpen {
     left: 12.5rem;
   }
 }
 
-/* ——— Overlay clic en dehors ——— */
+/* ——— Overlay for closing sidebar on outside click ——— */
 .overlay {
-  @media (max-width: 1050px) {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* transparent background, doesn’t block visuals */
-    z-index: 100;
-    pointer-events: none;  // allow all clicks & scrolls through
-
-    &.active {
-      /* still pointer-events: none to not block carousel */
-    }
-  }
+  pointer-events: none;
 }
 
-/* ——— Sidebar (mobile) ——— */
+/* ——— Sidebar container (mobile) ——— */
 .sidebar {
   display: none;
-  @media (max-width: 1050px) {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0; left: 0;
-    height: 100vh;
-    width: 0;
-    background: vars.$background-secondary-color;
-    opacity: .7;
-    overflow: hidden;
-    transition: width .3s ease, opacity .3s ease;
-    z-index: 105;
 
-    justify-content: center; /* centre verticalement */
-    align-items: center;     /* centre horizontalement */
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
+  /* Width when open */
   &.open {
-    width: 12.5rem; 
+    width: 12.5rem;
   }
 }
 
-/* ——— En-tête de la sidebar ——— */
+/* ——— Sidebar header link (logo) ——— */
 .sidebarHeader {
   position: absolute;
   top: 1rem;
@@ -159,9 +110,9 @@
   }
 }
 
-/* on pousse la liste vers le bas pour pas chevaucher l’en-tête */
+/* ——— Sidebar navigation list ——— */
 .sidebarList {
-  margin-top: 4rem;
+  margin-top: 4rem; 
   list-style: none;
   padding: 0;
   display: flex;
@@ -170,13 +121,88 @@
   align-items: flex-start;
 }
 
+/* Sidebar link styles */
 .sidebarList a {
   text-decoration: none;
   color: vars.$font-primary-color;
   font-size: vars.$primary-font-size;
   transition: color .2s;
 
+  /* Hover state */
   &:hover {
     color: vars.$font-secondary-color;
+  }
+}
+
+/* ——— Responsive styles for mobile (≤1050px) ——— */
+@media (max-width: 1050px) {
+  /* Hide desktop nav on smaller screens */
+  .nav {
+    display: none;
+  }
+
+  /* Show hamburger toggle */
+  .tabHandle {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: vars.$background-secondary-color;
+    opacity: .7;
+    border: none;
+    padding: .5rem;
+    font-size: 1.5rem;
+    color: vars.$font-primary-color;
+    cursor: pointer;
+    z-index: 111;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    transition: left .3s ease, opacity .3s ease;
+
+    /* Fully visible when hovered */
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  /* Offset toggle when sidebar open */
+  .tabHandle.sidebarOpen {
+    left: 12.5rem;
+  }
+
+  /* Fullscreen overlay to capture outside clicks */
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+/* Show sidebar panel */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    width: 0;
+    background: vars.$background-secondary-color;
+    opacity: .7;
+    overflow: hidden;
+    transition: width .3s ease, opacity .3s ease;
+    z-index: 105;
+    justify-content: center;
+    align-items: center;   
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .sidebar.open {
+    width: 12.5rem;
   }
 }
