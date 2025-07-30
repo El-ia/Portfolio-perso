@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Mousewheel, FreeMode } from 'swiper'
 
@@ -24,6 +24,19 @@ export default function ProjectsCarousel({
 }: ProjectsCarouselProps): JSX.Element {
   // Ref to store the Swiper instance for programmatic control
   const swiperRef = useRef<any>(null)
+  // Track the currently active/focused slide index
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  // Handle slide click - focus if not active, open modal if already active
+  const handleSlideClick = (project: Project, index: number) => {
+    if (index === activeIndex) {
+      // Already focused - open modal
+      onProjectClick(project)
+    } else {
+      // Not focused - slide to this one to focus it
+      swiperRef.current?.slideTo(index)
+    }
+  }
 
   return (
     <section id="projectsCarousel" className={styles.carouselSection}>
@@ -61,24 +74,20 @@ export default function ProjectsCarousel({
           modifier: 1,      // effect intensity
           slideShadows: false,
         }}
-        freeMode={{                                                   // free scroll configuration
-          enabled: true,
-          sticky: true,           // snap to nearest slide after scroll
-          momentumRatio: 0.8,     // scroll momentum
-          momentumBounce: false,  // disable bounce-back
-        }}
+        freeMode={false}                                              // disable free mode for better control
         mousewheel={{                                                // enable mouse-wheel navigation
           forceToAxis: true,
           releaseOnEdges: true,
           sensitivity: 1,
         }}
-        slideToClickedSlide                                           // click slide to focus
+        // slideToClickedSlide disabled - we handle clicks manually
         centeredSlides                                               // center active slide
         slidesPerView="auto"                                         // auto number of slides
         spaceBetween={-100}                                          // overlap slides
         speed={500}                                                  // transition duration
         pagination={{ clickable: true }}                            // show pagination bullets
         onSwiper={(swiper) => { swiperRef.current = swiper }}       // capture swiper instance
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)} // track active slide
         className={styles.swiperContainer}                          // custom styling
         breakpoints={{                                               // responsive settings
           320:  { slidesPerView: 1.5 },
@@ -91,7 +100,7 @@ export default function ProjectsCarousel({
           <SwiperSlide
             key={project.id}
             className={styles.swiperSlide}
-            onClick={() => onProjectClick(project)}  // notify parent of clicked project
+            onClick={() => handleSlideClick(project, idx)}  // handle focus/open logic
           >
             <div className={styles.card}>
               {/* Project image */}

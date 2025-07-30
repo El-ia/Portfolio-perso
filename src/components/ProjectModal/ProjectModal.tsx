@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import type { Project } from '../../types/projects'
 import styles from './ProjectModal.module.scss'
 
@@ -10,40 +10,107 @@ interface ProjectModalProps {
   onClose: () => void
 }
 
-// Functional component to display project details in a modal dialog
 export default function ProjectModal({
   project,
   onClose,
 }: ProjectModalProps): JSX.Element {
+  // open / closing states
+  const [opening, setOpening]   = useState(false)
+  const [closing, setClosing]   = useState(false)
+  // drag state
+  const [dragging, setDragging] = useState(false)
+  const [offset, setOffset]     = useState({ x: 0, y: 0 })
+  const startRef                = useRef({ x: 0, y: 0 })
+
+  // trigger opening animation right after mount
+  useEffect(() => {
+    const id = window.setTimeout(() => setOpening(true), 10)
+    return () => window.clearTimeout(id)
+  }, [])
+
+  // handle drag movements
+  useEffect(() => {
+    if (!dragging) return
+
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      const cx = 'touches' in e ? e.touches[0].clientX : e.clientX
+      const cy = 'touches' in e ? e.touches[0].clientY : e.clientY
+      setOffset({ x: cx - startRef.current.x, y: cy - startRef.current.y })
+    }
+    const handleUp = () => {
+      setDragging(false)
+      setOffset({ x: 0, y: 0 })
+    }
+    window.addEventListener('mousemove', handleMove)
+    window.addEventListener('touchmove', handleMove)
+    window.addEventListener('mouseup',   handleUp)
+    window.addEventListener('touchend',  handleUp)
+    return () => {
+      window.removeEventListener('mousemove', handleMove)
+      window.removeEventListener('touchmove', handleMove)
+      window.removeEventListener('mouseup',   handleUp)
+      window.removeEventListener('touchend',  handleUp)
+    }
+  }, [dragging])
+
+  const startDrag = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    const cx = 'touches' in e ? e.touches[0].clientX : e.clientX
+    const cy = 'touches' in e ? e.touches[0].clientY : e.clientY
+    startRef.current = { x: cx - offset.x, y: cy - offset.y }
+    setDragging(true)
+  }
+
+  // trigger closing animation
+  const handleClose = () => {
+    setClosing(true)
+    // wait for transition before actually closing
+    setTimeout(onClose, 300)
+  }
+
+  // build dynamic class names
+  const overlayClass = [
+    styles.modalOverlay,
+    opening   ? styles.opening   : '',
+    closing   ? styles.closing   : '',
+  ].join(' ').trim()
+  const contentClass = [
+    styles.modalContent,
+    opening   ? styles.opening   : '',
+    closing   ? styles.closing   : '',
+    dragging  ? styles.dragging  : '',
+  ].join(' ').trim()
+
   return (
-    // Overlay covering the entire viewport, clicking it closes the modal
     <div
-      className={styles.modalOverlay}
+      className={overlayClass}
       role="dialog"
       aria-modal="true"
-      onClick={onClose}
+      onClick={handleClose}
     >
-      {/* Container for modal content; clicking inside should not close */}
       <div
-        className={styles.modalContent}
+        className={contentClass}
         onClick={e => e.stopPropagation()}
+        onMouseDown={startDrag}
+        onTouchStart={startDrag}
+        style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
       >
-        {/* Close button in top-right corner */}
+        {/* Close button */}
         <button
           className={styles.modalClose}
-          onClick={onClose}
-          aria-label="Fermer la fenêtre"
+          onClick={handleClose}
+          aria-label="Close modal"
         >
           ×
         </button>
 
         {/* Left column: project image */}
         <div className={styles.modalImageWrapper}>
-          <img
-            src={project.img}
-            alt={project.alt}
-            className={styles.modalImage}
-          />
+            <img
+              src={project.img}
+              alt={project.alt}
+              className={styles.modalImage}
+            />
         </div>
 
         {/* Right column: textual details */}
@@ -99,7 +166,7 @@ export default function ProjectModal({
               >
                 <img
                   src={eyeIcon}
-                  alt="Voir en ligne"
+                  alt="Live view"
                   className={styles.modalLinkIcon}
                 />
                 Jetez un œil

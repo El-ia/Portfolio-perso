@@ -12,49 +12,43 @@
   align-items: center;
   justify-content: center;
   z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1rem; // avoid touching viewport edges
 }
+.modalOverlay.opening { opacity: 1; }
+.modalOverlay.closing { opacity: 0; }
 
 /* ——— Modal Container ——— */
 /* Main wrapper for the modal content */
 .modalContent {
   position: relative;
   background: vars.$font-tertiary-color;
-  overflow: hidden;
   display: flex;
   flex-direction: row;
   width: 80vw;
   max-width: 1200px;
-  max-height: 80vh;
+  max-height: 90vh;
+  overflow: hidden;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
-/* ——— Image Section ——— */
-/* Left side of modal showing project image */
-.modalImageWrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+.modalContent.opening {
+  opacity: 1;
+  transform: scale(1);
 }
-
-.modalImageWrapper img {
-  max-width: 100%;
-  max-height: 100%;
+.modalContent.closing {
+  opacity: 0;
+  transform: scale(0.9);
 }
-
-/* ——— Content Section ——— */
-/* Right side of modal with text and actions */
-.modalBody {
-  flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+.modalContent.dragging {
+  transition: none;
+  cursor: grabbing;
 }
 
 /* ——— Close Button ——— */
-/* Top-right “×” button to close the modal */
 .modalClose {
   position: absolute;
   top: 1rem;
@@ -64,25 +58,54 @@
   font-size: 2rem;
   color: vars.$font-primary-color;
   cursor: pointer;
+  z-index: 10;
+}
+
+/* ——— Image Section ——— */
+/* Left side of modal showing project image */
+.modalImageWrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin: auto;         // center wrapper within modal
+}
+
+.modalImageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ——— Content Section ——— */
+.modalBody {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  height: 100%;
 }
 
 /* ——— Modal Title ——— */
-/* Project title styling */
 .modalTitle {
-  margin: 1rem auto 0 auto;
+  margin: 1rem auto 0;
   font-size: vars.$primary-font-size;
   font-weight: bold;
   color: vars.$font-quaternary-color;
+  flex-shrink: 0;
 }
 
 /* ——— Description Wrapper ——— */
-/* Container around paragraphs for spacing control */
 .modalDescriptionWrapper {
   margin: 1.68rem 0 4.5rem 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 /* ——— Paragraphs ——— */
-/* Individual description paragraphs */
 .modalDescription {
   margin: 0 0 1.5rem;
   font-size: vars.$secondary-font-size;
@@ -91,38 +114,36 @@
 }
 
 /* ——— Tech Icons ——— */
-/* Row of technology icons */
 .modalTech {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1.5rem;
+  flex-shrink: 0;
 }
-
 .modalTech img {
   width: 2.75rem;
   height: auto;
 }
 
 /* ——— Links Container ——— */
-/* Holds the GitHub and Live View buttons */
 .modalLinks {
   margin-top: auto;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 /* ——— Link Buttons ——— */
-/* Fixed-size buttons for consistent layout, no border-radius */
 .modalLink {
-  display: inline-flex;          
+  display: inline-flex;
   align-items: center;
-  justify-content: center;      
-  width: 10.125rem;              
-  height: 2.563rem;              
-  gap: 0.5rem;                    
+  justify-content: center;
+  width: 10.125rem;
+  height: 2.563rem;
+  gap: 0.5rem;
   background: vars.$font-primary-color;
   color: vars.$font-tertiary-color;
   text-decoration: none;
@@ -130,32 +151,82 @@
   font-size: vars.$secondary-font-size;
   transition: opacity 0.2s;
 }
-
 .modalLink:hover {
   opacity: 0.8;
 }
-
-/* ——— Link Icon ——— */
-/* Icon next to link text */
 .modalLinkIcon {
   width: 1.875rem;
 }
 
-/* ——— Responsive Layout ——— */
-@media (max-width: 1024px) {
+/* ——— Responsive ——— */
+@media (max-width: 1250px) {
   .modalContent {
     flex-direction: column;
     width: 90vw;
-    max-height: 90vh;
+    max-width: 700px;
+    height: 98vh;
+    max-height: 98vh;
   }
 
-  .modalImageWrapper,
-  .modalBody {
-    padding: 1.5rem;
+  .modalImageWrapper {
+    flex: 0 0 18vh;
+    padding: 0.5rem;
+    width: 60%;
+    margin: 4rem auto 0;
   }
-  
-  .modalLink {
-    width: 7rem;
-    height: 2.5rem;
+  .modalImageWrapper img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .modalBody {
+    flex: 1;
+    padding: 1.5rem;
+    min-height: 0;
+    height: calc(72vh - 3rem);
+  }
+
+  .modalDescriptionWrapper{
+    margin: 1.5rem ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .modalLinks {
+    justify-content: space-around
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95vw;
+    height: 95vh;
+  }
+  .modalImageWrapper {
+    flex: 0 0 15vh;
+    padding: 0.4rem;
+    margin: 2rem auto 0;
+    width: 50%;
+  }
+}
+
+@media (max-height: 600px) {
+  .modalImageWrapper {
+    flex: 0 0 20vh;
+    padding: 0.5rem;
+    margin: 0.5rem auto 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .modalDescription{
+    line-height: 1.2;
+    margin: 0 0 1rem;
+  }
+
+  .modalImageWrapper{
+    width: 70%;
   }
 }
