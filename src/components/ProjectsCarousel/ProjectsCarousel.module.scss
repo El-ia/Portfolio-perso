@@ -43,7 +43,9 @@
   font-size: vars.$primary-font-size;
   font-weight: 600;
   color: vars.$font-tertiary-color;
-  text-align: left;            
+  text-align: left;  
+  font-family: 'SF Pro', sans-serif;
+  font-weight: bold;          
 }
 
 /* Container for custom navigation arrows */
@@ -126,6 +128,8 @@
   padding: 2rem;
   font-size: vars.$secondary-font-size;
   color: vars.$font-primary-color;
+  font-family: 'SF Pro', sans-serif;
+  font-weight: bold;
 }
 
 /* Bullet colors for pagination */

@@ -70,13 +70,14 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  margin: auto;         // center wrapper within modal
+  margin: auto;
 }
 
 .modalImageWrapper img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  border: 1px solid #759D77;
 }
 
 /* ——— Content Section ——— */
@@ -96,6 +97,8 @@
   font-weight: bold;
   color: vars.$font-quaternary-color;
   flex-shrink: 0;
+  font-family: 'SF Pro', sans-serif;
+  font-weight: bold;
 }
 
 /* ——— Description Wrapper ——— */
@@ -103,6 +106,9 @@
   margin: 1.68rem 0 4.5rem 0;
   flex: 1;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ——— Paragraphs ——— */
@@ -123,7 +129,7 @@
   flex-shrink: 0;
 }
 .modalTech img {
-  width: 2.75rem;
+  width: 3rem;
   height: auto;
 }
 

@@ -1,6 +1,11 @@
 import studiolabCloud from '../assets/studiolab-cloud-preview.png';
 import incoming      from '../assets/incoming-website.png';
-import gitIcon    from '../assets/git-icon.png';
+import cssIcon    from '../assets/icon/css-icon.png';
+import htmlIcon    from '../assets/icon/html-icon.png';
+import jsIcon    from '../assets/icon/js-icon.png';
+import seedPacket    from '../assets/icon/seed-packet-icon.png';
+import shovel from '../assets/icon/shovel-cion.png';
+import watheringCan   from '../assets/icon/watering-can-icon.png';
 
 // Defines the shape of a project item for the carousel and modal
 export interface Project {
@@ -28,7 +33,7 @@ export const projects: Project[] = [
       "Durant mon stage, à l’issue de ma formation de développeuse web full stack, j’ai pris en charge la quasi-intégralité du front-end : de la phase de maquettage sur Figma à l’intégration des pages en JavaScript (avec un soupçon de vanilla pour les interactions).",
       "Mon rôle consistait à traduire les prototypes en interfaces réactives et accessibles, en veillant à la cohérence visuelle et à la performance.",
     ],
-    techIcons: [gitIcon, gitIcon],
+    techIcons: [htmlIcon, cssIcon, jsIcon],
     githubUrl: '…',
     liveUrl: 'https://studiolabcloud.com/'
   },
@@ -38,8 +43,8 @@ export const projects: Project[] = [
     img: incoming,
     alt: 'Browser mockup',
     year: 2025,
-    description: ['…'],
-    techIcons: [],
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
   },
   {
     id: 3,
@@ -47,8 +52,8 @@ export const projects: Project[] = [
     img: incoming,
     alt: 'Browser mockup',
     year: 2025,
-    description: ['…'],
-    techIcons: [],
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
   },
   {
     id: 4,
@@ -56,8 +61,8 @@ export const projects: Project[] = [
     img: incoming,
     alt: 'Browser mockup',
     year: 2025,
-    description: ['…'],
-    techIcons: [],
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
   },
   {
     id: 5,
@@ -65,8 +70,8 @@ export const projects: Project[] = [
     img: incoming,
     alt: 'Browser mockup',
     year: 2025,
-    description: ['…'],
-    techIcons: [],
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
   },
   {
     id: 6,
@@ -74,8 +79,8 @@ export const projects: Project[] = [
     img: incoming,
     alt: 'Browser mockup',
     year: 2025,
-    description: ['…'],
-    techIcons: [],
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
   },
 
 ];
