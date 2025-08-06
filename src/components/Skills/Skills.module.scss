@@ -1,0 +1,165 @@
+@use '../../styles/main' as *;
+@use '../../styles/variables' as vars;
+
+.skills {
+  padding: 7rem 3.43rem;
+
+  /* ——— Section Title ——— */
+  &__title {
+    font-family: 'SF Pro', sans-serif;
+    font-weight: bold;
+    font-size: vars.$primary-font-size;
+    text-align: right;
+    margin-bottom: 1.87rem;
+    color: vars.$font-primary-color;
+    position: relative; 
+
+    /* Decorative line to the left of the title */
+    &::before {
+      content: '';
+      position: absolute;
+      right: 8.2em; 
+      top: 81%;    
+      transform: translateY(-50%);
+      width: 2rem;   
+      height: 1px;  
+      background-color: vars.$font-primary-color;
+    }
+  }
+
+  /* ——— Grid Container ——— */
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Two column layout
+    grid-template-rows: 1fr 1fr;    // Two row layout
+    grid-template-areas:
+      "frontend backend"
+      "devops tools";             // Define named areas for each card
+    gap: 1.5rem;                  // Space between grid items
+  }
+
+  /* ——— Skill Card ——— */
+  &__block {
+    padding: 1.5rem; 
+    height: 22rem;   
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    /* Front-End variant */
+    &--frontend {
+      grid-area: frontend;
+      background-color: vars.$font-primary-color;
+      border: none;
+
+      .skills__category { color: vars.$font-tertiary-color; }
+      .skills__icon { background-color: vars.$font-tertiary-color; color: vars.$font-primary-color; }
+    }
+
+    /* Back-End variant */
+    &--backend {
+      grid-area: backend;
+      background-color: vars.$font-tertiary-color;
+      border: 2px solid vars.$background-primary-color;
+
+      .skills__category { color: vars.$background-primary-color; }
+      .skills__icon { background-color: vars.$background-primary-color; color: vars.$font-tertiary-color; }
+    }
+
+    /* DevOps variant */
+    &--devops {
+      grid-area: devops;
+      background-color: vars.$font-tertiary-color;
+      border: 2px solid vars.$font-primary-color;
+
+      .skills__category { color: vars.$font-primary-color; }
+      .skills__icon { background-color: vars.$font-primary-color; color: vars.$font-tertiary-color; }
+    }
+
+    /* Tools variant */
+    &--tools {
+      grid-area: tools;
+      background-color: vars.$background-primary-color;
+      border: none;
+
+      .skills__category { color: vars.$font-tertiary-color; }
+      .skills__icon { background-color: vars.$font-tertiary-color; color: vars.$background-primary-color; }
+    }
+  }
+
+  /* ——— Card Title ——— */
+  &__category {
+    font-family: 'SF Pro', sans-serif;
+    font-size: vars.$primary-font-size;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ——— Icons Wrapper ——— */
+  &__icons {
+    display: flex;
+    flex-wrap: wrap;        
+    gap: 1rem;              
+    overflow-y: auto;     
+    padding-bottom: 1rem;   
+  }
+
+  /* ——— Individual Icon ——— */
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.1rem 0.5rem 0.75rem;
+    font-size: vars.$secondary-font-size;
+
+    img {
+      width: 2.5rem;
+      height: auto;
+    }
+  }
+}
+
+/* ——— Responsive ——— */
+@media (max-width: 1470px) {
+  .skills__block {
+    height: 28.12rem; 
+  }
+}
+
+@media (max-width: 1040px) {
+  .skills__block {
+    height: 34.37rem;
+  }
+}
+
+@media (max-width: 863px) {
+  .skills {
+    padding: 3rem 2rem;
+
+    &__grid {
+      grid-template-columns: 1fr;           // Single column layout
+      grid-template-rows: repeat(4, auto);  
+      grid-template-areas:
+        "frontend"
+        "backend"
+        "devops"
+        "tools";
+    }
+
+    .skills__block {
+      height: auto;
+      padding: 1rem;
+    }
+
+    .skills__icons {
+      gap: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .skills {
+    padding: 3rem 1rem; 
+  }
+}

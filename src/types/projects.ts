@@ -1,11 +1,9 @@
 import studiolabCloud from '../assets/studiolab-cloud-preview.png';
 import incoming      from '../assets/incoming-website.png';
-import cssIcon    from '../assets/icon/css-icon.png';
-import htmlIcon    from '../assets/icon/html-icon.png';
-import jsIcon    from '../assets/icon/js-icon.png';
-import seedPacket    from '../assets/icon/seed-packet-icon.png';
-import shovel from '../assets/icon/shovel-cion.png';
-import watheringCan   from '../assets/icon/watering-can-icon.png';
+import cssIcon    from '../assets/icons/css-icon.png';
+import htmlIcon    from '../assets/icons/html-icon.png';
+import jsIcon    from '../assets/icons/js-icon.png';
+import watheringCan   from '../assets/icons/watering-can-icon.png';
 
 // Defines the shape of a project item for the carousel and modal
 export interface Project {

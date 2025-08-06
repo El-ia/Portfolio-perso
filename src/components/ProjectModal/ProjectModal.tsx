@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import type { Project } from '../../types/projects'
 import styles from './ProjectModal.module.scss'
 
-import githubIcon from '../../assets/icon/github-icon.png'
-import eyeIcon    from '../../assets//icon/eye-icon.png'
+import githubIcon from '../../assets/icons/github-icon.png'
+import eyeIcon    from '../../assets//icons/eye-icon.png'
 
 interface ProjectModalProps {
   project: Project
