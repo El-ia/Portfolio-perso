@@ -2,6 +2,9 @@
 @use '../../styles/variables' as vars;
 
 .contact {
+  // empêche le débordement horizontal et applique box-sizing global
+  box-sizing: border-box;
+  overflow-x: hidden;
   background-color: vars.$background-primary-color;
   width: 100%;
   margin-top: 2rem;
@@ -44,7 +47,7 @@
       content: '';
       position: absolute;
       right: 5.438rem;
-      top: 78%;
+      top: 50%;
       transform: translateY(-50%);
       width: 2rem;
       height: 1px;
@@ -57,8 +60,8 @@
     display: flex;
     gap: 2rem;
     margin: 0 4.43rem;
-    width: 100%;
     padding-bottom: 7rem;
+    justify-content: space-around;
   }
 
   /* ——— Left column: info and links ——— */
@@ -99,13 +102,11 @@
         }
       }
 
-      /* styling for the last dt (Liens) */
       dt:last-of-type {
         margin-top: 1.5rem;
         font-size: 1rem;
       }
 
-      /* container for the clickable icons */
       dd.contact__links {
         display: flex;
         align-items: center;
@@ -137,8 +138,8 @@
       background: transparent;
       border: none;
       border-bottom: 2px solid vars.$font-tertiary-color;
-      padding: .5rem .25rem;
-      margin-top: .5rem;
+      padding: 0.5rem 0.25rem;
+      margin-top: 0.5rem;
       font-size: vars.$primary-font-size;
       color: vars.$font-tertiary-color;
       resize: none;
@@ -162,8 +163,8 @@
       transition: background-color 0.2s ease, color 0.2s ease;
 
       &:hover {
-        background-color: vars.$font-primary-color;  
-        color: vars.$font-tertiary-color;             
+        background-color: vars.$font-primary-color;
+        color: vars.$font-tertiary-color;
       }
     }
   }
@@ -190,10 +191,30 @@
     &:focus {
       outline: none;
     }
+  }
 
-    &:focus .contact__icon {
-      outline: 2px solid vars.$font-tertiary-color;
-      outline-offset: .25rem;
+  /* ——— Responsive ——— */
+  @media (max-width: 768px) {
+    &__title {
+      margin: 4rem 2rem 1rem;
+      text-align: left;
+
+      &::before {
+        right: auto;
+        left: 2rem;
+      }
+    }
+
+    &__wrapper {
+      flex-direction: column;
+      margin: 0 2rem;
+      gap: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    &__intro,
+    &__form {
+      flex: 1 1 100%;
     }
   }
 }
