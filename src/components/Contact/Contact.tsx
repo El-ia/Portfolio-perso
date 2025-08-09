@@ -4,23 +4,18 @@ import downloadIcon from '../../assets/icons/download-icon.png';
 import githubIcon from '../../assets/icons/github-icon.png';
 import linkedinIcon from '../../assets/icons/linkedin-icon.png';
 import shareIcon from '../../assets/icons/share-icon.png';
+import cvFile from '../../assets/cv_elia_berthier-janv25.pdf';
 
 export default function Contact(): JSX.Element {
   return (
     <section className={styles.contact} id="contact">
       {/* ——— CV download link ——— */}
       <div className={styles.contact__download}>
-        <a
-          href="../../assets/cv_elia_berthier-janv25.pdf"
-          download="cv_elia_berthier-janv25.pdf"
-          className={styles.contact__downloadLink}
-        >
+        <a href={cvFile}
+          download="CV_Elia_Berthier.pdf"
+          className={styles.contact__downloadLink} >
           Voir mon CV complet
-          <img
-            src={downloadIcon}
-            alt="Télécharger CV"
-            className={styles.contact__downloadIcon}
-          />
+          <img src={downloadIcon} alt="Télécharger CV" className={styles.contact__downloadIcon}/>
         </a>
       </div>
 
