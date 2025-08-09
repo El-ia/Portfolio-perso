@@ -73,8 +73,8 @@ export default function App(): JSX.Element {
       {/* Footer */}
       <Footer />
 
-      {/* Floating quick-access menu */}
-      <FloatingMenu />
+      {/* Floating quick-access menu
+      <FloatingMenu /> */}
     </>
   )
 }

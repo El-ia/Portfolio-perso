@@ -5,8 +5,8 @@
 .carouselSection {
   position: relative;        
   padding: 10.1rem 2rem;    
-  background: vars.$background-primary-color
-    url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  background: vars.$background-primary-color;
+  background-image: url('../../assets/natural-paper.png');
   overflow-x: hidden;            // hide horizontal overflow
   overflow-y: visible;          
 

@@ -4,6 +4,11 @@ import cssIcon    from '../assets/icons/css-icon.png';
 import htmlIcon    from '../assets/icons/html-icon.png';
 import jsIcon    from '../assets/icons/js-icon.png';
 import watheringCan   from '../assets/icons/watering-can-icon.png';
+import portfolio from '../assets/portfolio-preview.png';
+import reactIcon from '../assets/icons/react-icon.png';
+import typescriptIcon from '../assets/icons/typescript-icon.png';
+import viteIcon from '../assets/icons/vite-icon.png';
+import sassIcon from '../assets/icons/sass-icon.png';
 
 // Defines the shape of a project item for the carousel and modal
 export interface Project {
@@ -17,11 +22,26 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
 }
-
 // List of all projects to display in the carousel and modals
 export const projects: Project[] = [
   {
     id: 1,
+    title: 'PORTFOLIO • 2025',
+    img: portfolio,
+    alt: 'Aperçu du portfolio d’Elia',
+    year: 2025,
+    description: [
+      "Site personnel conçu pour présenter mon parcours, mes compétences et mes projets.",
+      "Stack moderne : React + TypeScript + Vite, styles en SCSS Modules, carrousel avec modales, design responsive & accessible.",
+      "Contact via Formspree, partage natif, téléchargement du CV, et contenu typé via fichiers TypeScript."
+    ],
+    techIcons: [reactIcon, typescriptIcon, viteIcon, sassIcon],
+    githubUrl: 'https://github.com/El-ia/Portfolio-perso',
+    // Ajoute ton URL de déploiement si dispo :
+    // liveUrl: 'https://ton-domaine-ou-vercel.app'
+  },
+  {
+    id: 2,
     title: 'STUDIOLAB CLOUD • 2025',
     img: studiolabCloud,
     alt: 'StudioLab Cloud preview',
@@ -32,17 +52,7 @@ export const projects: Project[] = [
       "Mon rôle consistait à traduire les prototypes en interfaces réactives et accessibles, en veillant à la cohérence visuelle et à la performance.",
     ],
     techIcons: [htmlIcon, cssIcon, jsIcon],
-    githubUrl: '…',
     liveUrl: 'https://studiolabcloud.com/'
-  },
-  {
-    id: 2,
-    title: 'COMING SOON',
-    img: incoming,
-    alt: 'Browser mockup',
-    year: 2025,
-    description: ["C’est pas encore prêt, mais c’est bio."],
-    techIcons: [watheringCan],
   },
   {
     id: 3,
@@ -80,5 +90,13 @@ export const projects: Project[] = [
     description: ["C’est pas encore prêt, mais c’est bio."],
     techIcons: [watheringCan],
   },
-
+  {
+    id: 7,
+    title: 'COMING SOON',
+    img: incoming,
+    alt: 'Browser mockup',
+    year: 2025,
+    description: ["C’est pas encore prêt, mais c’est bio."],
+    techIcons: [watheringCan],
+  },
 ];

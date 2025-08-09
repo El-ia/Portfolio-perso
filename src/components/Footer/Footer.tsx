@@ -1,7 +1,10 @@
-export default function Footer() {
-    return (
-      <section id="footer">
-        <h2>Voici mon footer</h2>
-      </section>
-    );
-  }
+import React from 'react';
+import styles from './Footer.module.scss';
+
+export default function Footer(): JSX.Element {
+  return (
+    <footer className={styles.footer}>
+      <p>© 2025 Elia Berthier. Tous droits réservés.</p>
+    </footer>
+  );
+}
