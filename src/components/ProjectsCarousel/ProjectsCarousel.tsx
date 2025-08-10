@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Mousewheel, FreeMode } from 'swiper'
+import type { Swiper as SwiperClass } from 'swiper/types'
 
 // Import core Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
-import 'swiper/css/free-mode'
 
 import styles from './ProjectsCarousel.module.scss'
 import type { Project } from '../../types/projects'
@@ -23,7 +23,7 @@ export default function ProjectsCarousel({
   onProjectClick,
 }: ProjectsCarouselProps): JSX.Element {
   // Ref to store the Swiper instance for programmatic control
-  const swiperRef = useRef<any>(null)
+  const swiperRef = useRef<SwiperClass | null>(null)
   // Track the currently active/focused slide index
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -77,17 +77,19 @@ export default function ProjectsCarousel({
         freeMode={false}                                              // disable free mode for better control
         mousewheel={{                                                // enable mouse-wheel navigation
           forceToAxis: true,
-          releaseOnEdges: true,
+          releaseOnEdges: false,   // ← changé
           sensitivity: 1,
+          thresholdDelta: 20,      // ← ajouté
+          eventsTarget: '#projectsCarousel', // ← ajouté
         }}
         // slideToClickedSlide disabled - we handle clicks manually
         centeredSlides                                               // center active slide
         slidesPerView="auto"                                         // auto number of slides
         spaceBetween={-100}                                          // overlap slides
         speed={500}                                                  // transition duration
-        pagination={{ clickable: true }}                            // show pagination bullets
-        onSwiper={(swiper) => { swiperRef.current = swiper }}       // capture swiper instance
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)} // track active slide
+        pagination={{ clickable: true }}                             // show pagination bullets
+        onSwiper={(swiper: SwiperClass) => { swiperRef.current = swiper }}       // capture swiper instance
+        onSlideChange={(swiper: SwiperClass) => setActiveIndex(swiper.activeIndex)} // track active slide
         className={styles.swiperContainer}                          // custom styling
         breakpoints={{                                               // responsive settings
           320:  { slidesPerView: 1.5 },

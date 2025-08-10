@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import NavBar           from '../NavBar/NavBar'
-import FloatingMenu     from '../FloatingMenu/FloatingMenu'
+// import FloatingMenu     from '../FloatingMenu/FloatingMenu'
 import Hero             from '../Hero/Hero'
 import About            from '../About/About'
 import Skills           from '../Skills/Skills'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import { Typewriter } from 'react-simple-typewriter';
 import heroImage from '../../assets/hero-image.png';
 import styles from './Hero.module.scss';

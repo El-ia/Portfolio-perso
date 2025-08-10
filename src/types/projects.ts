@@ -35,7 +35,7 @@ export const projects: Project[] = [
     ],
     techIcons: [reactIcon, typescriptIcon, viteIcon, sassIcon],
     githubUrl: 'https://github.com/El-ia/Portfolio-perso',
-    liveUrl: 'https://ton-domaine-ou-vercel.app'
+    liveUrl: 'https://mon-domaine.app'
   },
   {
     id: 2,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { skillsData } from '../../types/skills';
 import type { SkillCategory, SkillIcon } from '../../types/skills';
 import styles from './Skills.module.scss';

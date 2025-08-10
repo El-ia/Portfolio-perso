@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Contact.module.scss';
 import downloadIcon from '../../assets/icons/download-icon.png';
 import githubIcon from '../../assets/icons/github-icon.png';

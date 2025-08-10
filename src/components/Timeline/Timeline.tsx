@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 import type { TimelineItem } from '../../types/timelines';
 import { timelineData } from '../../types/timelines';
 import styles from './Timeline.module.scss';
