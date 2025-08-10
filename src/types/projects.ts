@@ -31,9 +31,7 @@ export const projects: Project[] = [
     alt: 'Aperçu du portfolio d’Elia',
     year: 2025,
     description: [
-      "Site personnel conçu pour présenter mon parcours, mes compétences et mes projets.",
-      "Stack moderne : React + TypeScript + Vite, styles en SCSS Modules, carrousel avec modales, design responsive & accessible.",
-      "Contact via Formspree, partage natif, téléchargement du CV, et contenu typé via fichiers TypeScript."
+      "Portfolio interactif et immersif, alliant fluidité, animations soignées et design responsive. Conçu avec React, TypeScript et Vite pour des performances optimales, et structuré en SCSS Modules avec données typées. Inclut un carrousel dynamique avec modales, ainsi que des options pratiques : contact direct, partage natif et téléchargement du CV."
     ],
     techIcons: [reactIcon, typescriptIcon, viteIcon, sassIcon],
     githubUrl: 'https://github.com/El-ia/Portfolio-perso',
@@ -55,42 +53,6 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'COMING SOON',
-    img: incoming,
-    alt: 'Browser mockup',
-    year: 2025,
-    description: ["C’est pas encore prêt, mais c’est bio."],
-    techIcons: [watheringCan],
-  },
-  {
-    id: 4,
-    title: 'COMING SOON',
-    img: incoming,
-    alt: 'Browser mockup',
-    year: 2025,
-    description: ["C’est pas encore prêt, mais c’est bio."],
-    techIcons: [watheringCan],
-  },
-  {
-    id: 5,
-    title: 'COMING SOON',
-    img: incoming,
-    alt: 'Browser mockup',
-    year: 2025,
-    description: ["C’est pas encore prêt, mais c’est bio."],
-    techIcons: [watheringCan],
-  },
-  {
-    id: 6,
-    title: 'COMING SOON',
-    img: incoming,
-    alt: 'Browser mockup',
-    year: 2025,
-    description: ["C’est pas encore prêt, mais c’est bio."],
-    techIcons: [watheringCan],
-  },
-  {
-    id: 7,
     title: 'COMING SOON',
     img: incoming,
     alt: 'Browser mockup',
