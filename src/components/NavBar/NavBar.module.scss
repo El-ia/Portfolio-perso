@@ -81,7 +81,20 @@
 
 /* ——— Overlay for closing sidebar on outside click ——— */
 .overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity .3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* ——— Sidebar container (mobile) ——— */
@@ -128,7 +141,6 @@
   font-size: vars.$primary-font-size;
   transition: color .2s;
 
-  /* Hover state */
   &:hover {
     color: vars.$font-secondary-color;
   }
@@ -160,7 +172,6 @@
     border-bottom-right-radius: .5rem;
     transition: left .3s ease, opacity .3s ease;
 
-    /* Fully visible when hovered */
     &:hover {
       opacity: 1;
     }
@@ -171,17 +182,12 @@
     left: 12.5rem;
   }
 
-  /* Fullscreen overlay to capture outside clicks */
+  /* Fullscreen overlay click area when sidebar open */
   .overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    pointer-events: none;
+    display: block;
   }
 
-/* Show sidebar panel */
+  /* Show sidebar panel */
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -190,19 +196,17 @@
     height: 100vh;
     width: 0;
     background: vars.$background-secondary-color;
-    opacity: .7;
+    opacity: 0.7;
     overflow: hidden;
     transition: width .3s ease, opacity .3s ease;
     z-index: 105;
     justify-content: center;
     align-items: center;   
-
-    &:hover {
-      opacity: 1;
-    }
   }
 
+  /* Sidebar open — direct opaque */
   .sidebar.open {
     width: 12.5rem;
+    opacity: 1;
   }
 }

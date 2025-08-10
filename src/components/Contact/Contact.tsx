@@ -3,7 +3,7 @@ import downloadIcon from '../../assets/icons/download-icon.png';
 import githubIcon from '../../assets/icons/github-icon.png';
 import linkedinIcon from '../../assets/icons/linkedin-icon.png';
 import shareIcon from '../../assets/icons/share-icon.png';
-import cvFile from '../../assets/cv_elia_berthier-janv25.pdf';
+import cvFile from '../../assets/cv_elia_berthier-aout25-QRcode-1.pdf';
 
 export default function Contact(): JSX.Element {
   return (

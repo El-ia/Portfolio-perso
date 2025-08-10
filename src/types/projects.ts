@@ -22,6 +22,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
 }
+
 // List of all projects to display in the carousel and modals
 export const projects: Project[] = [
   {
@@ -35,7 +36,7 @@ export const projects: Project[] = [
     ],
     techIcons: [reactIcon, typescriptIcon, viteIcon, sassIcon],
     githubUrl: 'https://github.com/El-ia/Portfolio-perso',
-    liveUrl: 'https://mon-domaine.app'
+    liveUrl: 'https://elia-berthier-peach.vercel.app/'
   },
   {
     id: 2,
