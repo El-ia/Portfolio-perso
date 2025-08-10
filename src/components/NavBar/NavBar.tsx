@@ -101,7 +101,7 @@ export default function NavBar(): JSX.Element {
         {/* Sidebar navigation links */}
         <ul className={styles.sidebarList}>
           <li><a href="#about" onClick={() => setSidebarOpen(false)}>À PROPOS</a></li>
-          <li><a href="#projects" onClick={() => setSidebarOpen(false)}>PROJETS</a></li>
+          <li><a href="#projectsCarousel" onClick={() => setSidebarOpen(false)}>PROJETS</a></li>
           <li><a href="#skills" onClick={() => setSidebarOpen(false)}>COMPÉTENCES</a></li>
           <li><a href="#timeline" onClick={() => setSidebarOpen(false)}>PARCOURS</a></li>
           <li><a href="#contact" onClick={() => setSidebarOpen(false)}>CONTACT</a></li>

@@ -29,3 +29,24 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --menu-height: 3.75rem; 
+}
+
+#about{
+  scroll-margin-top: 8rem;
+}
+#skills{
+  scroll-margin-top: 3rem;
+}
+#timeline{
+  scroll-margin-top: 10rem;
+}
+#contact {
+  scroll-margin-top: 0rem;
+}
+
+#hero {
+  scroll-margin-top: 0;
+}
