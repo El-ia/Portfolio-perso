@@ -6,7 +6,7 @@ import styles from './Hero.module.scss';
 // Functional component for the hero section
 export default function Hero(): JSX.Element {
   // State to track whether the hero section has scrolled past 60px
-  const [visible, setVisible] = useState<boolean>(false);
+  const [, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
     // Scroll handler function
