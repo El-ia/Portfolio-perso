@@ -21,7 +21,7 @@
       content: "";
       position: absolute;
       top: 83%;
-      left: 6rem;
+      left: 6.5rem;
       transform: translateY(-50%);
       width: 2rem;
       height: 1px;
@@ -185,6 +185,7 @@
     /* increase bottom margin under title when stacked */
     &__title {
       margin-bottom: 9rem;
+      margin-left: -1.43rem;
     }
 
     /* full-width stacked items */
@@ -244,6 +245,10 @@
         margin-left: -0.15rem;
       }
     }
+
+    &__title {
+      margin-left: 0;
+    }
   }
 }
 
@@ -258,5 +263,17 @@
         margin-left: 0.85rem;
       }
     }
+
+    &__title {
+      margin-left: 1rem;
+    }
+
+    &__line {
+      left: 2.5rem;
+      margin-left: 0;
+      top: 9rem;
+      bottom: 5rem;
+    }
   }
 }
+
