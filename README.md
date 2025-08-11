@@ -57,9 +57,10 @@ npm run dev
 
 ## 🏗️ Build & déploiement
 
-Déploiement sur Vercel
-	1.	Pousser les modifications sur main
-	2.	Vercel détecte et déploie automatiquement
+Déploiement sur Vercel :
+
+1.	Pousser les modifications sur main
+2.	Vercel détecte et déploie automatiquement
 
 ```bash
 npm run build
