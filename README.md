@@ -66,8 +66,6 @@ npm run build
 
 ---
 
-## 📂 Structure du projet
-
 mon-portfolio/
 │
 ├── public/                               # Fichiers statiques
@@ -82,7 +80,7 @@ mon-portfolio/
 │   │   │   ├── About.tsx
 │   │   │   └── About.module.scss
 │   │   ├── App/
-│   │   │   ├── App.tsx                    # Composant principal
+│   │   │   ├── App.tsx                   # Composant principal
 │   │   │   └── App.module.scss
 │   │   ├── Contact/
 │   │   │   ├── Contact.tsx
@@ -102,25 +100,25 @@ mon-portfolio/
 │   │   ├── Skills/
 │   │   │   ├── Skills.tsx
 │   │   │   └── Skills.module.scss
-│   │   ├── Timeline/
-│   │   │   ├── Timeline.tsx
-│   │   │   └── Timeline.module.scss
+│   │   └── Timeline/
+│   │       ├── Timeline.tsx
+│   │       └── Timeline.module.scss
 │   │
-│   ├── styles/                            # Styles globaux
+│   ├── styles/                           # Styles globaux
 │   │   ├── _reset.scss
 │   │   ├── _variables.scss
 │   │   └── main.scss
 │   │
-│   ├── types/                             # Types TypeScript
+│   ├── types/                            # Types TypeScript
 │   │   ├── projects.ts
 │   │   ├── skills.ts
 │   │   └── timelines.ts
 │   │
-│   ├── global.d.ts                        # Types globaux
-│   └── main.tsx                           # Point d'entrée React
+│   ├── global.d.ts                       # Types globaux
+│   └── main.tsx                          # Point d'entrée React
 │
 ├── .gitignore
-├── eslint.config.js                          # Config ESLint
+├── eslint.config.js                      # Config ESLint
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -131,9 +129,6 @@ mon-portfolio/
 ├── vite.config.d.ts
 ├── vite.config.js
 └── vite.config.ts
-
----
-
 ## 📄 Licence
 
 Ce projet est protégé — utilisation personnelle uniquement.
