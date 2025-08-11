@@ -12,11 +12,7 @@
 
 Portfolio moderne et responsive en **React + TypeScript** permettant de présenter mes projets, compétences et parcours.
 
-🚀 **Live demo** : [https://elia-berthier.vercel.app](https://elia-berthier.vercel.app)
-
-📱 **QR Code vers le site :**
-
-![QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://elia-berthier.vercel.app)
+🚀 **Live demo** : [https://elia-berthier-peach.vercel.app/](https://elia-berthier-peach.vercel.app/)
 
 ---
 
@@ -56,6 +52,8 @@ npm install
 # 3. Lancer le projet en développement
 npm run dev ```
 
+---
+
 ## 🏗️ Build & déploiement
 
 Déploiement sur Vercel
@@ -65,6 +63,8 @@ Déploiement sur Vercel
 ```bash
 npm run build
 ```
+
+---
 
 ## 📂 Structure du projet
 
@@ -131,6 +131,8 @@ mon-portfolio/
 ├── vite.config.d.ts
 ├── vite.config.js
 └── vite.config.ts
+
+---
 
 ## 📄 Licence
 
