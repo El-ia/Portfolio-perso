@@ -24,7 +24,7 @@ export default function Hero(): JSX.Element {
           {/* Typewriter effect for dynamic "PORTFOLIO ." text */}
           <Typewriter
             words={['PORTFOLIO .']}
-            loop={true}
+            loop
             cursor
             cursorStyle="_"
             typeSpeed={100}

@@ -43,34 +43,25 @@ export default function About(): JSX.Element {
         {/* Paragraph block introducing Elia */}
         <div className={styles.copy}>
           <p>
-            Bonjour ! Je m'appelle Elia et j'aime créer des choses qui 
-            prennent vie sur le web. J'ai découvert le développement 
-            en 2022, en bidouillant des sites et en apprenant HTML 
-            et CSS par curiosité.
+            Bonjour ! Je m'appelle Elia et j'aime créer des choses qui prennent vie sur le web. J'ai découvert
+            le développement en 2022, en bidouillant des sites et en apprenant HTML et CSS par curiosité.
           </p>
           <p>
-            Aujourd'hui, je suis développeuse web full stack, formée 
-            chez O'clock et diplômée d'un titre professionnel.
+            Aujourd'hui, je suis développeuse web full stack, formée chez O'clock et diplômée d'un titre professionnel.
           </p>
           <p>
-            Pendant mon stage chez Studiolab, j'ai participé à la 
-            création d'un site de services informatiques complet, 
-            avec un dashboard client et un back-office, un projet 
-            concret qui m'a beaucoup appris.
+            Pendant mon stage chez Studiolab, j'ai participé à la création d'un site de services informatiques complet,
+            avec un dashboard client et un back-office, un projet concret qui m'a beaucoup appris.
           </p>
           <p>
-            Je cherche une entreprise où je pourrai continuer à 
-            progresser, relever des défis utiles et m'investir 
-            pleinement. Je suis curieuse, rigoureuse et j'aime 
-            vraiment comprendre comment tout fonctionne.
+            Je cherche une entreprise où je pourrai continuer à progresser, relever des défis utiles et m'investir
+            pleinement. Je suis curieuse, rigoureuse et j'aime vraiment comprendre comment tout fonctionne.
           </p>
         </div>
 
         {/* Location line with visual separation */}
         <div className={styles.location}>
-          <span className={styles.locationText}>
-            Île de France • Full remote
-          </span>
+          <span className={styles.locationText}>Île de France • Full remote</span>
         </div>
       </div>
     </section>

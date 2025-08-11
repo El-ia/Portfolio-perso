@@ -1,20 +1,20 @@
-import { useState, useRef } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Pagination, Mousewheel, FreeMode } from 'swiper'
-import type { Swiper as SwiperClass } from 'swiper/types'
+import { useState, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination, Mousewheel, FreeMode } from 'swiper';
+import type { Swiper as SwiperClass } from 'swiper/types';
 
 // Import core Swiper styles
-import 'swiper/css'
-import 'swiper/css/effect-coverflow'
-import 'swiper/css/pagination'
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
 
-import styles from './ProjectsCarousel.module.scss'
-import type { Project } from '../../types/projects'
+import styles from './ProjectsCarousel.module.scss';
+import type { Project } from '../../types/projects';
 
 // Props interface defining the carousel inputs
 interface ProjectsCarouselProps {
-  projects: Project[]                    // Array of projects to display
-  onProjectClick: (project: Project) => void  // Callback when a slide is clicked
+  projects: Project[]; // Array of projects to display
+  onProjectClick: (project: Project) => void; // Callback when a slide is clicked
 }
 
 // Functional component for the projects coverflow carousel
@@ -23,20 +23,20 @@ export default function ProjectsCarousel({
   onProjectClick,
 }: ProjectsCarouselProps): JSX.Element {
   // Ref to store the Swiper instance for programmatic control
-  const swiperRef = useRef<SwiperClass | null>(null)
+  const swiperRef = useRef<SwiperClass | null>(null);
   // Track the currently active/focused slide index
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // Handle slide click - focus if not active, open modal if already active
   const handleSlideClick = (project: Project, index: number) => {
     if (index === activeIndex) {
       // Already focused - open modal
-      onProjectClick(project)
+      onProjectClick(project);
     } else {
       // Not focused - slide to this one to focus it
-      swiperRef.current?.slideTo(index)
+      swiperRef.current?.slideTo(index);
     }
-  }
+  };
 
   return (
     <section id="projectsCarousel" className={styles.carouselSection}>
@@ -65,36 +65,38 @@ export default function ProjectsCarousel({
 
       {/* Swiper carousel setup */}
       <Swiper
-        modules={[EffectCoverflow, Pagination, Mousewheel, FreeMode]}  // Enabled modules
-        effect="coverflow"                                            // 3D coverflow effect
-        coverflowEffect={{                                           
-          rotate: 50,       // angle of side slides
-          stretch: -100,    // spacing between slides
-          depth: 100,       // perspective depth
-          modifier: 1,      // effect intensity
+        modules={[EffectCoverflow, Pagination, Mousewheel, FreeMode]} // Enabled modules
+        effect="coverflow" // 3D coverflow effect
+        coverflowEffect={{
+          rotate: 50, // angle of side slides
+          stretch: -100, // spacing between slides
+          depth: 100, // perspective depth
+          modifier: 1, // effect intensity
           slideShadows: false,
         }}
-        freeMode={false}                                              // disable free mode for better control
-        mousewheel={{                                                // enable mouse-wheel navigation
+        freeMode={false} // disable free mode for better control
+        mousewheel={{ // enable mouse-wheel navigation
           forceToAxis: true,
-          releaseOnEdges: false,   // ← changé
+          releaseOnEdges: false,
           sensitivity: 1,
-          thresholdDelta: 20,      // ← ajouté
-          eventsTarget: '#projectsCarousel', // ← ajouté
+          thresholdDelta: 20,
+          eventsTarget: '#projectsCarousel',
         }}
         // slideToClickedSlide disabled - we handle clicks manually
-        centeredSlides                                               // center active slide
-        slidesPerView="auto"                                         // auto number of slides
-        spaceBetween={-100}                                          // overlap slides
-        speed={500}                                                  // transition duration
-        pagination={{ clickable: true }}                             // show pagination bullets
-        onSwiper={(swiper: SwiperClass) => { swiperRef.current = swiper }}       // capture swiper instance
+        centeredSlides // center active slide
+        slidesPerView="auto" // auto number of slides
+        spaceBetween={-100} // overlap slides
+        speed={500} // transition duration
+        pagination={{ clickable: true }} // show pagination bullets
+        onSwiper={(swiper: SwiperClass) => {
+          swiperRef.current = swiper;
+        }} // capture swiper instance
         onSlideChange={(swiper: SwiperClass) => setActiveIndex(swiper.activeIndex)} // track active slide
-        className={styles.swiperContainer}                          // custom styling
-        breakpoints={{                                               // responsive settings
-          320:  { slidesPerView: 1.5 },
-          768:  { slidesPerView: 2.5 },
-          1024: { slidesPerView: 3   },
+        className={styles.swiperContainer} // custom styling
+        breakpoints={{ // responsive settings
+          320: { slidesPerView: 1.5 },
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3 },
         }}
       >
         {/* Render each project as a slide */}
@@ -102,7 +104,7 @@ export default function ProjectsCarousel({
           <SwiperSlide
             key={project.id}
             className={styles.swiperSlide}
-            onClick={() => handleSlideClick(project, idx)}  // handle focus/open logic
+            onClick={() => handleSlideClick(project, idx)} // handle focus/open logic
           >
             <div className={styles.card}>
               {/* Project image */}
@@ -114,5 +116,5 @@ export default function ProjectsCarousel({
         ))}
       </Swiper>
     </section>
-  )
+  );
 }

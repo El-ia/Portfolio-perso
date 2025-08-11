@@ -1,25 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import logo from '../../assets/logo.png';
 import styles from './NavBar.module.scss';
 
 export default function NavBar(): JSX.Element {
   // Tracks whether the navbar should appear after scrolling past 60px
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState(false);
 
   // Tracks whether the mobile sidebar is open or closed
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Adds a scroll listener to toggle navbar visibility
   useEffect(() => {
-    const handleScroll = (): void => {
-      setVisible(window.scrollY > 60);
-    };
-
+    const handleScroll = (): void => setVisible(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -43,21 +37,11 @@ export default function NavBar(): JSX.Element {
           </li>
 
           {/* Navigation links */}
-          <li className={styles.navItem}>
-            <a href="#about" className={styles.navLink}>À PROPOS</a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="#projectsCarousel" className={styles.navLink}>PROJETS</a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="#skills" className={styles.navLink}>COMPÉTENCES</a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="#timeline" className={styles.navLink}>PARCOURS</a>
-          </li>
-          <li className={styles.navItem}>
-            <a href="#contact" className={styles.navLink}>CONTACT</a>
-          </li>
+          <li className={styles.navItem}><a href="#about" className={styles.navLink}>À PROPOS</a></li>
+          <li className={styles.navItem}><a href="#projectsCarousel" className={styles.navLink}>PROJETS</a></li>
+          <li className={styles.navItem}><a href="#skills" className={styles.navLink}>COMPÉTENCES</a></li>
+          <li className={styles.navItem}><a href="#timeline" className={styles.navLink}>PARCOURS</a></li>
+          <li className={styles.navItem}><a href="#contact" className={styles.navLink}>CONTACT</a></li>
         </ul>
       </nav>
 

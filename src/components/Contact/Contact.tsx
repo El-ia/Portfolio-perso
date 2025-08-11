@@ -10,11 +10,17 @@ export default function Contact(): JSX.Element {
     <section className={styles.contact} id="contact">
       {/* ——— CV download link ——— */}
       <div className={styles.contact__download}>
-        <a href={cvFile}
+        <a
+          href={cvFile}
           download="CV_Elia_Berthier.pdf"
-          className={styles.contact__downloadLink} >
+          className={styles.contact__downloadLink}
+        >
           Voir mon CV complet
-          <img src={downloadIcon} alt="Télécharger CV" className={styles.contact__downloadIcon}/>
+          <img
+            src={downloadIcon}
+            alt="Télécharger CV"
+            className={styles.contact__downloadIcon}
+          />
         </a>
       </div>
 
@@ -92,11 +98,7 @@ export default function Contact(): JSX.Element {
                   }
                 }}
               >
-                <img
-                  src={shareIcon}
-                  alt=""
-                  className={styles.contact__icon}
-                />
+                <img src={shareIcon} alt="" className={styles.contact__icon} />
               </button>
             </dd>
           </dl>

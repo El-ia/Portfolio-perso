@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 import type { TimelineItem } from '../../types/timelines';
 import { timelineData } from '../../types/timelines';
 import styles from './Timeline.module.scss';
@@ -11,7 +11,7 @@ export default function Timeline(): JSX.Element {
 
   useEffect(() => {
     // calculate which item is closest to 20% down from viewport top
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       const offsetAnchor = window.innerHeight * 0.2;
       let closestIndex = 0;
       let minDist = Infinity;
@@ -57,7 +57,9 @@ export default function Timeline(): JSX.Element {
             <li
               key={idx}
               // capture ref for scroll calculations
-              ref={(el) => { itemRefs.current[idx] = el; }}
+              ref={(el) => {
+                itemRefs.current[idx] = el;
+              }}
               className={`
                 ${styles.timeline__item}
                 ${sideClass}
