@@ -1,5 +1,5 @@
 import styles from './Contact.module.scss';
-import downloadIcon from '../../assets/icons/download-icon.png';
+import downloadIcon from '../../assets/icons/upload-white-icon.png';
 import githubIcon from '../../assets/icons/github-icon.png';
 import linkedinIcon from '../../assets/icons/linkedin-icon.png';
 import shareIcon from '../../assets/icons/share-icon.png';
