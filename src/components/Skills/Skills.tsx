@@ -2,7 +2,6 @@ import { skillsData } from '../../types/skills';
 import type { SkillCategory, SkillIcon } from '../../types/skills';
 import styles from './Skills.module.scss';
 
-// Functional component to render the Skills section
 export default function Skills(): JSX.Element {
   return (
     <section className={styles.skills} id="skills">

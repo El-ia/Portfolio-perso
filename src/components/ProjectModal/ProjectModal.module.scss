@@ -15,9 +15,14 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 1rem; // avoid touching viewport edges
+
+  &.opening {
+    opacity: 1;
+  }
+  &.closing {
+    opacity: 0;
+  }
 }
-.modalOverlay.opening { opacity: 1; }
-.modalOverlay.closing { opacity: 0; }
 
 /* ——— Modal Container ——— */
 /* Main wrapper for the modal content */
@@ -34,18 +39,19 @@
   opacity: 0;
   transform: scale(0.9);
   transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.modalContent.opening {
-  opacity: 1;
-  transform: scale(1);
-}
-.modalContent.closing {
-  opacity: 0;
-  transform: scale(0.9);
-}
-.modalContent.dragging {
-  transition: none;
-  cursor: grabbing;
+
+  &.opening {
+    opacity: 1;
+    transform: scale(1);
+  }
+  &.closing {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  &.dragging {
+    transition: none;
+    cursor: grabbing;
+  }
 }
 
 /* ——— Close Button ——— */
@@ -71,13 +77,13 @@
   justify-content: center;
   padding: 2rem;
   margin: auto;
-}
 
-.modalImageWrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border: 1px solid #759D77;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 1px solid #759D77;
+  }
 }
 
 /* ——— Content Section ——— */
@@ -127,10 +133,11 @@
   justify-content: center;
   margin-top: 1.5rem;
   flex-shrink: 0;
-}
-.modalTech img {
-  width: 3rem;
-  height: auto;
+
+  img {
+    width: 3rem;
+    height: auto;
+  }
 }
 
 /* ——— Links Container ——— */
@@ -156,10 +163,12 @@
   font-weight: 500;
   font-size: vars.$secondary-font-size;
   transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
-.modalLink:hover {
-  opacity: 0.8;
-}
+
 .modalLinkIcon {
   width: 1.875rem;
 }
@@ -179,11 +188,12 @@
     padding: 0.5rem;
     width: 60%;
     margin: 4rem auto 0;
-  }
-  .modalImageWrapper img {
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
+
+    img {
+      max-height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
   }
 
   .modalBody {
@@ -193,15 +203,15 @@
     height: calc(72vh - 3rem);
   }
 
-  .modalDescriptionWrapper{
-    margin: 1.5rem ;
+  .modalDescriptionWrapper {
+    margin: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
   .modalLinks {
-    justify-content: space-around
+    justify-content: space-around;
   }
 }
 
@@ -210,6 +220,7 @@
     width: 95vw;
     height: 95vh;
   }
+
   .modalImageWrapper {
     flex: 0 0 15vh;
     padding: 0.4rem;
@@ -227,12 +238,12 @@
 }
 
 @media (max-width: 450px) {
-  .modalDescription{
+  .modalDescription {
     line-height: 1.2;
     margin: 0 0 1rem;
   }
 
-  .modalImageWrapper{
+  .modalImageWrapper {
     width: 70%;
   }
 }

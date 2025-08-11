@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import logo from '../../assets/logo.png';
 import styles from './NavBar.module.scss';
 
-// Functional component for the main navigation bar
 export default function NavBar(): JSX.Element {
   // Tracks whether the navbar should appear after scrolling past 60px
   const [visible, setVisible] = useState<boolean>(false);

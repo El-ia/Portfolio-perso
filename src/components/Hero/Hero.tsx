@@ -1,28 +1,8 @@
-import { useState, useEffect } from 'react'
 import { Typewriter } from 'react-simple-typewriter';
 import heroImage from '../../assets/hero-image.png';
 import styles from './Hero.module.scss';
 
-// Functional component for the hero section
 export default function Hero(): JSX.Element {
-  // State to track whether the hero section has scrolled past 60px
-  const [, setVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Scroll handler function
-    const onScroll = (): void => {
-      setVisible(window.scrollY > 60);
-    };
-
-    // Add scroll event listener
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Cleanup listener on unmount
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
-
   return (
     // Full-screen hero section
     <section id="hero" className={styles.hero}>

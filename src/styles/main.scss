@@ -1,8 +1,7 @@
 @use 'reset';
 @use 'variables' as vars;
-@use 'mixins' as mixins;
 
-// 2) font-face global
+// font-face global
 @font-face {
   font-family: 'SF Pro Display';
   src: url('../assets/fonts/SF-Pro.ttf') format('truetype');
@@ -18,7 +17,7 @@
   font-style: normal;
 }
 
-// 3) styles globaux
+// global styles
 html {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   scroll-behavior: smooth;

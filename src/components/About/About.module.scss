@@ -1,7 +1,7 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-// About section container (flex layout for visual and text)
+
 .about {
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
   gap: 3rem;
 }
 
-// Visual wrapper for photo + rotating loop
+/* ——— Visual wrapper (photo + rotating loop) ——— */
 .visual {
   position: relative;
   flex-shrink: 0;
@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-// Central profile photo styling
+/* ——— Central profile photo ——— */
 .photo {
   width: 26.625rem;
   height: 26.625rem;
@@ -31,7 +31,7 @@
   z-index: 1;
 }
 
-// Rotating text around the photo
+/* ——— Rotating text loop ——— */
 .curvedLoop {
   position: absolute;
   top: 50%;
@@ -43,37 +43,27 @@
   overflow: hidden;
 
   text {
-      font-size: 7px;
-      fill: vars.$font-primary-color;
-      font-weight: 500;
-      letter-spacing: 0.096em;
-      text-transform: uppercase;
-      font-feature-settings: "kern" 1;
-      text-rendering: geometricPrecision;
-    }
+    font-size: 0.438rem;
+    fill: vars.$font-primary-color;
+    font-weight: 500;
+    letter-spacing: 0.096rem;
+    text-transform: uppercase;
+    font-feature-settings: "kern" 1;
+    text-rendering: geometricPrecision;
+  }
 
   textPath {
-      animation: textFlow 30s linear infinite;
-    }
+    animation: textFlow 30s linear infinite;
+  }
 }
 
-// Keyframes for text movement and loop rotation
-@keyframes textFlow {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
-@keyframes rotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-// Text content block styling
+/* ——— Text content wrapper ——— */
 .text {
   flex: 1;
   max-width: 32rem;
 }
 
-/* Section title with right-hand line decoration */
+/* ——— Section title ——— */
 .title {
   position: relative;
   font-size: vars.$primary-font-size;
@@ -83,52 +73,47 @@
   text-transform: uppercase;
   display: inline-block;
   font-family: 'SF Pro', sans-serif;
-  font-weight: bold;
 
   &::after {
-      content: '';
-      position: absolute;
-      top: 83%;
-      left: 100%;
-      transform: translateY(-50%);
-      margin-left: 0.5rem;
-      width: 2rem;
-      height: 1px;
-      background-color: vars.$font-primary-color;
-      transition: width .2s ease, background-color .2s;
-    }
+    content: '';
+    position: absolute;
+    top: 83%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 0.5rem;
+    width: 2rem;
+    height: 1px;
+    background-color: vars.$font-primary-color;
+    transition: width .2s ease, background-color .2s;
+  }
 }
 
-/* Copy block with vertical decorative line */
+/* ——— Copy block (background + vertical line) ——— */
 .copy {
   position: relative;
-  background: vars.$background-primary-color;
-  background-image: url('../../assets/natural-paper.png');
+  background: vars.$background-primary-color url('../../assets/natural-paper.png');
   padding: 3.12rem;
   color: vars.$font-tertiary-color;
   line-height: 1.7;
   font-size: vars.$secondary-font-size;
   margin-bottom: 1.87rem;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 10%;
-      right: -0.875rem;
-      width: 2px;
-      height: 54%;
-      background-color: vars.$font-primary-color;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: -0.875rem;
+    width: 2px;
+    height: 54%;
+    background-color: vars.$font-primary-color;
+  }
 
-  p {
-      margin: 0;
-    }
   p + p {
-      margin-top: 1.2rem;
-    }
+    margin-top: 1.2rem;
+  }
 }
 
-/* Location line with left-hand horizontal decoration */
+/* ——— Location line ——— */
 .location {
   display: flex;
   align-items: center;
@@ -137,133 +122,134 @@
   font-size: vars.$secondary-font-size;
   font-weight: bold;
   color: vars.$font-primary-color;
-  position: relative;
 }
 
-// Wrapper for location text to hold the left-line pseudo-element
+/* ——— Location text with left line ——— */
 .locationText {
-    position: relative;
-    display: inline-block;
-    padding-left: 0.5rem;
-    &::before { 
-      content: '';
-      position: absolute;
-      left: -2%;
-      top: 84%;
-      transform: translate(-100%, -50%);
-      width: 2rem;
-      height: 1px;
-      background-color: vars.$font-primary-color;
-    }
+  position: relative;
+  padding-left: 0.5rem;
+
+  &::before { 
+    content: '';
+    position: absolute;
+    left: -2%;
+    top: 84%;
+    transform: translate(-100%, -50%);
+    width: 2rem;
+    height: 1px;
+    background-color: vars.$font-primary-color;
+  }
 }
 
-/* ——— Responsive Media Queries ——— */
+/* ——— Keyframes ——— */
+@keyframes textFlow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ——— Responsive ——— */
 @media (max-width: 1285px) {
   .about {
-      margin: 5rem 3rem;
-      gap: 3rem;
-    }
+    margin: 5rem 3rem;
+  }
 }
 
 @media (max-width: 1024px) {
   .about {
-      margin: 5rem 3rem;
-      gap: 3rem;
-    }
+    margin: 5rem 3rem;
+  }
 
   .visual {
-      width: 23rem;
-      height: 23rem;
-      margin-left: 1.5rem;
-    }
+    width: 23rem;
+    height: 23rem;
+    margin-left: 1.5rem;
+  }
 
   .photo {
-      width: 20rem;
-      height: 20rem;
-    }
+    width: 20rem;
+    height: 20rem;
+  }
 
   .curvedLoop text {
-      font-size: 7.5px;
-      letter-spacing: 0.05em;
-    }
+    font-size: 0.469rem;
+    letter-spacing: 0.05em;
+  }
 }
 
 @media (max-width: 980px) {
   .about {
-      flex-direction: column;
-      margin: 3rem 5rem;
-      gap: 2rem;
-    }
+    flex-direction: column;
+    margin: 3rem 5rem;
+    gap: 2rem;
+  }
 
   .visual {
-      width: 20rem;
-      height: 20rem;
-      margin-left: 1rem;
-    }
+    width: 20rem;
+    height: 20rem;
+    margin-left: 1rem;
+  }
 
   .photo {
-      width: 18rem;
-      height: 18rem;
-    }
+    width: 18rem;
+    height: 18rem;
+  }
 
-  /* add padding around loop for spacing from photo */
   .curvedLoop {
-      width: calc(100% + 1.5rem);
-      height: calc(100% + 1.5rem);
+    width: calc(100% + 1.5rem);
+    height: calc(100% + 1.5rem);
+  }
+
+  .title {
+    text-align: center;
+
+    &::after {
+      margin-left: 0.25rem;
+      width: 1.2rem;
     }
+  }
 
-  .curvedLoop text {
-      font-size: 7.5px;
-      letter-spacing: 0.05em;
+  .copy {
+    padding: 1.5rem;
+
+    p + p {
+      margin-top: 1rem;
     }
-
-    .title {
-      text-align: center;
-
-      &::after {
-        margin-left: 0.25rem;
-        width: 1.2rem;
-      }
-    }
-
-    .copy {
-      padding: 1.5rem;
-
-      p + p {
-          margin-top: 1rem;
-      }
-    }
+  }
 
   .text {
-      max-width: 100%;
-    }
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 500px) {
   .about {
-      margin: 3rem 2rem;
-      gap: 2rem;
-    }
+    margin: 3rem 2rem;
+    gap: 2rem;
+  }
 
   .visual {
-      width: 14.5rem;
-      height: 14.5rem;
-      margin-left: 0.5rem;
-    }
+    width: 14.5rem;
+    height: 14.5rem;
+    margin-left: 0.5rem;
+  }
 
   .photo {
-      width: 14rem;
-      height: 14rem;
-    }
+    width: 14rem;
+    height: 14rem;
+  }
 
   .curvedLoop {
-      width: calc(100% + 1.5rem);
-      height: calc(100% + 1.5rem);
-    }
+    width: calc(100% + 1.5rem);
+    height: calc(100% + 1.5rem);
+  }
 
   .curvedLoop text {
-      font-size: 7.5px;
-      letter-spacing: 0.05em;
-    }
+    font-size: 0.469rem;
+    letter-spacing: 0.05em;
+  }
 }

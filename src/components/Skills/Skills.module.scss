@@ -51,18 +51,24 @@
       background-color: vars.$font-primary-color;
       border: none;
 
-      .skills__category { color: vars.$font-tertiary-color; }
-      .skills__icon { background-color: vars.$font-tertiary-color; color: vars.$font-primary-color; }
+      .skills__category {
+        color: vars.$font-tertiary-color;
+      }
+      .skills__icon {
+        background-color: vars.$font-tertiary-color;
+        color: vars.$font-primary-color;
+      }
     }
 
-    /* Back-End — */
+    /* Back-End */
     &--backend {
       grid-area: backend;
       background-color: vars.$font-tertiary-color;
       border: 2px solid vars.$background-primary-color;
 
-      .skills__category { color: vars.$background-primary-color; }
-
+      .skills__category {
+        color: vars.$background-primary-color;
+      }
       .skills__icon {
         background-color: vars.$background-primary-color;
         color: vars.$font-tertiary-color;
@@ -78,11 +84,16 @@
       background-color: vars.$font-tertiary-color;
       border: 2px solid vars.$font-primary-color;
 
-      .skills__category { color: vars.$font-primary-color; }
-      .skills__icon { background-color: vars.$font-primary-color; color: vars.$font-tertiary-color; }
+      .skills__category {
+        color: vars.$font-primary-color;
+      }
+      .skills__icon {
+        background-color: vars.$font-primary-color;
+        color: vars.$font-tertiary-color;
+      }
     }
 
-    /* Tools — */
+    /* Tools */
     &--tools {
       grid-area: tools;
       background-color: vars.$background-primary-color;
@@ -91,8 +102,13 @@
       background-size: auto;
       border: none;
 
-      .skills__category { color: vars.$font-tertiary-color; }
-      .skills__icon { background-color: vars.$font-tertiary-color; color: vars.$background-primary-color; }
+      .skills__category {
+        color: vars.$font-tertiary-color;
+      }
+      .skills__icon {
+        background-color: vars.$font-tertiary-color;
+        color: vars.$background-primary-color;
+      }
     }
   }
 
@@ -131,11 +147,15 @@
 
 /* ——— Responsive ——— */
 @media (max-width: 1470px) {
-  .skills__block { height: 28.12rem; }
+  .skills__block {
+    height: 28.12rem;
+  }
 }
 
 @media (max-width: 1040px) {
-  .skills__block { height: 34.37rem; }
+  .skills__block {
+    height: 34.37rem;
+  }
 }
 
 @media (max-width: 863px) {
@@ -157,10 +177,14 @@
       padding: 1rem;
     }
 
-    .skills__icons { gap: 0.75rem; }
+    .skills__icons {
+      gap: 0.75rem;
+    }
   }
 }
 
 @media (max-width: 380px) {
-  .skills { padding: 3rem 1rem; }
+  .skills {
+    padding: 3rem 1rem;
+  }
 }

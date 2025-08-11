@@ -1,7 +1,6 @@
 import photo from '../../assets/profil-picture.png';
 import styles from './About.module.scss';
 
-// Functional component for the "À PROPOS" section
 export default function About(): JSX.Element {
   // Long repeated string to create a continuous circular text effect
   const loopText: string =

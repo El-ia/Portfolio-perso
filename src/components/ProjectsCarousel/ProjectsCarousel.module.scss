@@ -1,14 +1,14 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-/* wrapper */
+/* ——— Wrapper ——— */
 .carouselSection {
-  position: relative;        
-  padding: 10.1rem 2rem;    
+  position: relative;
+  padding: 10.1rem 2rem;
   background: vars.$background-primary-color;
   background-image: url('../../assets/natural-paper.png');
-  overflow-x: hidden;            // hide horizontal overflow
-  overflow-y: visible;          
+  overflow-x: hidden; // hide horizontal overflow
+  overflow-y: visible;
 
   /* Top-left decorative line (2/3 width) */
   &::before {
@@ -16,7 +16,7 @@
     position: absolute;
     top: 1.5rem;
     left: 3.4rem;
-    width: 45%;                 
+    width: 45%;
     height: 2px;
     background-color: vars.$font-primary-color;
     z-index: 1;
@@ -28,62 +28,65 @@
     position: absolute;
     bottom: 1.5rem;
     right: 3.4rem;
-    width: 45%;                     
+    width: 45%;
     height: 2px;
     background-color: vars.$font-primary-color;
     z-index: 1;
   }
 }
 
-/* Title positioned at top-left inside carousel */
+/* ——— Title positioned at top-left inside carousel ——— */
 .title {
   position: absolute;
   top: 2.43rem;
   left: 3.43rem;
   font-size: vars.$primary-font-size;
-  font-weight: 600;
-  color: vars.$font-tertiary-color;
-  text-align: left;  
   font-family: 'SF Pro', sans-serif;
-  font-weight: bold;          
+  font-weight: bold;
+  color: vars.$font-tertiary-color;
+  text-align: left;
 }
 
-/* Container for custom navigation arrows */
+/* ——— Container for custom navigation arrows ——— */
 .navButtons {
   position: absolute;
   top: 50%;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: space-between;  
-  pointer-events: none;         
+  justify-content: space-between;
+  pointer-events: none;
   z-index: 100;
 }
 
-/* Styling for Prev/Next buttons */
+/* ——— Styling for Prev/Next buttons ——— */
 .prevBtn,
 .nextBtn {
-  pointer-events: all;     
-  background: rgba(255,255,255,0.8);
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0.8);
   border: none;
-  width: 2.5rem; height: 2.5rem;
-  display: flex; align-items: center; justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
   color: vars.$font-primary-color;
-  transition: background .2s;    
   margin: 0 1rem;
   z-index: 101;
-}
-.prevBtn:hover,
-.nextBtn:hover {
-  background: vars.$font-tertiary-color; 
+  transition: background 0.2s;
+
+  &:hover {
+    background: vars.$font-tertiary-color;
+  }
 }
 
-/* Swiper container settings */
+/* ——— Swiper container settings ——— */
 .swiperContainer {
   width: 100%;
-  overscroll-behavior: none;        // disable native bounce
-  overflow: visible !important;    // show angled edges
-  scroll-behavior: smooth;          // smooth scrolling
+  overscroll-behavior: none; // disable native bounce
+  overflow: visible !important; // show angled edges
+  scroll-behavior: smooth; // smooth scrolling
   -webkit-overflow-scrolling: touch; // momentum on iOS
 }
 
@@ -95,67 +98,69 @@
 
 /* Timing function for slide transitions */
 .swiper-wrapper {
-  transition-timing-function: cubic-bezier(0.25,0.8,0.25,1) !important;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
-/* Individual slide container */
+/* ——— Individual slide container ——— */
 .swiperSlide {
   width: 20rem;
-  display: flex; justify-content: center;
-  overflow: visible;              // show full card
+  display: flex;
+  justify-content: center;
+  overflow: visible; // show full card
 }
 
 /* Position pagination bullets lower */
 :global(.swiper-pagination) {
-  bottom: -50px !important;
+  bottom: -3.125rem !important;
 }
 
-/* Card styling with smooth opacity/scale */
+/* ——— Card styling with smooth opacity/scale ——— */
 .card {
   background: vars.$font-tertiary-color;
   overflow: hidden;
   text-align: center;
-  transition: opacity .4s ease, transform .4s ease;  // animate opacity & scaling
+  transition: opacity 0.4s ease, transform 0.4s ease;
   will-change: opacity, transform;
-}
 
-.card img {
-  display: block;
-  width: calc(100% - 2rem); 
-  margin: 1rem auto 0;      
-  height: auto;
+  img {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 1rem auto 0;
+    height: auto;
+  }
 }
 
 /* Caption below the image */
 .caption {
   padding: 2rem;
   font-size: vars.$secondary-font-size;
-  color: vars.$font-primary-color;
   font-family: 'SF Pro', sans-serif;
   font-weight: bold;
+  color: vars.$font-primary-color;
 }
 
-/* Bullet colors for pagination */
+/* ——— Bullet colors for pagination ——— */
 :global(.swiper-pagination-bullet),
 :global(.swiper-pagination-bullet-active) {
   background: vars.$font-primary-color !important;
 }
 
-/* Dimming & scaling non-active slides */
+/* ——— Dimming & scaling non-active slides ——— */
 :global(.swiper-slide:not(.swiper-slide-active)) .card {
   opacity: 0.3;
-  transform: scale(0.9);           // smaller non-active cards
+  transform: scale(0.9); // smaller non-active cards
 }
 
-/* Active slide styling */
+/* ——— Active slide styling ——— */
 :global(.swiper-slide-active) .card {
   opacity: 1;
-  transform: scale(1);             
+  transform: scale(1);
 }
 
-// Responsive
-
+/* ——— Responsive ——— */
 /* Mobile breakpoint: larger slides for touch */
 @media (max-width: 768px) {
-  .swiperSlide { width: 80%; }
+  .swiperSlide {
+    width: 80%;
+  }
 }
