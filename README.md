@@ -85,9 +85,8 @@ mon-portfolio/
 │   │   ├── About/
 │   │   │   ├── About.tsx
 │   │   │   └── About.module.scss
-│   │   ├── App/
-│   │   │   ├── App.tsx                    # Composant principal
-│   │   │   └── App.module.scss
+│   │   ├── App/                 # Composant principal
+│   │   │   └── App.tsx 
 │   │   ├── Contact/
 │   │   │   ├── Contact.tsx
 │   │   │   └── Contact.module.scss
