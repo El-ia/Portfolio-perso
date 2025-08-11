@@ -50,7 +50,8 @@ cd mon-portfolio
 npm install
 
 # 3. Lancer le projet en développement
-npm run dev ```
+npm run dev
+```
 
 ---
 
