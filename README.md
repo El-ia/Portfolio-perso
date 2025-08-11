@@ -66,69 +66,134 @@ npm run build
 
 ---
 
+## 📂 Structure du projet
+
 mon-portfolio/
+
 │
-├── public/                               # Fichiers statiques
+
+├── public/                # Fichiers statiques
+
 │
+
 ├── src/
-│   ├── assets/                           # Ressources
-│   │   ├── fonts/                        # Polices
-│   │   └── icons/                        # Icônes
-│   │
-│   ├── components/                       # Composants réutilisables
-│   │   ├── About/
-│   │   │   ├── About.tsx
-│   │   │   └── About.module.scss
-│   │   ├── App/
-│   │   │   ├── App.tsx                   # Composant principal
-│   │   │   └── App.module.scss
-│   │   ├── Contact/
-│   │   │   ├── Contact.tsx
-│   │   │   └── Contact.module.scss
-│   │   ├── Hero/
-│   │   │   ├── Hero.tsx
-│   │   │   └── Hero.module.scss
-│   │   ├── NavBar/
-│   │   │   ├── NavBar.tsx
-│   │   │   └── NavBar.module.scss
-│   │   ├── ProjectModal/
-│   │   │   ├── ProjectModal.tsx
-│   │   │   └── ProjectModal.module.scss
-│   │   ├── ProjectsCarousel/
-│   │   │   ├── ProjectsCarousel.tsx
-│   │   │   └── ProjectsCarousel.module.scss
-│   │   ├── Skills/
-│   │   │   ├── Skills.tsx
-│   │   │   └── Skills.module.scss
-│   │   └── Timeline/
-│   │       ├── Timeline.tsx
-│   │       └── Timeline.module.scss
-│   │
-│   ├── styles/                           # Styles globaux
-│   │   ├── _reset.scss
-│   │   ├── _variables.scss
-│   │   └── main.scss
-│   │
-│   ├── types/                            # Types TypeScript
-│   │   ├── projects.ts
-│   │   ├── skills.ts
-│   │   └── timelines.ts
-│   │
-│   ├── global.d.ts                       # Types globaux
-│   └── main.tsx                          # Point d'entrée React
+
+│  ├── assets/              # Ressources
+
+│  │  ├── fonts/            # Polices
+
+│  │  └── icons/            # Icônes
+
+│  │
+
+│  ├── components/            # Composants réutilisables
+
+│  │  ├── About/
+
+│  │  │  ├── About.tsx
+
+│  │  │  └── About.module.scss
+
+│  │  ├── App/
+
+│  │  │  ├── App.tsx          # Composant principal
+
+│  │  │  └── App.module.scss
+
+│  │  ├── Contact/
+
+│  │  │  ├── Contact.tsx
+
+│  │  │  └── Contact.module.scss
+
+│  │  ├── Hero/
+
+│  │  │  ├── Hero.tsx
+
+│  │  │  └── Hero.module.scss
+
+│  │  ├── NavBar/
+
+│  │  │  ├── NavBar.tsx
+
+│  │  │  └── NavBar.module.scss
+
+│  │  ├── ProjectModal/
+
+│  │  │  ├── ProjectModal.tsx
+
+│  │  │  └── ProjectModal.module.scss
+
+│  │  ├── ProjectsCarousel/
+
+│  │  │  ├── ProjectsCarousel.tsx
+
+│  │  │  └── ProjectsCarousel.module.scss
+
+│  │  ├── Skills/
+
+│  │  │  ├── Skills.tsx
+
+│  │  │  └── Skills.module.scss
+
+│  │  └── Timeline/
+
+│  │    ├── Timeline.tsx
+
+│  │    └── Timeline.module.scss
+
+│  │
+
+│  ├── styles/              # Styles globaux
+
+│  │  ├── \_reset.scss
+
+│  │  ├── \_variables.scss
+
+│  │  └── main.scss
+
+│  │
+
+│  ├── types/              # Types TypeScript
+
+│  │  ├── projects.ts
+
+│  │  ├── skills.ts
+
+│  │  └── timelines.ts
+
+│  │
+
+│  ├── global.d.ts            # Types globaux
+
+│  └── main.tsx             # Point d'entrée React
+
 │
+
 ├── .gitignore
-├── eslint.config.js                      # Config ESLint
+
+├── eslint.config.js           # Config ESLint
+
 ├── index.html
+
 ├── package.json
+
 ├── package-lock.json
+
 ├── tsconfig.json
+
 ├── tsconfig.app.json
+
 ├── tsconfig.node.json
+
 ├── tsconfig.tsbuildinfo
+
 ├── vite.config.d.ts
+
 ├── vite.config.js
+
 └── vite.config.ts
+
 ## 📄 Licence
 
 Ce projet est protégé — utilisation personnelle uniquement.
