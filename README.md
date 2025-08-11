@@ -68,111 +68,113 @@ npm run build
 
 ## 📂 Structure du projet
 
+```plaintext
+
 mon-portfolio/
 
 │
 
-├── public/                # Fichiers statiques
+├── public/                # Fichiers statiques
 
 │
 
 ├── src/
 
-│  ├── assets/              # Ressources
+│  ├── assets/              # Ressources
 
-│  │  ├── fonts/            # Polices
+│  │  ├── fonts/            # Polices
 
-│  │  └── icons/            # Icônes
+│  │  └── icons/            # Icônes
 
-│  │
+│  │
 
-│  ├── components/            # Composants réutilisables
+│  ├── components/            # Composants réutilisables
 
-│  │  ├── About/
+│  │  ├── About/
 
-│  │  │  ├── About.tsx
+│  │  │  ├── About.tsx
 
-│  │  │  └── About.module.scss
+│  │  │  └── About.module.scss
 
-│  │  ├── App/
+│  │  ├── App/
 
-│  │  │  ├── App.tsx          # Composant principal
+│  │  │  ├── App.tsx          # Composant principal
 
-│  │  │  └── App.module.scss
+│  │  │  └── App.module.scss
 
-│  │  ├── Contact/
+│  │  ├── Contact/
 
-│  │  │  ├── Contact.tsx
+│  │  │  ├── Contact.tsx
 
-│  │  │  └── Contact.module.scss
+│  │  │  └── Contact.module.scss
 
-│  │  ├── Hero/
+│  │  ├── Hero/
 
-│  │  │  ├── Hero.tsx
+│  │  │  ├── Hero.tsx
 
-│  │  │  └── Hero.module.scss
+│  │  │  └── Hero.module.scss
 
-│  │  ├── NavBar/
+│  │  ├── NavBar/
 
-│  │  │  ├── NavBar.tsx
+│  │  │  ├── NavBar.tsx
 
-│  │  │  └── NavBar.module.scss
+│  │  │  └── NavBar.module.scss
 
-│  │  ├── ProjectModal/
+│  │  ├── ProjectModal/
 
-│  │  │  ├── ProjectModal.tsx
+│  │  │  ├── ProjectModal.tsx
 
-│  │  │  └── ProjectModal.module.scss
+│  │  │  └── ProjectModal.module.scss
 
-│  │  ├── ProjectsCarousel/
+│  │  ├── ProjectsCarousel/
 
-│  │  │  ├── ProjectsCarousel.tsx
+│  │  │  ├── ProjectsCarousel.tsx
 
-│  │  │  └── ProjectsCarousel.module.scss
+│  │  │  └── ProjectsCarousel.module.scss
 
-│  │  ├── Skills/
+│  │  ├── Skills/
 
-│  │  │  ├── Skills.tsx
+│  │  │  ├── Skills.tsx
 
-│  │  │  └── Skills.module.scss
+│  │  │  └── Skills.module.scss
 
-│  │  └── Timeline/
+│  │  └── Timeline/
 
-│  │    ├── Timeline.tsx
+│  │    ├── Timeline.tsx
 
-│  │    └── Timeline.module.scss
+│  │    └── Timeline.module.scss
 
-│  │
+│  │
 
-│  ├── styles/              # Styles globaux
+│  ├── styles/              # Styles globaux
 
-│  │  ├── \_reset.scss
+│  │  ├── _reset.scss
 
-│  │  ├── \_variables.scss
+│  │  ├── _variables.scss
 
-│  │  └── main.scss
+│  │  └── main.scss
 
-│  │
+│  │
 
-│  ├── types/              # Types TypeScript
+│  ├── types/              # Types TypeScript
 
-│  │  ├── projects.ts
+│  │  ├── projects.ts
 
-│  │  ├── skills.ts
+│  │  ├── skills.ts
 
-│  │  └── timelines.ts
+│  │  └── timelines.ts
 
-│  │
+│  │
 
-│  ├── global.d.ts            # Types globaux
+│  ├── global.d.ts            # Types globaux
 
-│  └── main.tsx             # Point d'entrée React
+│  └── main.tsx             # Point d'entrée React
 
 │
 
 ├── .gitignore
 
-├── eslint.config.js           # Config ESLint
+├── eslint.config.js           # Config ESLint
 
 ├── index.html
 
@@ -193,6 +195,7 @@ mon-portfolio/
 ├── vite.config.js
 
 └── vite.config.ts
+```
 
 ## 📄 Licence
 
