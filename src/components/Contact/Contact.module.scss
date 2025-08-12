@@ -196,12 +196,12 @@
   /* ——— Responsive ——— */
   @media (max-width: 768px) {
     &__title {
-      margin: 4rem 2rem 1rem;
+      margin: 4rem 2rem 1.87rem;
       text-align: left;
 
       &::before {
-        left: 5rem;
-        top: .8rem;
+        left: 5.8rem;
+        top: .92rem;
       }
     }
 

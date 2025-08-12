@@ -1,0 +1,181 @@
+@use '../../styles/main' as *;
+@use '../../styles/variables' as vars;
+
+/* ——— Root Container (Floating Menu) ——— */
+/* Fixed position bottom-right with smooth show/hide transition */
+.floatingMenu {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 120;
+  width: 3.25rem;
+  height: 3.25rem;
+
+  /* Hidden by default — appears on scroll like NavBar */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.visible {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+
+  /* Fully opaque on hover */
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* ——— Common Button Styles (FAB & Items) ——— */
+/* Shared styling for main gear button and secondary action buttons */
+.fab,
+.item {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  background: vars.$background-secondary-color;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .28s ease, opacity .22s ease, background-color .2s ease;
+
+  /* Icon inside button */
+  img {
+    width: 90%;
+    object-fit: contain;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Hover lift effect */
+  &:hover {
+    background: vars.$background-secondary-color;
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  /* Click press effect */
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+/* ——— Language Button Animation ——— */
+/* Flip animation when switching flags */
+.itemLang {
+  &.langChanging img {
+    animation: flagFlipAnimation 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Small hover tilt */
+  &:hover:not(.langChanging) img {
+    transform: scale(1.1) rotateY(15deg);
+  }
+}
+
+/* Keyframes for flipping the flag */
+@keyframes flagFlipAnimation {
+  0% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.3) rotateY(90deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* ——— Theme Button Animation ——— */
+/* Spin + shrink effect when switching between moon and sun */
+.itemTheme {
+  &.themeChanging img {
+    animation: themeSpinAnimation 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  /* Glow effect on hover */
+  &:hover:not(.themeChanging) img {
+    transform: scale(1.1) rotate(-15deg);
+  }
+}
+
+/* Keyframes for spinning the theme icon */
+@keyframes themeSpinAnimation {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.2) rotate(180deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* ——— Icon State Classes ——— */
+.icon-change {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8);
+}
+.icon-visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* ——— Gear Button Rotation ——— */
+/* Rotates forward on open, backward on close */
+.fab { z-index: 3; }
+.fab img {
+  transform: rotate(0deg);
+  transition: transform .6s ease;
+}
+.open .fab img,
+.fabOpen img {
+  transform: rotate(180deg);
+}
+
+/* ——— Hidden Items by Default ——— */
+.item {
+  opacity: 0;
+  transform: translateY(0);
+  z-index: 2;
+}
+
+/* ——— Visible Items when Menu is Open ——— */
+.open {
+  .itemLang {
+    opacity: 1;
+    transform: translateY(-4.0rem);
+    transition-delay: .02s;
+  }
+  .itemTheme {
+    opacity: 1;
+    transform: translateY(-8.0rem);
+    transition-delay: .06s;
+  }
+}
+
+/* ——— Accessibility: Focus Ring ——— */
+.fab:focus-visible,
+.item:focus-visible {
+  outline: 2px solid vars.$font-primary-color;
+  outline-offset: 2px;
+}
+
+/* ——— Dark Theme Adjustments ——— */
+:root[data-theme='dark'] .fab,
+:root[data-theme='dark'] .item {
+  background: vars.$background-primary-color;
+}
+
