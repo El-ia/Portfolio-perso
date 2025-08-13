@@ -15,6 +15,9 @@ export default function About(): JSX.Element {
   const location = t('about.location') as string
   const title = t('about.title') as string
 
+  // Apply special class when language is English (loop text is longer: "AVAILABLE")
+  const curvedLoopClass = `${styles.curvedLoop} ${lang === 'en' ? styles.curvedLoopEn : ''}`
+
   return (
     <section id="about" className={styles.about}>
       {/* Visual area: profile photo + circular looped text */}
@@ -23,7 +26,7 @@ export default function About(): JSX.Element {
         <img src={photo} alt="Elia Berthier" className={styles.photo} />
 
         {/* SVG curved text wrapped around the photo */}
-        <svg viewBox="0 0 200 200" className={styles.curvedLoop} aria-hidden="true">
+        <svg viewBox="0 0 200 200" className={curvedLoopClass} aria-hidden="true">
           <defs>
             {/* Circular path for the looped text */}
             <path

@@ -1,7 +1,6 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-
 .about {
   display: flex;
   align-items: center;
@@ -46,7 +45,7 @@
     font-size: 0.438rem;
     fill: vars.$font-primary-color;
     font-weight: 500;
-    letter-spacing: 0.078rem;
+    letter-spacing: 0.078rem; /* valeur par défaut (FR) */
     text-transform: uppercase;
     font-feature-settings: "kern" 1;
     text-rendering: geometricPrecision;
@@ -54,6 +53,13 @@
 
   textPath {
     animation: textFlow 30s linear infinite;
+  }
+}
+
+/* ——— Variant for EN loop text ("AVAILABLE" is longer) ——— */
+.curvedLoopEn {
+  text {
+    letter-spacing: 0.067rem;
   }
 }
 
@@ -179,6 +185,17 @@
     font-size: 0.469rem;
     letter-spacing: 0.05em;
   }
+
+  .curvedLoopEn text {
+    font-size: 0.44rem;
+    letter-spacing: 0.045rem;
+  }
+
+  .curvedLoopEn {
+    text {
+      letter-spacing: 0.067rem;
+    }
+  }
 }
 
 @media (max-width: 980px) {
@@ -251,5 +268,16 @@
   .curvedLoop text {
     font-size: 0.469rem;
     letter-spacing: 0.05em;
+  }
+
+  .curvedLoopEn text {
+    font-size: 0.445rem;
+    letter-spacing: 0.042rem;
+  }
+
+  .curvedLoopEn {
+    text {
+      letter-spacing: 0.067rem;
+    }
   }
 }
