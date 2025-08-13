@@ -5,7 +5,17 @@ import uploadGreenIcon from '../../assets/icons/upload-green-icon.png';
 import uploadBeigeIcon from '../../assets/icons/upload-beige-icon.png';
 import styles from './NavBar.module.scss';
 
+// ——— i18n ———
+import { useLang } from '../../context/useLang';
+import { createTranslator } from '../../i18n/i18n';
+import type { Lang } from '../../i18n/i18n';
+
 export default function NavBar(): JSX.Element {
+  // Current language + translator
+  const { lang } = useLang();
+  const t = createTranslator(lang as Lang);
+
+  // Scroll visibility + sidebar state
   const [visible, setVisible] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -14,6 +24,18 @@ export default function NavBar(): JSX.Element {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Localized labels
+  const lblAbout = t('nav.about') as string;
+  const lblProjects = t('nav.projects') as string;
+  const lblSkills = t('nav.skills') as string;
+  const lblTimeline = t('nav.timeline') as string;
+  const lblContact = t('nav.contact') as string;
+  const lblCv = t('nav.cv') as string;
+
+  const ariaDownloadCv = t('a11y.downloadCv') as string;
+  const ariaMenuOpen = t('a11y.menuOpen') as string;
+  const ariaMenuClose = t('a11y.menuClose') as string;
 
   return (
     <>
@@ -26,19 +48,28 @@ export default function NavBar(): JSX.Element {
           {/* Logo */}
           <li className={styles.navItem}>
             <a href="#hero" className={styles.navLinkLogo}>
-              <img src={logo} alt="Logo — retour accueil" className={styles.logoImage} />
+              <img src={logo} alt="Logo — home" className={styles.logoImage} />
               <span className={styles.siteName}>ELIA BERTHIER</span>
             </a>
           </li>
 
           {/* Links */}
-          <li className={styles.navItem}><a href="#about" className={styles.navLink}>À PROPOS</a></li>
-          <li className={styles.navItem}><a href="#projectsCarousel" className={styles.navLink}>PROJETS</a></li>
-          <li className={styles.navItem}><a href="#skills" className={styles.navLink}>COMPÉTENCES</a></li>
-          <li className={styles.navItem}><a href="#timeline" className={styles.navLink}>PARCOURS</a></li>
-          <li className={styles.navItem}><a href="#contact" className={styles.navLink}>CONTACT</a></li>
-          <li className={styles.navItem}><a href={cvFile} download="CV_Elia_Berthier.pdf" className={`${styles.navLink} ${styles.cvLink}`} 
-          aria-label="Télécharger mon CV (PDF)">CV<span className={styles.cvIcon}>
+          <li className={styles.navItem}><a href="#about" className={styles.navLink}>{lblAbout}</a></li>
+          <li className={styles.navItem}><a href="#projectsCarousel" className={styles.navLink}>{lblProjects}</a></li>
+          <li className={styles.navItem}><a href="#skills" className={styles.navLink}>{lblSkills}</a></li>
+          <li className={styles.navItem}><a href="#timeline" className={styles.navLink}>{lblTimeline}</a></li>
+          <li className={styles.navItem}><a href="#contact" className={styles.navLink}>{lblContact}</a></li>
+
+          {/* CV download with icon swap */}
+          <li className={styles.navItem}>
+            <a
+              href={cvFile}
+              download="CV_Elia_Berthier.pdf"
+              className={`${styles.navLink} ${styles.cvLink}`}
+              aria-label={ariaDownloadCv}
+            >
+              {lblCv}
+              <span className={styles.cvIcon}>
                 <img
                   src={uploadGreenIcon}
                   alt=""
@@ -61,7 +92,7 @@ export default function NavBar(): JSX.Element {
       <button
         className={`${styles.tabHandle} ${sidebarOpen ? styles.sidebarOpen : ''}`}
         onClick={() => setSidebarOpen(prev => !prev)}
-        aria-label={sidebarOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        aria-label={sidebarOpen ? ariaMenuClose : ariaMenuOpen}
       >
         ☰
       </button>
@@ -72,7 +103,7 @@ export default function NavBar(): JSX.Element {
         onClick={() => setSidebarOpen(false)}
       />
 
-      {/* ——— Sidebar mobile ——— */}
+      {/* ——— Mobile sidebar ——— */}
       <aside
         className={`${styles.sidebar} ${sidebarOpen ? styles.open : ''}`}
         aria-hidden={!sidebarOpen}
@@ -83,19 +114,27 @@ export default function NavBar(): JSX.Element {
             onClick={() => setSidebarOpen(false)}
             className={styles.navLinkLogo}
           >
-            <img src={logo} alt="Logo — retour accueil" className={styles.logoImage} />
+            <img src={logo} alt="Logo — home" className={styles.logoImage} />
             <span className={styles.siteName}>ELIA BERTHIER</span>
           </a>
         </div>
 
         <ul className={styles.sidebarList}>
-          <li><a href="#about" onClick={() => setSidebarOpen(false)}>À PROPOS</a></li>
-          <li><a href="#projectsCarousel" onClick={() => setSidebarOpen(false)}>PROJETS</a></li>
-          <li><a href="#skills" onClick={() => setSidebarOpen(false)}>COMPÉTENCES</a></li>
-          <li><a href="#timeline" onClick={() => setSidebarOpen(false)}>PARCOURS</a></li>
-          <li><a href="#contact" onClick={() => setSidebarOpen(false)}>CONTACT</a></li>
-          <li><a href={cvFile} download="CV_Elia_Berthier.pdf" onClick={() => setSidebarOpen(false)} className={`${styles.cvLink} ${styles.sidebarCvLink}`}
-              aria-label="Télécharger mon CV (PDF)">CV<span className={styles.cvIcon}>
+          <li><a href="#about" onClick={() => setSidebarOpen(false)}>{lblAbout}</a></li>
+          <li><a href="#projectsCarousel" onClick={() => setSidebarOpen(false)}>{lblProjects}</a></li>
+          <li><a href="#skills" onClick={() => setSidebarOpen(false)}>{lblSkills}</a></li>
+          <li><a href="#timeline" onClick={() => setSidebarOpen(false)}>{lblTimeline}</a></li>
+          <li><a href="#contact" onClick={() => setSidebarOpen(false)}>{lblContact}</a></li>
+          <li>
+            <a
+              href={cvFile}
+              download="CV_Elia_Berthier.pdf"
+              onClick={() => setSidebarOpen(false)}
+              className={`${styles.cvLink} ${styles.sidebarCvLink}`}
+              aria-label={ariaDownloadCv}
+            >
+              {lblCv}
+              <span className={styles.cvIcon}>
                 <img
                   src={uploadGreenIcon}
                   alt=""

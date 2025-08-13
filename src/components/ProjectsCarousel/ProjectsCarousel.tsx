@@ -11,6 +11,10 @@ import 'swiper/css/pagination';
 import styles from './ProjectsCarousel.module.scss';
 import type { Project } from '../../types/projects';
 
+// i18n
+import { useLang } from '../../context/useLang';
+import { createTranslator } from '../../i18n/i18n';
+
 // Props interface defining the carousel inputs
 interface ProjectsCarouselProps {
   projects: Project[]; // Array of projects to display
@@ -27,6 +31,22 @@ export default function ProjectsCarousel({
   // Track the currently active/focused slide index
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Current language + translator
+  const { lang } = useLang();
+  const t = createTranslator(lang);
+
+  // Section & controls labels from i18n
+  const sectionTitle = t<string>('sections.projects');
+  const ariaPrev = t<string>('a11y.prev');
+  const ariaNext = t<string>('a11y.next');
+
+  // Small helper to fetch localized project fields with a safe fallback
+  const projectText = (id: number, key: 'title' | 'alt', fallback: string) => {
+    const val = t<string>(`projects.byId.${id}.${key}`);
+    // If the key is missing, t(...) returns the path string. We detect that and fallback.
+    return val.includes(`projects.byId.${id}.${key}`) ? fallback : val;
+  };
+
   // Handle slide click - focus if not active, open modal if already active
   const handleSlideClick = (project: Project, index: number) => {
     if (index === activeIndex) {
@@ -41,7 +61,7 @@ export default function ProjectsCarousel({
   return (
     <section id="projectsCarousel" className={styles.carouselSection}>
       {/* Section heading */}
-      <h2 className={styles.title}>PROJETS</h2>
+      <h2 className={styles.title}>{sectionTitle}</h2>
 
       {/* Custom navigation arrows */}
       <div className={styles.navButtons}>
@@ -49,7 +69,7 @@ export default function ProjectsCarousel({
         <button
           className={styles.prevBtn}
           onClick={() => swiperRef.current?.slidePrev()}
-          aria-label="Previous"
+          aria-label={ariaPrev}
         >
           ‹
         </button>
@@ -57,7 +77,7 @@ export default function ProjectsCarousel({
         <button
           className={styles.nextBtn}
           onClick={() => swiperRef.current?.slideNext()}
-          aria-label="Next"
+          aria-label={ariaNext}
         >
           ›
         </button>
@@ -100,20 +120,25 @@ export default function ProjectsCarousel({
         }}
       >
         {/* Render each project as a slide */}
-        {projects.map((project, idx) => (
-          <SwiperSlide
-            key={project.id}
-            className={styles.swiperSlide}
-            onClick={() => handleSlideClick(project, idx)} // handle focus/open logic
-          >
-            <div className={styles.card}>
-              {/* Project image */}
-              <img src={project.img} alt={project.alt ?? project.title} />
-              {/* Project title caption */}
-              <p className={styles.caption}>{project.title}</p>
-            </div>
-          </SwiperSlide>
-        ))}
+        {projects.map((project, idx) => {
+          const title = projectText(project.id, 'title', project.title);
+          const alt = projectText(project.id, 'alt', project.alt ?? project.title);
+
+          return (
+            <SwiperSlide
+              key={project.id}
+              className={styles.swiperSlide}
+              onClick={() => handleSlideClick(project, idx)} // handle focus/open logic
+            >
+              <div className={styles.card}>
+                {/* Project image */}
+                <img src={project.img} alt={alt} />
+                {/* Project title caption */}
+                <p className={styles.caption}>{title}</p>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </section>
   );

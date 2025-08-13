@@ -1,11 +1,35 @@
-import styles from './Contact.module.scss';
-import downloadIcon from '../../assets/icons/upload-white-icon.png';
-import githubIcon from '../../assets/icons/github-icon.png';
-import linkedinIcon from '../../assets/icons/linkedin-icon.png';
-import shareIcon from '../../assets/icons/share-icon.png';
-import cvFile from '../../assets/cv_elia_berthier.pdf';
+import styles from './Contact.module.scss'
+import downloadIcon from '../../assets/icons/upload-white-icon.png'
+import githubIcon from '../../assets/icons/github-icon.png'
+import linkedinIcon from '../../assets/icons/linkedin-icon.png'
+import shareIcon from '../../assets/icons/share-icon.png'
+import cvFile from '../../assets/cv_elia_berthier.pdf'
+
+import { useLang } from '../../context/useLang'
+import { createTranslator } from '../../i18n/i18n'
+import type { Lang } from '../../i18n/i18n'
 
 export default function Contact(): JSX.Element {
+  const { lang } = useLang()
+  const t = createTranslator(lang as Lang)
+
+  // Localized strings
+  const title = t('contact.title') as string
+  const downloadCta = t('contact.downloadCta') as string
+  const downloadA11y = t('a11y.downloadCv') as string
+  const intro = t('contact.intro') as string[]
+  const labelEmail = t('contact.info.email') as string
+  const labelPhone = t('contact.info.phone') as string
+  const labelAddress = t('contact.info.address') as string
+  const labelLinks = t('contact.info.links') as string
+  const addressValue = t('contact.addressValue') as string
+  const formName = t('contact.form.name') as string
+  const formEmail = t('contact.form.email') as string
+  const formMessage = t('contact.form.message') as string
+  const formSubmit = t('contact.form.submit') as string
+
+  const shareLabel = t('a11y.sharePage') as string
+
   return (
     <section className={styles.contact} id="contact">
       {/* ——— CV download link ——— */}
@@ -14,59 +38,52 @@ export default function Contact(): JSX.Element {
           href={cvFile}
           download="CV_Elia_Berthier.pdf"
           className={styles.contact__downloadLink}
+          aria-label={downloadA11y}
         >
-          Voir mon CV complet
+          {downloadCta}
           <img
             src={downloadIcon}
-            alt="Télécharger CV"
+            alt={downloadA11y}
             className={styles.contact__downloadIcon}
           />
         </a>
       </div>
 
       {/* ——— Section title ——— */}
-      <h2 className={styles.contact__title}>CONTACT</h2>
+      <h2 className={styles.contact__title}>{title}</h2>
 
       {/* ——— Container for intro and form ——— */}
       <div className={styles.contact__wrapper}>
         {/* ——— Left column ——— */}
         <div className={styles.contact__intro}>
-          <p>
-            Envie de travailler ensemble ou de me confier votre projet&nbsp;?
-          </p>
-          <p>
-            Je reste disponible et à l’écoute de nouvelles opportunités ou
-            collaborations inspirantes.
-          </p>
-          <p>
-            Si vous souhaitez me proposer un projet, échanger autour d’une idée
-            ou simplement prendre contact, je serai ravie d’en discuter avec
-            vous.
-          </p>
+          {intro.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
 
           {/* ——— Info list ——— */}
           <dl className={styles.contact__info}>
-            <dt>Email</dt>
+            <dt>{labelEmail}</dt>
             <dd>
               <a href="mailto:elia_berthier@hotmail.fr">
                 elia_berthier@hotmail.fr
               </a>
             </dd>
 
-            <dt>Téléphone</dt>
+            <dt>{labelPhone}</dt>
             <dd>
               <a href="tel:+33684914661">06 84 91 46 61</a>
             </dd>
 
-            <dt>Adresse</dt>
-            <dd>Paris | 18ᵉ arrondissement, France</dd>
+            <dt>{labelAddress}</dt>
+            <dd>{addressValue}</dd>
 
-            <dt>Liens</dt>
+            <dt>{labelLinks}</dt>
             <dd className={styles.contact__links}>
               <a
                 href="https://github.com/El-ia"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
               >
                 <img
                   src={githubIcon}
@@ -78,6 +95,7 @@ export default function Contact(): JSX.Element {
                 href="https://www.linkedin.com/in/elia-berthier-181770133/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <img
                   src={linkedinIcon}
@@ -87,14 +105,14 @@ export default function Contact(): JSX.Element {
               </a>
               <button
                 type="button"
-                aria-label="Partager cette page"
+                aria-label={shareLabel}
                 className={styles.contact__shareButton}
                 onClick={() => {
                   if (navigator.share) {
                     navigator.share({
                       title: document.title,
                       url: window.location.href,
-                    });
+                    })
                   }
                 }}
               >
@@ -110,18 +128,18 @@ export default function Contact(): JSX.Element {
           action="https://formspree.io/f/xpwlonke"
           method="POST"
         >
-          <label htmlFor="name">Nom</label>
+          <label htmlFor="name">{formName}</label>
           <input type="text" id="name" name="name" required />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{formEmail}</label>
           <input type="email" id="email" name="email" required />
 
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message">{formMessage}</label>
           <textarea id="message" name="message" rows={6} required />
 
-          <button type="submit">Envoyer</button>
+          <button type="submit">{formSubmit}</button>
         </form>
       </div>
     </section>
-  );
+  )
 }

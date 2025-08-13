@@ -1,11 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 import type { TimelineItem } from '../../types/timelines';
-import { timelineData } from '../../types/timelines';
 import styles from './Timeline.module.scss';
 
+// i18n hooks/helpers
+import { useLang } from '../../context/useLang';
+import { createTranslator } from '../../i18n/i18n';
+import type { Lang } from '../../i18n/i18n';
+
 export default function Timeline(): JSX.Element {
+  // ——— Language & translator ———
+  const { lang } = useLang();
+  const t = createTranslator(lang as Lang);
+
+  // Section title from i18n
+  const title = t<string>('timeline.title');
+
+  // Timeline items from i18n (instead of static file)
+  const itemsDict = t<Record<string, TimelineItem>>('timeline.byId');
+  const items = Object.values(itemsDict);
+
   // store refs to each timeline item for scroll detection
-  const items: TimelineItem[] = timelineData;
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -38,7 +52,7 @@ export default function Timeline(): JSX.Element {
   return (
     <section className={styles.timeline} id="timeline">
       {/* Section heading */}
-      <h2 className={styles.timeline__title}>PARCOURS</h2>
+      <h2 className={styles.timeline__title}>{title}</h2>
 
       {/* Central vertical line */}
       <div className={styles.timeline__line} />

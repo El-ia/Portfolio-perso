@@ -1,22 +1,31 @@
-import photo from '../../assets/profil-picture.png';
-import styles from './About.module.scss';
+import photo from '../../assets/profil-picture.png'
+import styles from './About.module.scss'
+
+import { useLang } from '../../context/useLang'
+import { createTranslator } from '../../i18n/i18n'
+import type { Lang } from '../../i18n/i18n'
 
 export default function About(): JSX.Element {
-  // Long repeated string to create a continuous circular text effect
-  const loopText: string =
-    'DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦ DISPONIBLE ✦';
+  const { lang } = useLang()
+  const t = createTranslator(lang as Lang)
+
+  // Localized strings
+  const loopText = t('about.loopText') as string
+  const copy = t('about.copy') as string[]
+  const location = t('about.location') as string
+  const title = t('about.title') as string
 
   return (
     <section id="about" className={styles.about}>
-      {/* Visual content: profile photo and circular text loop */}
+      {/* Visual area: profile photo + circular looped text */}
       <div className={styles.visual}>
         {/* Centered profile picture */}
         <img src={photo} alt="Elia Berthier" className={styles.photo} />
 
-        {/* SVG loop text wrapping around the photo */}
+        {/* SVG curved text wrapped around the photo */}
         <svg viewBox="0 0 200 200" className={styles.curvedLoop} aria-hidden="true">
           <defs>
-            {/* Circular path for the text to follow */}
+            {/* Circular path for the looped text */}
             <path
               id="text-circle"
               d="
@@ -35,35 +44,23 @@ export default function About(): JSX.Element {
         </svg>
       </div>
 
-      {/* Text section: heading, description, and location */}
+      {/* Textual content: section title, intro paragraphs, and location */}
       <div className={styles.text}>
         {/* Section title */}
-        <h2 className={styles.title}>À PROPOS</h2>
+        <h2 className={styles.title}>{title}</h2>
 
-        {/* Paragraph block introducing Elia */}
+        {/* Intro paragraphs (localized) */}
         <div className={styles.copy}>
-          <p>
-            Bonjour ! Je m'appelle Elia et j'aime créer des choses qui prennent vie sur le web. J'ai découvert
-            le développement en 2022, en bidouillant des sites et en apprenant HTML et CSS par curiosité.
-          </p>
-          <p>
-            Aujourd'hui, je suis développeuse web full stack, formée chez O'clock et diplômée d'un titre professionnel.
-          </p>
-          <p>
-            Pendant mon stage chez Studiolab, j'ai participé à la création d'un site de services informatiques complet,
-            avec un dashboard client et un back-office, un projet concret qui m'a beaucoup appris.
-          </p>
-          <p>
-            Je cherche une entreprise où je pourrai continuer à progresser, relever des défis utiles et m'investir
-            pleinement. Je suis curieuse, rigoureuse et j'aime vraiment comprendre comment tout fonctionne.
-          </p>
+          {copy.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
 
-        {/* Location line with visual separation */}
+        {/* Location line */}
         <div className={styles.location}>
-          <span className={styles.locationText}>Île de France • Full remote</span>
+          <span className={styles.locationText}>{location}</span>
         </div>
       </div>
     </section>
-  );
+  )
 }

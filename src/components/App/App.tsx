@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// src/components/App/App.tsx
+import { useEffect, useState } from 'react';
 
 import NavBar from '../NavBar/NavBar';
 import FloatingMenu from '../FloatingMenu/FloatingMenu';
@@ -14,16 +15,22 @@ import Footer from '../Footer/Footer';
 import type { Project } from '../../types/projects';
 import { projects } from '../../types/projects';
 
+type Theme = 'light' | 'dark';
+
 export default function App(): JSX.Element {
-  // Track which project is currently open in the modal (null = no modal)
+  // Project modal
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Handler to open modal when a project is clicked in the carousel
+  const [theme, setTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   const handleProjectClick = (project: Project): void => {
     setSelectedProject(project);
   };
 
-  // Handler to close the modal
   const handleCloseModal = (): void => {
     setSelectedProject(null);
   };
@@ -39,18 +46,10 @@ export default function App(): JSX.Element {
       {/* About section */}
       <About />
 
-      {/*
-        Projects carousel:
-        - Pass the full list of projects
-        - Provide a callback to open the modal on click
-      */}
+      {/* Projects carousel */}
       <ProjectsCarousel projects={projects} onProjectClick={handleProjectClick} />
 
-      {/*
-        Conditionally render ProjectModal:
-        - Only show when a project is selected
-        - Pass selected project data and close handler
-      */}
+      {/* Project modal */}
       {selectedProject && <ProjectModal project={selectedProject} onClose={handleCloseModal} />}
 
       {/* Skills / expertise section */}
@@ -65,8 +64,13 @@ export default function App(): JSX.Element {
       {/* Footer */}
       <Footer />
 
-      {/* Floating quick-access menu (gear + language + theme) */}
-      <FloatingMenu initialLang="fr" initialTheme="light" />
+      {/* Floating quick-access menu
+         - Language is handled via Context inside FloatingMenu
+         - Theme can still be controlled from here if needed */}
+      <FloatingMenu
+        initialTheme={theme}
+        onToggleTheme={setTheme}
+      />
     </>
   );
 }
