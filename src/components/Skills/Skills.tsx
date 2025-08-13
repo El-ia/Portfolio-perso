@@ -25,7 +25,9 @@ export default function Skills(): JSX.Element {
   return (
     <section className={styles.skills} id="skills">
       {/* ——— Section header ——— */}
-      <h2 className={styles.skills__title}>{sectionTitle}</h2>
+      <div className={styles.skills__titleWrapper}>
+  <h2 className={styles.skills__title}>{sectionTitle}</h2>
+</div>
 
       {/* ——— Grid container for skill categories ——— */}
       <div className={styles.skills__grid}>

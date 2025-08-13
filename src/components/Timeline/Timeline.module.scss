@@ -6,6 +6,10 @@
   position: relative;
   padding: 0rem 3.43rem;
 
+  &__titleWrapper {
+    text-align: right;
+  }
+
   /* ——— Section Title ——— */
   &__title {
     font-family: 'SF Pro', sans-serif;
@@ -15,14 +19,15 @@
     margin-bottom: 6rem;
     text-transform: uppercase;
     position: relative;
+    display: inline-block;
 
-    /* line to the right of the title */
     &::after {
       content: "";
       position: absolute;
       top: 83%;
-      left: 6.5rem;
+      left: 100%; 
       transform: translateY(-50%);
+      margin-left: 0.5rem;
       width: 2rem;
       height: 1px;
       background: vars.$font-primary-color;
@@ -30,7 +35,6 @@
   }
 
   /* ——— Central Vertical Line ——— */
-  /* Main spine of the timeline */
   &__line {
     position: absolute;
     top: 7rem;
@@ -55,16 +59,15 @@
   /* ——— Individual Timeline Entries ——— */
   &__item {
     padding: 5rem 0;
-    opacity: 0.3;                // faded by default
-    filter: blur(2px);           // blurred initially
-    transition: 0.5s;            // animate into focus
+    opacity: 0.3;
+    filter: blur(2px);
+    transition: 0.5s;
     box-sizing: border-box;
     width: calc(50% - 40px);
     display: flex;
     position: relative;
     transform: translateY(-80px);
 
-    /* ——— Date Bubble (uses data-text attribute) ——— */
     &::before {
       content: attr(data-text);
       width: 100%;
@@ -83,17 +86,14 @@
       right: calc(-100% - 56px);
     }
 
-    /* ——— Left-aligned entries ——— */
     &--left {
       align-self: flex-start;
       margin-left: 0;
     }
 
-    /* ——— Right-aligned entries ——— */
     &--right {
       align-self: flex-end;
 
-      /* move bubble to left side and flip border */
       &::before {
         right: auto;
         text-align: right;
@@ -103,32 +103,24 @@
       }
     }
 
-    /* ——— Active (in-focus) entry ——— */
     &--active {
       opacity: 1;
       transform: translateY(0);
       filter: blur(0);
 
-      /* reveal the date bubble */
       &::before {
         opacity: 1;
       }
 
-      /* subtle slide-down on title text */
       .timeline__itemTitle {
         margin: -3.125rem 0 1.25rem 0;
         transition: margin 0.4s ease;
         line-height: 1.3rem;
       }
     }
-
-    /* ——— Inactive entry ——— */
-    &--inactive {
-      /* retains default faded style */
-    }
   }
 
-  /* ——— Content Wrapper inside each item ——— */
+  /* ——— Content Wrapper ——— */
   &__content {
     display: inline-block;
     max-width: 90%;
@@ -155,18 +147,14 @@
 
 /* ——— Responsive ——— */
 @media (max-width: 1350px) {
-  .timeline {
-    &__content {
-      padding: 0 3rem;
-    }
+  .timeline__content {
+    padding: 0 3rem;
   }
 }
 
 @media (max-width: 915px) {
-  .timeline {
-    &__content {
-      padding: 0 2rem;
-    }
+  .timeline__content {
+    padding: 0 2rem;
   }
 }
 
@@ -174,7 +162,6 @@
   .timeline {
     padding: 0 3.43rem;
 
-    /* reposition the central line for stacked layout */
     &__line {
       left: 2.5rem;
       margin-left: 0;
@@ -182,19 +169,16 @@
       bottom: 5rem;
     }
 
-    /* increase bottom margin under title when stacked */
     &__title {
       margin-bottom: 9rem;
       margin-left: -1.43rem;
     }
 
-    /* full-width stacked items */
     &__item {
       align-self: flex-start !important;
       width: 100%;
       padding: 0 1.875rem 10rem 7.5rem;
 
-      /* reposition and allow date line breaks */
       &::before {
         left: 0.625rem !important;
         right: auto !important;
@@ -208,8 +192,6 @@
         background: transparent;
         box-shadow: none;
         opacity: 1 !important;
-
-        /* enable wrapping when stacked */
         white-space: normal !important;
         word-break: break-word !important;
         max-width: 8rem !important;
@@ -219,7 +201,6 @@
         padding-bottom: 2rem;
       }
 
-      /* restore left border on bubbles for all stacked items */
       &--right {
         &::before {
           border-left: 3px solid vars.$font-primary-color !important;
@@ -276,4 +257,3 @@
     }
   }
 }
-

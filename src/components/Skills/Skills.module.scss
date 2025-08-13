@@ -4,22 +4,27 @@
 .skills {
   padding: 7rem 3.43rem;
 
+  &__titleWrapper {
+    text-align: right;
+  }
+
   /* ——— Section Title ——— */
   &__title {
     font-family: 'SF Pro', sans-serif;
     font-weight: bold;
     font-size: vars.$primary-font-size;
-    text-align: right;
-    margin-bottom: 1.87rem;
     color: vars.$font-primary-color;
     position: relative;
+    display: inline-block; 
+    margin-bottom: 1.87rem;
 
     &::before {
       content: '';
       position: absolute;
-      right: 8.8rem;
-      top: 81%;
+      top: 83%;
+      right: 100%; 
       transform: translateY(-50%);
+      margin-right: 0.5rem;
       width: 2rem;
       height: 1px;
       background-color: vars.$font-primary-color;
