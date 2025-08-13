@@ -14,7 +14,7 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
-  z-index: 100;
+  z-index: 200;
 
   &.visible {
     opacity: 0.7;
