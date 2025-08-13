@@ -5,7 +5,7 @@ import styles from './ProjectModal.module.scss'
 import githubIcon from '../../assets/icons/github-icon.png'
 import eyeIcon from '../../assets/icons/eye-icon.png'
 
-// i18n + langue
+// i18n + language
 import { createTranslator } from '../../i18n/i18n'
 import { useLang } from '../../context/useLang'
 
@@ -19,18 +19,31 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
   const { lang } = useLang()
   const t = createTranslator(lang)
 
-  // Localized strings from i18n (fall back to project fields if a key is missing)
-  const title = (t<string>(`projects.byId.${project.id}.title`) ?? project.title) as string
-  const alt =
-    (t<string>(`projects.byId.${project.id}.alt`) ?? project.alt ?? title) as string
-  const description =
-    (t<string[]>(`projects.byId.${project.id}.description`) ??
-      project.description ??
-      []) as string[]
+  // Helpers to safely fetch strings/arrays from i18n with graceful fallbacks
+  const safeString = (path: string, fallback: string): string => {
+    const raw = t<string>(path)
+    // If the key is missing, t(...) returns the path itself; detect and fallback.
+    return typeof raw === 'string' && raw.includes(path) ? fallback : raw
+  }
+  const safeStringArray = (path: string, fallback: string[]): string[] => {
+    const raw = t(path) as unknown
+    if (Array.isArray(raw)) return raw as string[]
+    // If missing, t(...) returns the path as a string
+    if (typeof raw === 'string' && raw.includes(path)) return fallback
+    return fallback
+  }
 
-  const githubLabel = t<string>('projects.modal.githubBtn') ?? 'GitHub'
-  const liveLabel = t<string>('projects.modal.liveBtn') ?? 'Live'
-  const closeAria = t<string>('a11y.closeModal') ?? 'Close dialog'
+  // Localized strings from i18n (with safe fallbacks)
+  const title = safeString(`projects.byId.${project.id}.title`, '')
+  const alt = safeString(
+    `projects.byId.${project.id}.alt`,
+    title || (lang === 'fr' ? 'Aperçu du projet' : 'Project image')
+  )
+  const description = safeStringArray(`projects.byId.${project.id}.description`, [])
+
+  const githubLabel = safeString('projects.modal.githubBtn', 'GitHub')
+  const liveLabel = safeString('projects.modal.liveBtn', lang === 'fr' ? 'Voir' : 'Live')
+  const closeAria = safeString('a11y.closeModal', lang === 'fr' ? 'Fermer la fenêtre' : 'Close dialog')
 
   // ----- Open / close animation -----
   const [opening, setOpening] = useState(false)

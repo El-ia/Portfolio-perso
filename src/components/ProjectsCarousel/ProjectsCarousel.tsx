@@ -44,7 +44,9 @@ export default function ProjectsCarousel({
   const projectText = (id: number, key: 'title' | 'alt', fallback: string) => {
     const val = t<string>(`projects.byId.${id}.${key}`);
     // If the key is missing, t(...) returns the path string. We detect that and fallback.
-    return val.includes(`projects.byId.${id}.${key}`) ? fallback : val;
+    return typeof val === 'string' && val.includes(`projects.byId.${id}.${key}`)
+      ? fallback
+      : val;
   };
 
   // Handle slide click - focus if not active, open modal if already active
@@ -121,8 +123,9 @@ export default function ProjectsCarousel({
       >
         {/* Render each project as a slide */}
         {projects.map((project, idx) => {
-          const title = projectText(project.id, 'title', project.title);
-          const alt = projectText(project.id, 'alt', project.alt ?? project.title);
+          // All text comes from i18n now. Fallbacks are safe strings.
+          const title = projectText(project.id, 'title', '');
+          const alt = projectText(project.id, 'alt', title || 'Project image');
 
           return (
             <SwiperSlide
