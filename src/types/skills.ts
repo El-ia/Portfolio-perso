@@ -45,84 +45,83 @@ import cypressIcon from '../assets/icons/cypress-icon.png';
   - label: the display name (also used for the HTML alt attribute)
 */
 export type SkillIcon = {
-    icon: string;
-    label: string;
-  };
-  
-  /*
-    SkillCategory groups multiple SkillIcons under a category:
-    - category: visible section title (e.g. "Front-End")
-    - color: modifier used for styling variants
-    - icons: array of SkillIcon entries
-  */
-  export type SkillCategory = {
-    category: string;
-    color: 'frontend' | 'backend' | 'devops' | 'tools';
-    icons: SkillIcon[];
-  };
-  
-  // Data array defining all skill categories and their icons
-  export const skillsData: SkillCategory[] = [
-    {
-      category: 'Front-End',
-      color: 'frontend',
-      icons: [
-        { icon: htmlIcon, label: 'HTML' },
-        { icon: cssIcon, label: 'CSS' },
-        { icon: jsIcon, label: 'JavaScript' },
-        { icon: reactIcon, label: 'React' },
-        { icon: tsIcon, label: 'TypeScript' },
-        { icon: bulmaIcon, label: 'Bulma' },
-        { icon: picoIcon, label: 'Pico CSS' },
-        { icon: tailwindIcon, label: 'Tailwind CSS' },
-        { icon: bootStrapIcon, label: 'Bootstrap' },
-        { icon: sassIcon, label: 'Sass' },
-        { icon: ejsIcon, label: 'EJS' },
-        { icon: viteIcon, label: 'Vite' }
-      ]
-    },
-    {
-      category: 'Back-End',
-      color: 'backend',
-      icons: [
-        { icon: jsWhiteIcon, label: 'JavaScript' },
-        { icon: nodeIcon, label: 'Node.js' },
-        { icon: postgresIcon, label: 'PostgreSQL' },
-        { icon: sequelizeIcon, label: 'Sequelize' },
-        { icon: expressIcon, label: 'Express.js' },
-        { icon: apiIcon, label: 'API REST' },
-        { icon: swaggerIcon, label: 'Swagger' }
-      ]
-    },
-    {
-      category: 'DevOps',
-      color: 'devops',
-      icons: [
-        { icon: gitWhiteIcon, label: 'Git' },
-        { icon: githubWhiteIcon, label: 'GitHub' },
-        { icon: gitLabIcon, label: 'GitLab' },
-        { icon: dockerIcon, label: 'Docker' },
-        { icon: nginxIcon, label: 'Nginx' },
-        { icon: macIcon, label: 'MacOS' },
-        { icon: linuxIcon, label: 'Linux' },
-        { icon: bashIcon, label: 'Bash' }
-      ]
-    },
-    {
-      category: 'Outils',
-      color: 'tools',
-      icons: [
-        { icon: vscodeIcon, label: 'VS Code' },
-        { icon: figmaIcon, label: 'Figma' },
-        { icon: discordIcon, label: 'Discord' },
-        { icon: slackIcon, label: 'Slack' },
-        { icon: trelloIcon, label: 'Trello' },
-        { icon: notionIcon, label: 'Notion' },
-        { icon: InsomniaIcon, label: 'Insomnia' },
-        { icon: eslintIcon, label: 'ESLint' },
-        { icon: jestIcon, label: 'Jest' },
-        { icon: cypressIcon, label: 'Cypress' }
-      ]
-    }
-  ];
-  
+  icon: string;
+  label: string; // proper noun, not translated
+};
+
+/*
+  SkillCategory groups multiple SkillIcons under a category:
+  - category: visible section title (fallback only; i18n provides the final label)
+  - color: modifier used for styling variants and for i18n key mapping
+  - icons: array of SkillIcon entries
+*/
+export type SkillCategory = {
+  category: string; // fallback text; your component reads i18n first
+  color: 'frontend' | 'backend' | 'devops' | 'tools';
+  icons: SkillIcon[];
+};
+
+// Data array defining all skill categories and their icons
+export const skillsData: SkillCategory[] = [
+  {
+    category: 'Front-End',
+    color: 'frontend',
+    icons: [
+      { icon: htmlIcon, label: 'HTML' },
+      { icon: cssIcon, label: 'CSS' },
+      { icon: jsIcon, label: 'JavaScript' },
+      { icon: reactIcon, label: 'React' },
+      { icon: tsIcon, label: 'TypeScript' },
+      { icon: bulmaIcon, label: 'Bulma' },
+      { icon: picoIcon, label: 'Pico CSS' },
+      { icon: tailwindIcon, label: 'Tailwind CSS' },
+      { icon: bootStrapIcon, label: 'Bootstrap' },
+      { icon: sassIcon, label: 'Sass' },
+      { icon: ejsIcon, label: 'EJS' },
+      { icon: viteIcon, label: 'Vite' },
+    ],
+  },
+  {
+    category: 'Back-End',
+    color: 'backend',
+    icons: [
+      { icon: jsWhiteIcon, label: 'JavaScript' },
+      { icon: nodeIcon, label: 'Node.js' },
+      { icon: postgresIcon, label: 'PostgreSQL' },
+      { icon: sequelizeIcon, label: 'Sequelize' },
+      { icon: expressIcon, label: 'Express.js' },
+      { icon: apiIcon, label: 'API REST' },
+      { icon: swaggerIcon, label: 'Swagger' },
+    ],
+  },
+  {
+    category: 'DevOps',
+    color: 'devops',
+    icons: [
+      { icon: gitWhiteIcon, label: 'Git' },
+      { icon: githubWhiteIcon, label: 'GitHub' },
+      { icon: gitLabIcon, label: 'GitLab' },
+      { icon: dockerIcon, label: 'Docker' },
+      { icon: nginxIcon, label: 'Nginx' },
+      { icon: macIcon, label: 'MacOS' },
+      { icon: linuxIcon, label: 'Linux' },
+      { icon: bashIcon, label: 'Bash' },
+    ],
+  },
+  {
+    category: 'Outils', 
+    color: 'tools',
+    icons: [
+      { icon: vscodeIcon, label: 'VS Code' },
+      { icon: figmaIcon, label: 'Figma' },
+      { icon: discordIcon, label: 'Discord' },
+      { icon: slackIcon, label: 'Slack' },
+      { icon: trelloIcon, label: 'Trello' },
+      { icon: notionIcon, label: 'Notion' },
+      { icon: InsomniaIcon, label: 'Insomnia' },
+      { icon: eslintIcon, label: 'ESLint' },
+      { icon: jestIcon, label: 'Jest' },
+      { icon: cypressIcon, label: 'Cypress' },
+    ],
+  },
+];

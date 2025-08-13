@@ -1,4 +1,3 @@
-// src/components/ProjectModal/ProjectModal.tsx
 import React, { useState, useRef, useEffect } from 'react'
 import type { Project } from '../../types/projects'
 import styles from './ProjectModal.module.scss'
