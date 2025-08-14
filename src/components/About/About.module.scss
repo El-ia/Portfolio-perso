@@ -281,3 +281,14 @@
     }
   }
 }
+
+/* ——— Dark theme overrides ——— */
+html[data-theme="dark"] .copy {
+  background: vars.$dark-bg-neutral-light;
+  background-image: none;
+  color: var(--font-quaternary);
+
+  &::before {
+    background-color: vars.$font-primary-color;
+  }
+}

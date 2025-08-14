@@ -257,3 +257,10 @@
     }
   }
 }
+
+/* ——— Dark theme overrides ——— */
+html[data-theme="dark"] {
+  .timeline__line {
+    background: vars.$font-quaternary-color;
+  }
+}

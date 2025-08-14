@@ -7,8 +7,13 @@
   padding: 10.1rem 2rem;
   background: vars.$background-primary-color;
   background-image: url('../../assets/natural-paper.png');
-  overflow-x: hidden; // hide horizontal overflow
+  overflow-x: hidden;
   overflow-y: visible;
+
+  /* Supprimer texture en dark */
+  html[data-theme="dark"] & {
+    background-image: none;
+  }
 
   /* Top-left decorative line (2/3 width) */
   &::before {
@@ -45,6 +50,11 @@
   font-weight: bold;
   color: vars.$font-tertiary-color;
   text-align: left;
+
+  /* Dark mode: title color */
+  html[data-theme="dark"] & {
+    color: vars.$font-quaternary-color;
+  }
 }
 
 /* ——— Container for custom navigation arrows ——— */
@@ -79,15 +89,24 @@
   &:hover {
     background: vars.$font-tertiary-color;
   }
+
+  /* Dark mode: background and hover */
+  html[data-theme="dark"] & {
+    background: vars.$background-primary-color;
+
+    &:hover {
+      background: vars.$bg-neutral-light;
+    }
+  }
 }
 
 /* ——— Swiper container settings ——— */
 .swiperContainer {
   width: 100%;
-  overscroll-behavior: none; // disable native bounce
-  overflow: visible !important; // show angled edges
-  scroll-behavior: smooth; // smooth scrolling
-  -webkit-overflow-scrolling: touch; // momentum on iOS
+  overscroll-behavior: none;
+  overflow: visible !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure swiper internals also allow overflow */
@@ -96,7 +115,6 @@
   overflow: visible !important;
 }
 
-/* Timing function for slide transitions */
 .swiper-wrapper {
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
@@ -106,7 +124,7 @@
   width: 20rem;
   display: flex;
   justify-content: center;
-  overflow: visible; // show full card
+  overflow: visible;
 }
 
 /* Position pagination bullets lower */
@@ -114,7 +132,7 @@
   bottom: -3.125rem !important;
 }
 
-/* ——— Card styling with smooth opacity/scale ——— */
+/* ——— Card styling ——— */
 .card {
   background: vars.$font-tertiary-color;
   overflow: hidden;
@@ -130,7 +148,6 @@
   }
 }
 
-/* Caption below the image */
 .caption {
   padding: 2rem;
   font-size: vars.$secondary-font-size;
@@ -139,26 +156,25 @@
   color: vars.$font-primary-color;
 }
 
-/* ——— Bullet colors for pagination ——— */
+/* Bullets */
 :global(.swiper-pagination-bullet),
 :global(.swiper-pagination-bullet-active) {
   background: vars.$font-primary-color !important;
 }
 
-/* ——— Dimming & scaling non-active slides ——— */
+/* Dimming & scaling non-active slides */
 :global(.swiper-slide:not(.swiper-slide-active)) .card {
   opacity: 0.3;
-  transform: scale(0.9); // smaller non-active cards
+  transform: scale(0.9);
 }
 
-/* ——— Active slide styling ——— */
+/* Active slide */
 :global(.swiper-slide-active) .card {
   opacity: 1;
   transform: scale(1);
 }
 
 /* ——— Responsive ——— */
-/* Mobile breakpoint: larger slides for touch */
 @media (max-width: 768px) {
   .swiperSlide {
     width: 80%;

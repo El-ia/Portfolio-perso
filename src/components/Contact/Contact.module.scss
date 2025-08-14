@@ -1,7 +1,6 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
 
-
 .contact {
   box-sizing: border-box;
   overflow-x: hidden;
@@ -215,6 +214,66 @@
     &__intro,
     &__form {
       flex: 1 1 100%;
+    }
+  }
+}
+
+/* ——— Dark theme overrides ——— */
+html[data-theme="dark"] {
+  .contact {
+    background: vars.$background-primary-color;
+
+    &__download {
+      background-color: vars.$font-primary-color;
+    }
+
+    &__title,
+    &__intro,
+    &__intro p,
+    &__intro dl dd,
+    &__intro dl dd a,
+    &__form input,
+    &__form textarea,
+    &__form button[type='submit'],
+    &__form button[type='submit']:hover {
+      color: vars.$font-quaternary-color;
+    }
+
+    &__intro p:first-of-type,
+    &__intro dl dt,
+    &__form label {
+      color: vars.$font-primary-color;
+    }
+
+    &__downloadLink {
+      color: vars.$light-font-tertiary-color;
+    }
+
+    &__title {
+      color: vars.$font-quaternary-color;
+
+      &::before {
+        background-color: vars.$font-quaternary-color;
+      }
+    }
+
+    &__form {
+      border-color: vars.$font-quaternary-color;
+
+      input,
+      textarea {
+        border-bottom-color: vars.$font-quaternary-color;
+      }
+
+      button[type='submit'] {
+        background-color: vars.$font-quaternary-color;
+        color: vars.$light-font-primary-color;
+
+        &:hover {
+          background-color: vars.$font-primary-color;
+          color: vars.$font-quaternary-color;
+        }
+      }
     }
   }
 }

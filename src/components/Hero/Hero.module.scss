@@ -1,7 +1,6 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as *;
 
-
 .hero {
   position: relative;
   width: 100%;
@@ -10,7 +9,7 @@
   overflow: hidden;
 }
 
-/* ——— Top Bar ——— */
+/* --- Top bar (name + role) --- */
 .topBar {
   position: absolute;
   top: 0;
@@ -26,32 +25,33 @@
   z-index: 2;
 }
 
-/* ——— Role Text ——— */
-.role {
-  text-align: right;
-}
+.role { text-align: right; }
 
-/* ——— Main Title ——— */
+/* --- Main animated title (“PORTFOLIO .”) --- */
 .title {
   position: absolute;
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
   z-index: 1;
+
+  /* Make room for the typewriter word */
   width: calc(10ch + 2 * 5rem);
   display: inline-flex;
   justify-content: center;
+
   font-size: 1.563rem;
   font-family: 'SF Pro', sans-serif;
   font-weight: bold;
   color: $font-tertiary-color;
   text-transform: uppercase;
+
   border: 2px solid $font-tertiary-color;
   padding: 1.5rem 5rem;
   white-space: nowrap;
 }
 
-/* ——— Hero Image ——— */
+/* --- Right image --- */
 .imageWrapper {
   position: absolute;
   top: 50%;
@@ -68,7 +68,7 @@
   }
 }
 
-/* ——— Call-to-Action ——— */
+/* --- Call to action (“See my projects”) --- */
 .ctaLink {
   position: absolute;
   bottom: 2rem;
@@ -168,5 +168,31 @@
   .imageWrapper {
     transform: translateY(0%) translateX(3%);
     width: 84vw;
+  }
+}
+
+/* ——— Dark theme overrides ——— */
+:global(html[data-theme="dark"]) {
+
+  .hero {
+    background: var(--bg-neutral-light) !important;
+  }
+
+  .topBar,
+  .name,
+  .role {
+    color: var(--font-quaternary) !important; 
+  }
+
+  .title {
+    color: var(--font-quaternary) !important;
+    border-color: var(--font-quaternary) !important;
+  }
+
+  .ctaLink {
+    color: var(--font-primary) !important;
+  }
+  .ctaLine {
+    background-color: var(--font-quaternary) !important;
   }
 }

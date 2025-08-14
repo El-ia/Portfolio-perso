@@ -2,7 +2,6 @@
 @use '../../styles/variables' as vars;
 
 /* ——— Modal Overlay ——— */
-/* Full-screen backdrop with blur effect to focus on the modal */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -14,7 +13,7 @@
   z-index: 200;
   opacity: 0;
   transition: opacity 0.3s ease;
-  padding: 1rem; // avoid touching viewport edges
+  padding: 1rem;
 
   &.opening {
     opacity: 1;
@@ -25,7 +24,6 @@
 }
 
 /* ——— Modal Container ——— */
-/* Main wrapper for the modal content */
 .modalContent {
   position: relative;
   background: vars.$font-tertiary-color;
@@ -52,6 +50,11 @@
     transition: none;
     cursor: grabbing;
   }
+
+  /* ——— Dark mode background ——— */
+  html[data-theme="dark"] & {
+    background: vars.$bg-neutral-light;
+  }
 }
 
 /* ——— Close Button ——— */
@@ -68,7 +71,6 @@
 }
 
 /* ——— Image Section ——— */
-/* Left side of modal showing project image */
 .modalImageWrapper {
   position: relative;
   flex: 1;
@@ -166,6 +168,10 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  html[data-theme="dark"] & {
+    color: vars.$light-font-tertiary-color;
   }
 }
 

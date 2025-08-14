@@ -40,7 +40,7 @@ export default function FloatingMenu({
   const [isLangChanging, setIsLangChanging] = useState(false);
   const [isThemeChanging, setIsThemeChanging] = useState(false);
 
-  // Show/hide with scroll
+  /* ——— Show/hide with scroll ——— */
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 60);
     onScroll();
@@ -48,20 +48,32 @@ export default function FloatingMenu({
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Reflect theme on <html> (for CSS) + optional callback
+  /* ——— On first mount: restore theme from localStorage OR OS preference ——— */
+  useEffect(() => {
+    const saved = (localStorage.getItem('theme') as Theme | null);
+    if (saved === 'light' || saved === 'dark') {
+      setTheme(saved);
+      return;
+    }
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark ? 'dark' : 'light');
+  }, []);
+
+  /* ——— Reflect theme on <html>, persist it, and notify parent ——— */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
     onToggleTheme?.(theme);
   }, [theme, onToggleTheme]);
 
-  // Dynamic icons & aria labels (based on context lang + local theme)
+  // ——— Dynamic icons & aria labels (based on context lang + local theme) ———
   const flagIcon = lang === 'fr' ? flagEnIcon : flagFrIcon;
   const flagAria =
     lang === 'fr' ? 'Switch site language to English' : 'Repasser le site en français';
   const themeIcon = theme === 'light' ? moonIcon : sunIcon;
   const themeAria = theme === 'light' ? 'Activer le mode nuit' : 'Revenir au mode jour';
 
-  // Toggle language with flip animation
+  /* ——— Toggle language with flip animation ——— */
   const handleToggleLang = () => {
     if (isLangChanging) return;
     setIsLangChanging(true);
@@ -77,7 +89,7 @@ export default function FloatingMenu({
     }, 600);
   };
 
-  // Toggle theme with spin animation
+  /* ——— Toggle theme with spin animation ——— */
   const handleToggleTheme = () => {
     if (isThemeChanging) return;
     setIsThemeChanging(true);

@@ -15,14 +15,14 @@
     font-size: vars.$primary-font-size;
     color: vars.$font-primary-color;
     position: relative;
-    display: inline-block; 
+    display: inline-block;
     margin-bottom: 1.87rem;
 
     &::before {
       content: '';
       position: absolute;
       top: 83%;
-      right: 100%; 
+      right: 100%;
       transform: translateY(-50%);
       margin-right: 0.5rem;
       width: 2rem;
@@ -56,9 +56,7 @@
       background-color: vars.$font-primary-color;
       border: none;
 
-      .skills__category {
-        color: vars.$font-tertiary-color;
-      }
+      .skills__category { color: vars.$font-tertiary-color; }
       .skills__icon {
         background-color: vars.$font-tertiary-color;
         color: vars.$font-primary-color;
@@ -71,9 +69,7 @@
       background-color: vars.$font-tertiary-color;
       border: 2px solid vars.$background-primary-color;
 
-      .skills__category {
-        color: vars.$background-primary-color;
-      }
+      .skills__category { color: vars.$background-primary-color; }
       .skills__icon {
         background-color: vars.$background-primary-color;
         color: vars.$font-tertiary-color;
@@ -89,9 +85,7 @@
       background-color: vars.$font-tertiary-color;
       border: 2px solid vars.$font-primary-color;
 
-      .skills__category {
-        color: vars.$font-primary-color;
-      }
+      .skills__category { color: vars.$font-primary-color; }
       .skills__icon {
         background-color: vars.$font-primary-color;
         color: vars.$font-tertiary-color;
@@ -107,9 +101,7 @@
       background-size: auto;
       border: none;
 
-      .skills__category {
-        color: vars.$font-tertiary-color;
-      }
+      .skills__category { color: vars.$font-tertiary-color; }
       .skills__icon {
         background-color: vars.$font-tertiary-color;
         color: vars.$background-primary-color;
@@ -152,15 +144,11 @@
 
 /* ——— Responsive ——— */
 @media (max-width: 1470px) {
-  .skills__block {
-    height: 28.12rem;
-  }
+  .skills__block { height: 28.12rem; }
 }
 
 @media (max-width: 1040px) {
-  .skills__block {
-    height: 34.37rem;
-  }
+  .skills__block { height: 34.37rem; }
 }
 
 @media (max-width: 863px) {
@@ -177,19 +165,37 @@
         "tools";
     }
 
-    .skills__block {
-      height: auto;
-      padding: 1rem;
-    }
-
-    .skills__icons {
-      gap: 0.75rem;
-    }
+    .skills__block { height: auto; padding: 1rem; }
+    .skills__icons  { gap: 0.75rem; }
   }
 }
 
 @media (max-width: 380px) {
+  .skills { padding: 3rem 1rem; }
+}
+
+/* ——— Dark theme overrides ——— */
+html[data-theme='dark'] {
   .skills {
-    padding: 3rem 1rem;
+
+    &__block--backend {
+      background-color: vars.$dark-background-primary-color;     
+      border: 2px solid vars.$dark-font-quaternary-color;           
+
+      .skills__category { color: vars.$dark-font-quaternary-color; } 
+
+      .skills__icon {
+        background-color: vars.$font-quaternary-color;
+        color: vars.$dark-background-primary-color;
+      }
+    }
+
+    &__block--tools {
+      background-color: vars.$dark-font-quaternary-color;
+      
+      .skills__icon {
+        color: vars.$font-quaternary-color;
+      }
+    }
   }
 }

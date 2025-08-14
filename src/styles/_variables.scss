@@ -1,12 +1,84 @@
-$primary-font-size: 1.125rem;
-$secondary-font-size: 1rem; 
-$tertiary-font-size: 0.875rem;
-
-
-$background-primary-color: #CAC3B3;
-$background-secondary-color: #F4E9D4;
-$font-primary-color: #759D77;
-$font-secondary-color: #CAC3B3;
-$font-tertiary-color: #FFFFFF;
-$font-quaternary-color: #000000;
-
+/* ================================
+   FONT SIZES
+   ================================ */
+   $primary-font-size: 1.125rem;
+   $secondary-font-size: 1rem;
+   $tertiary-font-size: 0.875rem;
+   
+   /* ================================
+      LIGHT THEME (DEFAULT)
+      ================================ */
+   $light-background-primary-color: #CAC3B3;
+   $light-background-secondary-color: #F4E9D4;
+   $light-bg-neutral-light: #32322f;
+   
+   $light-font-primary-color: #759D77;
+   $light-font-secondary-color: #CAC3B3;
+   $light-font-tertiary-color: #FFFFFF;
+   $light-font-quaternary-color: #000000;
+   
+   /* ================================
+      DARK THEME
+      ================================ */
+   $dark-background-primary-color: #1B1A18;
+   $dark-background-secondary-color: #25231F;
+   $dark-bg-neutral-light: #363632;
+   
+   $dark-font-primary-color: #8FB696;
+   $dark-font-secondary-color: #BEB7A7;
+   $dark-font-tertiary-color: #161513;
+   $dark-font-quaternary-color: #E6E2DA;
+   
+   /* ================================
+      THEME VARIABLES (CSS VARS)
+      ================================ */
+   :root {
+     --bg-primary: #{$light-background-primary-color};
+     --bg-secondary: #{$light-background-secondary-color};
+     --bg-neutral-light: #{$light-bg-neutral-light};
+   
+     --font-primary: #{$light-font-primary-color};
+     --font-secondary: #{$light-font-secondary-color};
+     --font-tertiary: #{$light-font-tertiary-color};
+     --font-quaternary: #{$light-font-quaternary-color};
+   }
+   
+   html[data-theme="dark"] {
+     /* 🎯 Fond global du site en dark */
+     background-color: #{$dark-background-primary-color};
+   
+     --bg-primary: #{$dark-background-primary-color};
+     --bg-secondary: #{$dark-background-secondary-color};
+     --bg-neutral-light: #{$dark-bg-neutral-light};
+   
+     --font-primary: #{$dark-font-primary-color};
+     --font-secondary: #{$dark-font-secondary-color};
+     --font-tertiary: #{$dark-font-tertiary-color};
+     --font-quaternary: #{$dark-font-quaternary-color};
+   }
+   
+   /* ================================
+      SCSS VARIABLES USING CSS VARS
+      ================================ */
+   $background-primary-color: var(--bg-primary);
+   $background-secondary-color: var(--bg-secondary);
+   $bg-neutral-light: var(--bg-neutral-light);
+   
+   $font-primary-color: var(--font-primary);
+   $font-secondary-color: var(--font-secondary);
+   $font-tertiary-color: var(--font-tertiary);
+   $font-quaternary-color: var(--font-quaternary);
+   
+   /* ================================
+      GLOBAL DARK MODE FIXES
+      ================================ */
+   html[data-theme="dark"] {
+      .hero,
+      .copy,
+      .footer,
+      .contact,
+      .carouselSection {
+        background-image: none !important;
+        background-color: var(--bg-neutral-light) !important;
+      }
+    }

@@ -17,13 +17,13 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 
   &.visible {
-    opacity: 0.7;
+    opacity: 0.7;           /* demandé : 0.7 quand visible */
     transform: translateY(0);
   }
 
   /* Fully opaque on hover */
   &:hover {
-    opacity: 1;
+    opacity: 1;              /* demandé : opaque au hover */
   }
 }
 
@@ -39,7 +39,7 @@
   border: none;
   border-radius: 9999px;
   cursor: pointer;
-  background: vars.$background-secondary-color;
+  background: vars.$background-secondary-color; /* light: bg-secondary */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -80,18 +80,9 @@
 
 /* Keyframes for flipping the flag */
 @keyframes flagFlipAnimation {
-  0% {
-    transform: scale(1) rotateY(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.3) rotateY(90deg);
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(1) rotateY(0deg);
-    opacity: 1;
-  }
+  0% { transform: scale(1) rotateY(0deg);   opacity: 1; }
+  50%{ transform: scale(0.3) rotateY(90deg);opacity: 0.3; }
+  100%{transform: scale(1) rotateY(0deg);   opacity: 1; }
 }
 
 /* ——— Theme Button Animation ——— */
@@ -109,41 +100,21 @@
 
 /* Keyframes for spinning the theme icon */
 @keyframes themeSpinAnimation {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.2) rotate(180deg);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 1;
-  }
+  0% { transform: scale(1) rotate(0deg);     opacity: 1; }
+  50%{ transform: scale(0.2) rotate(180deg); opacity: 0.2; }
+  100%{transform: scale(1) rotate(360deg);   opacity: 1; }
 }
 
 /* ——— Icon State Classes ——— */
-.icon-change {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.8);
-}
-.icon-visible {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
+.icon-change { opacity: 0; transform: rotate(90deg) scale(0.8); }
+.icon-visible{ opacity: 1; transform: rotate(0deg)  scale(1);   }
 
 /* ——— Gear Button Rotation ——— */
 /* Rotates forward on open, backward on close */
 .fab { z-index: 3; }
-.fab img {
-  transform: rotate(0deg);
-  transition: transform .6s ease;
-}
+.fab img { transform: rotate(0deg); transition: transform .6s ease; }
 .open .fab img,
-.fabOpen img {
-  transform: rotate(180deg);
-}
+.fabOpen img { transform: rotate(180deg); }
 
 /* ——— Hidden Items by Default ——— */
 .item {
@@ -173,9 +144,23 @@
   outline-offset: 2px;
 }
 
-/* ——— Dark Theme Adjustments ——— */
-:root[data-theme='dark'] .fab,
-:root[data-theme='dark'] .item {
-  background: vars.$background-primary-color;
-}
+/* ——— Dark theme overrides ——— */
+:root[data-theme='dark'] {
+  .fab,
+  .item {
+    background: vars.$background-secondary-color; 
+    
+  }
 
+  .fab:hover,
+  .item:hover {
+    background: vars.$background-secondary-color; 
+  }
+
+  .floatingMenu.visible {
+    opacity: 0.7;
+  }
+  .floatingMenu:hover {
+    opacity: 1;
+  }
+}
