@@ -1,5 +1,7 @@
 # 🌐 Portfolio — Elia Berthier
 
+![Aperçu du portfolio](docs/preview-readme.png)
+
 [![Déployé sur Vercel](https://img.shields.io/badge/Vercel-Live-black?logo=vercel)](https://elia-berthier.vercel.app)
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61dafb)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -25,9 +27,9 @@ Portfolio moderne et responsive en **React + TypeScript** permettant de présent
 - **Parcours** : Timeline animée
 - **Contact** : Formulaire ou liens directs
 - **Mode responsive** : Sidebar mobile avec animation
-
----
-
+- **Mode nuit** : Thème sombre pour plus de confort visuel
+- **Changement de langue** : Interface disponible en plusieurs langues
+- 
 ## 🛠️ Stack technique
 
 - **Framework** : [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
@@ -83,47 +85,40 @@ mon-portfolio/
 │   │
 │   ├── components/                       # Composants réutilisables
 │   │   ├── About/
-│   │   │   ├── About.tsx
-│   │   │   └── About.module.scss
-│   │   ├── App/                 # Composant principal
-│   │   │   └── App.tsx 
+│   │   ├── App/
 │   │   ├── Contact/
-│   │   │   ├── Contact.tsx
-│   │   │   └── Contact.module.scss
+│   │   ├── FloatingMenu/
+│   │   ├── Footer/
 │   │   ├── Hero/
-│   │   │   ├── Hero.tsx
-│   │   │   └── Hero.module.scss
 │   │   ├── NavBar/
-│   │   │   ├── NavBar.tsx
-│   │   │   └── NavBar.module.scss
 │   │   ├── ProjectModal/
-│   │   │   ├── ProjectModal.tsx
-│   │   │   └── ProjectModal.module.scss
 │   │   ├── ProjectsCarousel/
-│   │   │   ├── ProjectsCarousel.tsx
-│   │   │   └── ProjectsCarousel.module.scss
 │   │   ├── Skills/
-│   │   │   ├── Skills.tsx
-│   │   │   └── Skills.module.scss
-│   │   ├── Timeline/
-│   │   │   ├── Timeline.tsx
-│   │   │   └── Timeline.module.scss
+│   │   └── Timeline/
 │   │
-│   ├── styles/                            # Styles globaux
+│   ├── context/                          # Contexte global React
+│   │   ├── LanguageContext.ts            # Création du contexte
+│   │   ├── LanguageProvider.tsx          # Provider global pour wrapper l'app
+│   │   └── useLang.ts                    # Hook custom pour accéder facilement au contexte
+│   │
+│   ├── i18n/                             # Gestion de l'internationalisation
+│   │   └── i18n.ts                       # Configuration et dictionnaires de traduction
+│   │
+│   ├── styles/                           # Styles globaux
 │   │   ├── _reset.scss
 │   │   ├── _variables.scss
 │   │   └── main.scss
 │   │
-│   ├── types/                             # Types TypeScript
+│   ├── types/                            # Types TypeScript
+│   │   ├── global.d.ts                   # Types globaux
 │   │   ├── projects.ts
 │   │   ├── skills.ts
 │   │   └── timelines.ts
 │   │
-│   ├── global.d.ts                        # Types globaux
-│   └── main.tsx                           # Point d'entrée React
+│   └── main.tsx                          # Point d'entrée React
 │
 ├── .gitignore
-├── eslint.config.js                          # Config ESLint
+├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
