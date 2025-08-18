@@ -34,3 +34,10 @@
 
 .from-fade { opacity: 0; transform: none !important; }
 .reveal[data-visible='true'].from-fade { opacity: 1; transform: none; }
+
+.reveal {
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
