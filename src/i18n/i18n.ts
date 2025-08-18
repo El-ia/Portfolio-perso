@@ -57,7 +57,7 @@ export const messages: Record<Lang, Dict> = {
       copy: [
         "Bonjour ! Je m'appelle Elia et j'aime créer des choses qui prennent vie sur le web. J'ai découvert le développement en 2022, en bidouillant des sites et en apprenant HTML et CSS par curiosité.",
         "Aujourd'hui, je suis développeuse web full stack, formée chez O'clock et diplômée d'un titre professionnel.",
-        "Pendant mon stage chez Studiolab, j'ai participé à la création d'un site de services informatiques complet, avec un dashboard client et un back-office, un projet concret qui m'a beaucoup appris.",
+        "Pendant mon stage chez Studiolab, j’ai participé à la création d’un site de services informatiques complet, en particulier sur la partie front-end, avec un tableau de bord client et un back-office. Ce projet concret m’a beaucoup appris.",
         "Je cherche une entreprise où je pourrai continuer à progresser, relever des défis utiles et m'investir pleinement. Je suis curieuse, rigoureuse et j'aime vraiment comprendre comment tout fonctionne.",
       ],
       location: 'Île de France • Full remote',
@@ -171,7 +171,9 @@ export const messages: Record<Lang, Dict> = {
           alt: 'Aperçu du portfolio d’Elia',
           year: 2025,
           description: [
-            "Portfolio interactif et immersif, alliant fluidité, animations soignées et design responsive. Conçu avec React, TypeScript et Vite pour des performances optimales, et structuré en SCSS Modules avec données typées. Inclut un carrousel dynamique avec modales, ainsi que des options pratiques : contact direct, partage natif et téléchargement du CV.",
+            'Portfolio interactif et immersif, alliant fluidité, animations soignées et design responsive.',
+            'Conçu avec React, TypeScript et Vite pour des performances optimales, et structuré en SCSS Modules avec données typées.',
+            'Il intègre un mode nuit et un système multilingue, un carrousel dynamique avec modales, ainsi que des options pratiques : contact direct, partage natif et téléchargement du CV.',
           ],
           githubUrl: 'https://github.com/El-ia/Portfolio-perso',
           liveUrl: 'https://elia-berthier-peach.vercel.app/',
@@ -251,7 +253,7 @@ export const messages: Record<Lang, Dict> = {
       copy: [
         "Hi! I'm Elia and I love creating things that come to life on the web. I discovered development in 2022 by tinkering with websites and learning HTML and CSS out of curiosity.",
         "Today, I’m a full-stack web developer, trained at O’clock and holding a professional certification.",
-        "During my internship at Studiolab, I helped build a complete IT services website with a client dashboard and back-office—a concrete project that taught me a lot.",
+        "During my internship at Studiolab, I contributed to the development of a full IT services website, including a client dashboard and back-office — a hands-on project that taught me a great deal.",
         "I’m looking for a company where I can keep learning, tackle meaningful challenges, and fully commit. I’m curious, thorough, and I genuinely enjoy understanding how everything works.",
       ],
       location: 'Île-de-France • Fully remote',
@@ -365,7 +367,9 @@ export const messages: Record<Lang, Dict> = {
           alt: 'Elia’s portfolio preview',
           year: 2025,
           description: [
-            'An interactive and immersive portfolio combining smoothness, refined animations, and responsive design. Built with React, TypeScript, and Vite for optimal performance, structured with SCSS Modules and typed data. Includes a dynamic carousel with modals, as well as practical options: direct contact, native sharing, and CV download.',
+            'Interactive and immersive portfolio combining smooth navigation, refined animations, and responsive design.',
+            'Built with React, TypeScript, and Vite for optimal performance, and structured with SCSS Modules and typed data.',
+            'It features a dark mode and multilingual support, a dynamic carousel with modals, as well as practical options such as direct contact, native sharing, and résumé download.',
           ],
           githubUrl: 'https://github.com/El-ia/Portfolio-perso',
           liveUrl: 'https://elia-berthier-peach.vercel.app/',
