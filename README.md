@@ -94,6 +94,7 @@ mon-portfolio/
 │   │   ├── NavBar/
 │   │   ├── ProjectModal/
 │   │   ├── ProjectsCarousel/
+│   │   ├── Reveal/
 │   │   ├── Skills/
 │   │   └── Timeline/
 │   │
@@ -101,6 +102,9 @@ mon-portfolio/
 │   │   ├── LanguageContext.ts            # Context creation
 │   │   ├── LanguageProvider.tsx          # Global provider wrapping the app
 │   │   └── useLang.ts                    # Custom hook for easy access
+│   │
+│   ├── hooks/
+│   │   └── useReveal.ts                     
 │   │
 │   ├── i18n/                             # Internationalization
 │   │   └── i18n.ts                       # Config & translation dictionaries
