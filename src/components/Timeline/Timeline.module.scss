@@ -21,16 +21,25 @@
     position: relative;
     display: inline-block;
 
+    /* little line to the right of the title */
     &::after {
       content: "";
       position: absolute;
       top: 83%;
-      left: 100%; 
+      left: 100%;
       transform: translateY(-50%);
       margin-left: 0.5rem;
-      width: 2rem;
       height: 1px;
       background: vars.$font-primary-color;
+
+      /* start collapsed, animate on reveal */
+      width: 0;
+      transition: width 0.5s ease;
+    }
+
+    /* Expand the line only when the inner Reveal child becomes visible */
+    &:has([data-visible='true'])::after {
+      width: 2rem;
     }
   }
 

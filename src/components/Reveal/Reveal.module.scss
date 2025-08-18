@@ -1,0 +1,36 @@
+@use '../../styles/main' as *;
+@use '../../styles/variables' as *;
+
+/* Base hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: opacity, transform;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Visible state */
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Directions */
+.from-up    { transform: translate3d(0, 60px, 0); }
+.from-down  { transform: translate3d(0, -60px, 0); }
+.from-left  { transform: translate3d(60px, 0, 0); }
+.from-right { transform: translate3d(-60px, 0, 0); }
+.from-zoom  { transform: scale(0.96); }
+
+/* Fade only */
+.from-fade-only {
+  opacity: 0;
+  transform: none !important;
+}
+.reveal[data-visible='true'].from-fade-only {
+  opacity: 1;
+  transform: none;
+}
+
+.from-fade { opacity: 0; transform: none !important; }
+.reveal[data-visible='true'].from-fade { opacity: 1; transform: none; }

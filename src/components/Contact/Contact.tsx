@@ -9,6 +9,8 @@ import { useLang } from '../../context/useLang'
 import { createTranslator } from '../../i18n/i18n'
 import type { Lang } from '../../i18n/i18n'
 
+import Reveal from '../Reveal/Reveal'
+
 export default function Contact(): JSX.Element {
   const { lang } = useLang()
   const t = createTranslator(lang as Lang)
@@ -34,6 +36,7 @@ export default function Contact(): JSX.Element {
     <section className={styles.contact} id="contact">
       {/* ——— CV download link ——— */}
       <div className={styles.contact__download}>
+      <Reveal direction="up" delay={100}>
         <a
           href={cvFile}
           download="CV_Elia_Berthier.pdf"
@@ -47,14 +50,19 @@ export default function Contact(): JSX.Element {
             className={styles.contact__downloadIcon}
           />
         </a>
+        </Reveal>
       </div>
 
       {/* ——— Section title ——— */}
+      <Reveal direction="left" delay={100}>
       <h2 className={styles.contact__title}>{title}</h2>
+      </Reveal>
 
       {/* ——— Container for intro and form ——— */}
+      
       <div className={styles.contact__wrapper}>
         {/* ——— Left column ——— */}
+        <Reveal direction="up" delay={100}>
         <div className={styles.contact__intro}>
           {intro.map((p, i) => (
             <p key={i}>{p}</p>
@@ -121,6 +129,7 @@ export default function Contact(): JSX.Element {
             </dd>
           </dl>
         </div>
+        </Reveal>
 
         {/* ——— Right column: form ——— */}
         <form

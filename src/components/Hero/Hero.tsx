@@ -7,36 +7,36 @@ import { useLang } from '../../context/useLang';
 import { createTranslator } from '../../i18n/i18n';
 import type { Lang } from '../../i18n/i18n';
 
+import Reveal from '../Reveal/Reveal';
+
 export default function Hero(): JSX.Element {
-  // Current language and bound translator
   const { lang } = useLang();
   const t = createTranslator(lang as Lang);
 
-  // Localized strings
   const roleLine1 = t('hero.roleLine1') as string;
   const roleLine2 = t('hero.roleLine2') as string;
   const portfolioWord = t('hero.portfolioWord') as string;
   const cta = t('hero.cta') as string;
 
   return (
-    // Full-screen hero section
     <section id="hero" className={styles.hero}>
-      {/* Top bar containing name and role */}
+      {/* Top bar */}
       <header className={styles.topBar}>
-        {/* Name displayed over two lines (proper noun, not localized) */}
-        <div className={styles.name}>
-          Elia<br />Berthier
-        </div>
-        {/* Localized role on the right */}
-        <div className={styles.role}>
-          {roleLine1}<br />{roleLine2}
-        </div>
+        <Reveal direction="down" delay={200}>
+          <div className={styles.name}>
+            Elia<br />Berthier
+          </div>
+        </Reveal>
+        <Reveal direction="down" delay={200}>
+          <div className={styles.role}>
+            {roleLine1}<br />{roleLine2}
+          </div>
+        </Reveal>
       </header>
 
-      {/* Main content area with animated title */}
+      {/* Title */}
       <div className={styles.content}>
         <h1 className={styles.title}>
-          {/* Typewriter effect fed with localized word */}
           <Typewriter
             words={[portfolioWord]}
             loop
@@ -49,14 +49,19 @@ export default function Hero(): JSX.Element {
         </h1>
       </div>
 
-      {/* Image wrapper positioned at the right */}
+      {/* Image */}
       <div className={styles.imageWrapper}>
-        <img src={heroImage} alt="Clavier avec une plante" />
+        <Reveal direction="left" delay={200}>
+          <img src={heroImage} alt="Clavier avec une plante" />
+        </Reveal>
       </div>
 
-      {/* Call-to-action link to scroll down to projects */}
+      {/* CTA */}
       <a href="#projectsCarousel" className={styles.ctaLink}>
-        <span className={styles.ctaText}>{cta}</span>
+        {/* texte du CTA en fade-only sans casser la mise en page */}
+        <Reveal as="span" direction="fade" delay={150}>
+          <span className={styles.ctaText}>{cta}</span>
+        </Reveal>
         <div className={styles.ctaLine} />
       </a>
     </section>

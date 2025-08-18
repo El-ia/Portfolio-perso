@@ -8,8 +8,10 @@ import { useLang } from '../../context/useLang';
 import { createTranslator } from '../../i18n/i18n';
 import type { Lang } from '../../i18n/i18n';
 
+// Reveal (animations au scroll)
+import Reveal from '../Reveal/Reveal';
+
 export default function Skills(): JSX.Element {
-  // Current language from context + translator bound to it
   const { lang } = useLang();
   const t = createTranslator(lang as Lang);
 
@@ -20,7 +22,6 @@ export default function Skills(): JSX.Element {
   );
 
   useEffect(() => {
-    // Observe changes on the 'data-theme' attribute
     const el = document.documentElement;
     const obs = new MutationObserver((records) => {
       for (const r of records) {
@@ -33,16 +34,13 @@ export default function Skills(): JSX.Element {
     return () => obs.disconnect();
   }, []);
 
-  // Localized section title
   const sectionTitle = t<string>('skills.title');
 
-  // Helper: map category color to localized label
   const getCategoryLabel = (cat: SkillCategory): string => {
     const translated = t<string>(`skills.categories.${cat.color}`);
     return translated || cat.category;
   };
 
-  // Pick the right icon depending on the theme
   const pickIcon = (skill: SkillIcon) =>
     isDark && skill.darkIcon ? skill.darkIcon : skill.icon;
 
@@ -50,28 +48,39 @@ export default function Skills(): JSX.Element {
     <section className={styles.skills} id="skills">
       {/* ——— Section header ——— */}
       <div className={styles.skills__titleWrapper}>
-        <h2 className={styles.skills__title}>{sectionTitle}</h2>
+        <h2 className={styles.skills__title}>
+          <Reveal direction="left">
+            <span>{sectionTitle}</span>
+          </Reveal>
+        </h2>
       </div>
 
       {/* ——— Grid container for skill categories ——— */}
       <div className={styles.skills__grid}>
-        {skillsData.map((category: SkillCategory) => (
-          <div
-            key={category.category}
-            className={`${styles.skills__block} ${styles[`skills__block--${category.color}`]}`}
-          >
-            <h3 className={styles.skills__category}>{getCategoryLabel(category)}</h3>
+        {skillsData.map((category: SkillCategory, idx: number) => {
+          const delay = (idx % 4) * 100;
 
-            <ul className={styles.skills__icons}>
-              {category.icons.map((skill: SkillIcon, i: number) => (
-                <li key={i} className={styles.skills__icon}>
-                  <img src={pickIcon(skill)} alt={skill.label} />
-                  <span>{skill.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          return (
+            <Reveal key={category.category} direction="up" delay={delay}>
+              <div
+                className={`${styles.skills__block} ${styles[`skills__block--${category.color}`]}`}
+              >
+                <h3 className={styles.skills__category}>
+                  {getCategoryLabel(category)}
+                </h3>
+
+                <ul className={styles.skills__icons}>
+                  {category.icons.map((skill: SkillIcon, i: number) => (
+                    <li key={i} className={styles.skills__icon}>
+                      <img src={pickIcon(skill)} alt={skill.label} />
+                      <span>{skill.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

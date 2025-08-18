@@ -7,6 +7,9 @@ import { useLang } from '../../context/useLang';
 import { createTranslator } from '../../i18n/i18n';
 import type { Lang } from '../../i18n/i18n';
 
+// Reveal (scroll animations)
+import Reveal from '../Reveal/Reveal';
+
 export default function Timeline(): JSX.Element {
   // ——— Language & translator ———
   const { lang } = useLang();
@@ -51,8 +54,12 @@ export default function Timeline(): JSX.Element {
 
   return (
     <section className={styles.timeline} id="timeline">
-      {/* Section heading */}
-      <h2 className={styles.timeline__title}>{title}</h2>
+      {/* Section heading (slides from left) */}
+      <h2 className={styles.timeline__title}>
+        <Reveal direction="right">
+          <span>{title}</span>
+        </Reveal>
+      </h2>
 
       {/* Central vertical line */}
       <div className={styles.timeline__line} />
@@ -70,7 +77,6 @@ export default function Timeline(): JSX.Element {
           return (
             <li
               key={idx}
-              // capture ref for scroll calculations
               ref={(el) => {
                 itemRefs.current[idx] = el;
               }}
@@ -83,10 +89,8 @@ export default function Timeline(): JSX.Element {
                     : styles['timeline__item--inactive']
                 }
               `}
-              // use data-text attribute for CSS-driven date bubble
               data-text={item.date}
             >
-              {/* content block for title and description */}
               <div className={styles.timeline__content} tabIndex={0}>
                 <h3 className={styles.timeline__itemTitle}>{item.title}</h3>
                 {item.description.map((para, pIdx) => (

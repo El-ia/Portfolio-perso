@@ -5,6 +5,9 @@ import { useLang } from '../../context/useLang'
 import { createTranslator } from '../../i18n/i18n'
 import type { Lang } from '../../i18n/i18n'
 
+// Import du composant Reveal
+import Reveal from '../Reveal/Reveal'
+
 export default function About(): JSX.Element {
   const { lang } = useLang()
   const t = createTranslator(lang as Lang)
@@ -21,48 +24,56 @@ export default function About(): JSX.Element {
   return (
     <section id="about" className={styles.about}>
       {/* Visual area: profile photo + circular looped text */}
-      <div className={styles.visual}>
-        {/* Centered profile picture */}
-        <img src={photo} alt="Elia Berthier" className={styles.photo} />
+      <Reveal direction="up" delay={100}>
+        <div className={styles.visual}>
+          {/* Centered profile picture */}
+          <img src={photo} alt="Elia Berthier" className={styles.photo} />
 
-        {/* SVG curved text wrapped around the photo */}
-        <svg viewBox="0 0 200 200" className={curvedLoopClass} aria-hidden="true">
-          <defs>
-            {/* Circular path for the looped text */}
-            <path
-              id="text-circle"
-              d="
-                M100,100
-                m -85,0
-                a 85,85 0 1,1 170,0
-                a 85,85 0 1,1 -170,0
-              "
-            />
-          </defs>
-          <text dy="-5">
-            <textPath href="#text-circle" startOffset="0">
-              {loopText}
-            </textPath>
-          </text>
-        </svg>
-      </div>
+          {/* SVG curved text wrapped around the photo */}
+          <svg viewBox="0 0 200 200" className={curvedLoopClass} aria-hidden="true">
+            <defs>
+              {/* Circular path for the looped text */}
+              <path
+                id="text-circle"
+                d="
+                  M100,100
+                  m -85,0
+                  a 85,85 0 1,1 170,0
+                  a 85,85 0 1,1 -170,0
+                "
+              />
+            </defs>
+            <text dy="-5">
+              <textPath href="#text-circle" startOffset="0">
+                {loopText}
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </Reveal>
 
       {/* Textual content: section title, intro paragraphs, and location */}
       <div className={styles.text}>
         {/* Section title */}
-        <h2 className={styles.title}>{title}</h2>
+        <Reveal direction="up" delay={100}>
+          <h2 className={styles.title}>{title}</h2>
+        </Reveal>
 
         {/* Intro paragraphs (localized) */}
-        <div className={styles.copy}>
-          {copy.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
+        <Reveal direction="up" delay={100}>
+          <div className={styles.copy}>
+            {copy.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Location line */}
-        <div className={styles.location}>
-          <span className={styles.locationText}>{location}</span>
-        </div>
+        <Reveal direction="up" delay={300}>
+          <div className={styles.location}>
+            <span className={styles.locationText}>{location}</span>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
