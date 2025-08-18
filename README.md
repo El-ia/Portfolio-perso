@@ -1,8 +1,8 @@
 # 🌐 Portfolio — Elia Berthier
 
-![Aperçu du portfolio](docs/preview-readme.png)
+![Portfolio preview](docs/preview-readme.png)
 
-[![Déployé sur Vercel](https://img.shields.io/badge/Vercel-Live-black?logo=vercel)](https://elia-berthier.vercel.app)
+[![Deployed on Vercel](https://img.shields.io/badge/Vercel-Live-black?logo=vercel)](https://elia-berthier.vercel.app)
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61dafb)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
@@ -10,59 +10,60 @@
 
 ---
 
-## 📌 Présentation
+## 📌 Overview
 
-Portfolio moderne et responsive en **React + TypeScript** permettant de présenter mes projets, compétences et parcours.
+A modern, responsive portfolio built with **React + TypeScript**, showcasing projects, skills, and career path.  
+Includes smooth animations, dynamic components, and multi-language support for an interactive experience.  
 
-🚀 **Live demo** : [https://elia-berthier-peach.vercel.app/](https://elia-berthier-peach.vercel.app/)
-
----
-
-## ✨ Fonctionnalités
-
-- **Section Hero** : Accroche visuelle et nom
-- **À propos** : Présentation personnelle
-- **Carrousel de projets** : Navigation fluide (Swiper.js)
-- **Compétences** : Liste visuelle et typée
-- **Parcours** : Timeline animée
-- **Contact** : Formulaire ou liens directs
-- **Mode responsive** : Sidebar mobile avec animation
-- **Mode nuit** : Thème sombre pour plus de confort visuel
-- **Changement de langue** : Interface disponible en plusieurs langues
-- 
-## 🛠️ Stack technique
-
-- **Framework** : [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build tool** : [Vite](https://vitejs.dev/)
-- **Styles** : SCSS Modules + variables
-- **Carrousel** : [Swiper.js](https://swiperjs.com/)
-- **Déploiement** : [Vercel](https://vercel.com/)
+🚀 **Live demo**: [https://elia-berthier-peach.vercel.app/](https://elia-berthier-peach.vercel.app/)
 
 ---
 
+## ✨ Features
+
+- **Hero section**: Visual intro with name
+- **About**: Personal presentation
+- **Projects carousel**: Smooth navigation (Swiper.js)
+- **Skills**: Typed and visual list
+- **Timeline**: Animated career path
+- **Contact**: Form or direct links
+- **Responsive mode**: Mobile sidebar with animation
+- **Dark mode**: Toggleable theme for better comfort
+- **Language switch**: Interface available in multiple languages  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build tool**: [Vite](https://vitejs.dev/)
+- **Styles**: SCSS Modules + variables
+- **Carousel**: [Swiper.js](https://swiperjs.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+---
 
 ## 📦 Installation
 
 ```bash
-# 1. Cloner le repo
+# 1. Clone the repo
 git clone https://github.com/El-ia/Portfolio-perso.git
 cd mon-portfolio
 
-# 2. Installer les dépendances
+# 2. Install dependencies
 npm install
 
-# 3. Lancer le projet en développement
+# 3. Start the development server
 npm run dev
 ```
 
 ---
 
-## 🏗️ Build & déploiement
+## 🏗️ Build & Deployment
 
-Déploiement sur Vercel :
-
-1.	Pousser les modifications sur main
-2.	Vercel détecte et déploie automatiquement
+Deployed with Vercel:
+	1.	Push changes to main
+	2.	Vercel automatically detects and deploys
 
 ```bash
 npm run build
@@ -76,14 +77,14 @@ npm run build
 
 mon-portfolio/
 │
-├── public/                               # Fichiers statiques
+├── public/                               # Static files
 │
 ├── src/
-│   ├── assets/                           # Ressources
-│   │   ├── fonts/                        # Polices
-│   │   └── icons/                        # Icônes
+│   ├── assets/                           # Assets
+│   │   ├── fonts/                        # Fonts
+│   │   └── icons/                        # Icons
 │   │
-│   ├── components/                       # Composants réutilisables
+│   ├── components/                       # Reusable components
 │   │   ├── About/
 │   │   ├── App/
 │   │   ├── Contact/
@@ -96,26 +97,26 @@ mon-portfolio/
 │   │   ├── Skills/
 │   │   └── Timeline/
 │   │
-│   ├── context/                          # Contexte global React
-│   │   ├── LanguageContext.ts            # Création du contexte
-│   │   ├── LanguageProvider.tsx          # Provider global pour wrapper l'app
-│   │   └── useLang.ts                    # Hook custom pour accéder facilement au contexte
+│   ├── context/                          # React global context
+│   │   ├── LanguageContext.ts            # Context creation
+│   │   ├── LanguageProvider.tsx          # Global provider wrapping the app
+│   │   └── useLang.ts                    # Custom hook for easy access
 │   │
-│   ├── i18n/                             # Gestion de l'internationalisation
-│   │   └── i18n.ts                       # Configuration et dictionnaires de traduction
+│   ├── i18n/                             # Internationalization
+│   │   └── i18n.ts                       # Config & translation dictionaries
 │   │
-│   ├── styles/                           # Styles globaux
+│   ├── styles/                           # Global styles
 │   │   ├── _reset.scss
 │   │   ├── _variables.scss
 │   │   └── main.scss
 │   │
-│   ├── types/                            # Types TypeScript
-│   │   ├── global.d.ts                   # Types globaux
+│   ├── types/                            # TypeScript types
+│   │   ├── global.d.ts                   # Global types
 │   │   ├── projects.ts
 │   │   ├── skills.ts
 │   │   └── timelines.ts
 │   │
-│   └── main.tsx                          # Point d'entrée React
+│   └── main.tsx                          # React entry point
 │
 ├── .gitignore
 ├── eslint.config.js
@@ -133,5 +134,5 @@ mon-portfolio/
 
 ## 📄 Licence
 
-Ce projet est protégé — utilisation personnelle uniquement.
-Pour toute demande ou collaboration, merci de me contacter.
+This project is protected — personal use only.
+For any request or collaboration, feel free to contact me.
