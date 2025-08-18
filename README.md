@@ -103,8 +103,8 @@ mon-portfolio/
 │   │   ├── LanguageProvider.tsx          # Global provider wrapping the app
 │   │   └── useLang.ts                    # Custom hook for easy access
 │   │
-│   ├── hooks/
-│   │   └── useReveal.ts                     
+│   ├── hooks/                            # Custom React hooks 
+│   │   └── useReveal.ts                  # Hook for animate element reveal   
 │   │
 │   ├── i18n/                             # Internationalization
 │   │   └── i18n.ts                       # Config & translation dictionaries
