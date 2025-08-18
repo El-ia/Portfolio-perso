@@ -1,16 +1,16 @@
-import React from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { useReveal } from '../../hooks/useReveal';
 import styles from './Reveal.module.scss';
 
 type Direction = 'up' | 'down' | 'left' | 'right' | 'zoom' | 'fade';
 
-interface RevealProps extends React.HTMLAttributes<HTMLElement> {
-    as?: keyof JSX.IntrinsicElements;  
-    direction?: Direction;
-    delay?: number;                
-    once?: boolean;
-    children: React.ReactNode;
-  }
+interface RevealProps extends HTMLAttributes<HTMLDivElement> {
+  direction?: Direction;
+  delay?: number;      // in ms
+  once?: boolean;
+  className?: string;  // redeclared for safety
+  children: ReactNode;
+}
 
 export default function Reveal({
   direction = 'up',
@@ -31,7 +31,9 @@ export default function Reveal({
     styles.reveal,
     styles[`from-${direction}`] ?? '',
     className,
-  ].join(' ').trim();
+  ]
+    .join(' ')
+    .trim();
 
   return (
     <div
