@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { skillsData } from '../../types/skills';
 import type { SkillCategory, SkillIcon } from '../../types/skills';
 import styles from './Skills.module.scss';
@@ -12,41 +13,59 @@ export default function Skills(): JSX.Element {
   const { lang } = useLang();
   const t = createTranslator(lang as Lang);
 
+  // Detect current theme via <html data-theme="...">
+  const [isDark, setIsDark] = useState(
+    typeof document !== 'undefined' &&
+      document.documentElement.getAttribute('data-theme') === 'dark'
+  );
+
+  useEffect(() => {
+    // Observe changes on the 'data-theme' attribute
+    const el = document.documentElement;
+    const obs = new MutationObserver((records) => {
+      for (const r of records) {
+        if (r.type === 'attributes' && r.attributeName === 'data-theme') {
+          setIsDark(el.getAttribute('data-theme') === 'dark');
+        }
+      }
+    });
+    obs.observe(el, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
+
   // Localized section title
   const sectionTitle = t<string>('skills.title');
 
-  // Helper: map category color ('frontend' | 'backend' | 'devops' | 'tools') to localized label
+  // Helper: map category color to localized label
   const getCategoryLabel = (cat: SkillCategory): string => {
-    // Prefer translated label; fall back to the original `category` from data as a safety net
     const translated = t<string>(`skills.categories.${cat.color}`);
     return translated || cat.category;
   };
+
+  // Pick the right icon depending on the theme
+  const pickIcon = (skill: SkillIcon) =>
+    isDark && skill.darkIcon ? skill.darkIcon : skill.icon;
 
   return (
     <section className={styles.skills} id="skills">
       {/* ——— Section header ——— */}
       <div className={styles.skills__titleWrapper}>
-  <h2 className={styles.skills__title}>{sectionTitle}</h2>
-</div>
+        <h2 className={styles.skills__title}>{sectionTitle}</h2>
+      </div>
 
       {/* ——— Grid container for skill categories ——— */}
       <div className={styles.skills__grid}>
         {skillsData.map((category: SkillCategory) => (
-          // ——— Individual skill category card ———
           <div
             key={category.category}
             className={`${styles.skills__block} ${styles[`skills__block--${category.color}`]}`}
           >
-            {/* ——— Category title (localized) ——— */}
             <h3 className={styles.skills__category}>{getCategoryLabel(category)}</h3>
 
-            {/* ——— List of icons and labels (labels are not translated) ——— */}
             <ul className={styles.skills__icons}>
               {category.icons.map((skill: SkillIcon, i: number) => (
                 <li key={i} className={styles.skills__icon}>
-                  {/* Icon image with accessible alt text */}
-                  <img src={skill.icon} alt={skill.label} />
-                  {/* Visible label next to the icon */}
+                  <img src={pickIcon(skill)} alt={skill.label} />
                   <span>{skill.label}</span>
                 </li>
               ))}
