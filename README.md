@@ -62,8 +62,8 @@ npm run dev
 ## 🏗️ Build & Deployment
 
 Deployed with Vercel:
-	1.	Push changes to main
-	2.	Vercel automatically detects and deploys
+1.	Push changes to main
+2.	Vercel automatically detects and deploys
 
 ```bash
 npm run build
