@@ -59,25 +59,23 @@ export default function Hero(): JSX.Element {
         </h1>
       </div>
 
-      {/* Image (LCP): responsive WebP + PNG fallback, explicit dimensions */}
+      {/* Image (LCP optimized + visual animation on wrapper) */}
       <div className={styles.imageWrapper}>
-        <Reveal direction="left" delay={200}>
+        <Reveal direction="left" delay={200} as="div" className={styles.imageAnim}>
           <picture>
-            {/* Prefer modern WebP; let the browser pick the best width */}
             <source
               type="image/webp"
               srcSet={`${hero640} 640w, ${hero1280} 1280w, ${hero2048} 2048w`}
-              sizes="(max-width: 1050px) 60vw, 45vw" // matches your CSS layout
+              sizes="(max-width: 1050px) 60vw, 45vw"
             />
-            {/* PNG fallback for older browsers */}
             <img
               src={heroPng}
               alt="Clavier avec une plante"
-              width={2048}     
-              height={1536}    
-              loading="eager"   
-              decoding="async"     
-              {...{ fetchpriority: 'high' }} 
+              width={2048}
+              height={1536}
+              loading="eager"
+              decoding="async"
+              {...{ fetchpriority: 'high' }}
             />
           </picture>
         </Reveal>
