@@ -134,6 +134,8 @@
 
     input,
     textarea {
+      font-family: inherit; 
+      font-weight: inherit; 
       background: transparent;
       border: none;
       border-bottom: 2px solid vars.$font-tertiary-color;
@@ -142,10 +144,8 @@
       font-size: vars.$primary-font-size;
       color: vars.$font-tertiary-color;
       resize: none;
-
-      &:focus {
-        outline: none;
-      }
+  
+      &:focus { outline: none; }
     }
 
     button[type='submit'] {

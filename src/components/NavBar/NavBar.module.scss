@@ -251,3 +251,21 @@
     }
   }
 }
+
+:global(html[data-theme="dark"]) {
+  .navLink,
+  .navLinkLogo {
+    &:hover {
+      color: var(--font-quaternary);
+    }
+  }
+
+  .sidebarList {
+    a {
+      &:hover {
+        color: var(--font-quaternary);
+      }
+    }
+  }
+}
+  

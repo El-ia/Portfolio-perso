@@ -193,6 +193,10 @@
     color: var(--font-primary) !important;
   }
   .ctaLine {
-    background-color: var(--font-quaternary) !important;
+    background-color: var(--font-primary) !important;
+  }
+
+  .ctaLink:hover, .ctaLine:hover {
+    color: var(--font-quaternary) !important;
   }
 }
