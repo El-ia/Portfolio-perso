@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "moduleDetection": "force",
+      "verbatimModuleSyntax": true,
+      "useDefineForClassFields": true,
+      "resolveJsonModule": true,
+      "forceConsistentCasingInFileNames": true
+    }
+  }

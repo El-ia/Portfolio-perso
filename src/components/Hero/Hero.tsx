@@ -10,11 +10,9 @@ import type { Lang } from '../../i18n/i18n';
 import Reveal from '../Reveal/Reveal';
 
 export default function Hero(): JSX.Element {
-  // Current language and bound translator
   const { lang } = useLang();
   const t = createTranslator(lang as Lang);
 
-  // Localized strings
   const roleLine1 = t('hero.roleLine1') as string;
   const roleLine2 = t('hero.roleLine2') as string;
   const portfolioWord = t('hero.portfolioWord') as string;
@@ -61,23 +59,23 @@ export default function Hero(): JSX.Element {
             <source
               type="image/avif"
               srcSet="/images/hero/hero-image-640.avif 640w, /images/hero/hero-image-1280.avif 1280w, /images/hero/hero-image-2048.avif 2048w"
-              sizes="(max-width: 1050px) 60vw, 45vw"
+              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
             />
             {/* WebP fallback */}
             <source
               type="image/webp"
               srcSet="/images/hero/hero-image-640.webp 640w, /images/hero/hero-image-1280.webp 1280w, /images/hero/hero-image-2048.webp 2048w"
-              sizes="(max-width: 1050px) 60vw, 45vw"
+              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
             />
-            {/* PNG fallback (old browsers) */}
+            {/* PNG fallback (legacy browsers) */}
             <img
               src="/images/hero/hero-image.png"
               alt="Clavier avec une plante"
               width={2048}
-              height={1536}
+              height={2048}
               loading="eager"
               decoding="async"
-              {...{ fetchpriority: 'high' }}
+              {...{ fetchpriority: 'high' }} // lowercase attribute for the DOM
             />
           </picture>
         </Reveal>
