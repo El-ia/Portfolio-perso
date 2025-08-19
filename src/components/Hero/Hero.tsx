@@ -1,12 +1,6 @@
 import { Typewriter } from 'react-simple-typewriter';
 import styles from './Hero.module.scss';
 
-// ——— Assets (responsive hero image) ———
-import hero640 from '../../assets/hero-image-640.webp';
-import hero1280 from '../../assets/hero-image-1280.webp';
-import hero2048 from '../../assets/hero-image-2048.webp';
-import heroPng from '../../assets/hero-image.png';
-
 // ——— i18n hooks ———
 import { useLang } from '../../context/useLang';
 import { createTranslator } from '../../i18n/i18n';
@@ -45,31 +39,39 @@ export default function Hero(): JSX.Element {
       {/* Title */}
       <div className={styles.content}>
         <h1 className={styles.title}>
-        <Reveal direction="fade" delay={50}>
-          <Typewriter
-            words={[portfolioWord]}
-            loop
-            cursor
-            cursorStyle="_"
-            typeSpeed={80}
-            deleteSpeed={40}
-            delaySpeed={2000}
-          />
-        </Reveal>
+          <Reveal direction="fade" delay={50}>
+            <Typewriter
+              words={[portfolioWord]}
+              loop
+              cursor
+              cursorStyle="_"
+              typeSpeed={80}
+              deleteSpeed={40}
+              delaySpeed={2000}
+            />
+          </Reveal>
         </h1>
       </div>
 
-      {/* Image (LCP optimized + visual animation on wrapper) */}
+      {/* Image (LCP optimized + wrapper animation) */}
       <div className={styles.imageWrapper}>
         <Reveal direction="left" delay={200} as="div" className={styles.imageAnim}>
           <picture>
+            {/* AVIF first */}
             <source
-              type="image/webp"
-              srcSet={`${hero640} 640w, ${hero1280} 1280w, ${hero2048} 2048w`}
+              type="image/avif"
+              srcSet="/images/hero/hero-image-640.avif 640w, /images/hero/hero-image-1280.avif 1280w, /images/hero/hero-image-2048.avif 2048w"
               sizes="(max-width: 1050px) 60vw, 45vw"
             />
+            {/* WebP fallback */}
+            <source
+              type="image/webp"
+              srcSet="/images/hero/hero-image-640.webp 640w, /images/hero/hero-image-1280.webp 1280w, /images/hero/hero-image-2048.webp 2048w"
+              sizes="(max-width: 1050px) 60vw, 45vw"
+            />
+            {/* PNG fallback (old browsers) */}
             <img
-              src={heroPng}
+              src="/images/hero/hero-image.png"
               alt="Clavier avec une plante"
               width={2048}
               height={1536}
