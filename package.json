@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "preview:prod": "vite preview --port 4173",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "subset:all": "node scripts/subset-all.mjs"
   },
   "dependencies": {
     "@heroui/react": "^2.8.2",
@@ -31,6 +32,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "sass-embedded": "^1.90.0",
+    "subset-font": "^2.4.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4"

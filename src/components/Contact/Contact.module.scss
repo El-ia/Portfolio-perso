@@ -38,9 +38,8 @@
     margin: 7rem 4.43rem 1.87rem;
     position: relative;
     font-size: vars.$primary-font-size;
-    color: vars.$font-tertiary-color;
-    font-family: 'SF Pro', sans-serif;
     font-weight: bold;
+    color: vars.$font-tertiary-color;
     text-align: right;
 
     &::before {
@@ -77,7 +76,6 @@
 
       &:first-of-type {
         font-size: vars.$primary-font-size;
-        font-family: 'SF Pro', sans-serif;
         font-weight: bold;
       }
     }
@@ -86,10 +84,9 @@
       margin-top: 2rem;
 
       dt {
-        font-family: 'SF Pro', sans-serif;
-        font-weight: bold;
-        font-size: vars.$primary-font-size;
         margin-top: 1rem;
+        font-size: vars.$primary-font-size;
+        font-weight: bold;
       }
 
       dd {
@@ -125,41 +122,38 @@
     flex-direction: column;
 
     label {
-      font-family: 'SF Pro', sans-serif;
-      font-weight: bold;
-      font-size: vars.$primary-font-size;
-      color: vars.$font-tertiary-color;
       margin-top: 1.5rem;
+      font-size: vars.$primary-font-size;
+      font-weight: bold;
+      color: vars.$font-tertiary-color;
       text-transform: uppercase;
     }
 
     input,
     textarea {
-      font-family: inherit; 
-      font-weight: inherit; 
       background: transparent;
       border: none;
       border-bottom: 2px solid vars.$font-tertiary-color;
       padding: 0.5rem 0.25rem;
       margin-top: 0.5rem;
       font-size: vars.$primary-font-size;
+      font-family: inherit; 
+      font-weight: inherit; 
       color: vars.$font-tertiary-color;
       resize: none;
-  
       &:focus { outline: none; }
     }
 
     button[type='submit'] {
       margin-top: 2rem;
-      background-color: vars.$font-tertiary-color;
-      text-transform: uppercase;
-      border: none;
       padding: 1rem 0;
-      font-family: 'SF Pro', sans-serif;
-      font-weight: bold;
-      font-size: vars.$primary-font-size;
-      color: vars.$background-primary-color;
+      border: none;
       cursor: pointer;
+      background-color: vars.$font-tertiary-color;
+      font-size: vars.$primary-font-size;
+      font-weight: bold;
+      color: vars.$background-primary-color;
+      text-transform: uppercase;
       transition: background-color 0.2s ease, color 0.2s ease;
 
       &:hover {
@@ -172,9 +166,8 @@
   /* ——— Icons ——— */
   &__icon {
     width: 2.2rem;
-    transition: opacity 0.2s ease;
     display: block;
-
+    transition: opacity 0.2s ease;
     &:hover { opacity: 0.7; }
   }
 
@@ -185,7 +178,6 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-
     &:focus { outline: none; }
   }
 
@@ -197,7 +189,7 @@
 
       &::before {
         left: 5.8rem;
-        top: .92rem;
+        top: 0.92rem;
       }
     }
 
@@ -214,50 +206,47 @@
 }
 
 /* ——— Dark theme overrides (spécifique contenu) ——— */
-html[data-theme="dark"] {
-  .contact {
-    &__download { background-color: vars.$font-primary-color; }
+html[data-theme="dark"] .contact {
+  &__download { background-color: vars.$font-primary-color; }
 
-    &__title,
-    &__intro,
-    &__intro p,
-    &__intro dl dd,
-    &__intro dl dd a,
-    &__form input,
-    &__form textarea,
-    &__form button[type='submit'],
-    &__form button[type='submit']:hover {
-      color: vars.$font-quaternary-color;
-    }
+  &__title,
+  &__intro,
+  &__intro p,
+  &__intro dl dd,
+  &__intro dl dd a,
+  &__form input,
+  &__form textarea,
+  &__form button[type='submit'],
+  &__form button[type='submit']:hover {
+    color: vars.$font-quaternary-color;
+  }
 
-    &__intro p:first-of-type,
-    &__intro dl dt,
-    &__form label {
-      color: vars.$font-primary-color;
-    }
+  &__intro p:first-of-type,
+  &__intro dl dt,
+  &__form label {
+    color: vars.$font-primary-color;
+  }
 
-    &__downloadLink { color: vars.$light-font-tertiary-color; }
+  &__downloadLink { color: vars.$light-font-tertiary-color; }
 
-    &__title {
-      color: vars.$font-quaternary-color;
+  &__title {
+    color: vars.$font-quaternary-color;
+    &::before { background-color: vars.$font-quaternary-color; }
+  }
 
-      &::before { background-color: vars.$font-quaternary-color; }
-    }
+  &__form {
+    border-color: vars.$font-quaternary-color;
 
-    &__form {
-      border-color: vars.$font-quaternary-color;
+    input,
+    textarea { border-bottom-color: vars.$font-quaternary-color; }
 
-      input,
-      textarea { border-bottom-color: vars.$font-quaternary-color; }
+    button[type='submit'] {
+      background-color: vars.$font-quaternary-color;
+      color: vars.$light-font-primary-color;
 
-      button[type='submit'] {
-        background-color: vars.$font-quaternary-color;
-        color: vars.$light-font-primary-color;
-
-        &:hover {
-          background-color: vars.$font-primary-color;
-          color: vars.$font-quaternary-color;
-        }
+      &:hover {
+        background-color: vars.$font-primary-color;
+        color: vars.$font-quaternary-color;
       }
     }
   }

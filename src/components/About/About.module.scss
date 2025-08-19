@@ -58,10 +58,8 @@
 }
 
 /* ——— Variant for EN loop text ("AVAILABLE" is longer) ——— */
-.curvedLoopEn {
-  text {
-    letter-spacing: 0.067rem;
-  }
+.curvedLoopEn text {
+  letter-spacing: 0.067rem;
 }
 
 /* ——— Text content wrapper ——— */
@@ -191,12 +189,6 @@
     font-size: 0.44rem;
     letter-spacing: 0.045rem;
   }
-
-  .curvedLoopEn {
-    text {
-      letter-spacing: 0.067rem;
-    }
-  }
 }
 
 @media (max-width: 980px) {
@@ -274,12 +266,6 @@
   .curvedLoopEn text {
     font-size: 0.445rem;
     letter-spacing: 0.042rem;
-  }
-
-  .curvedLoopEn {
-    text {
-      letter-spacing: 0.067rem;
-    }
   }
 }
 
