@@ -1,12 +1,13 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
+@use '../../styles/paper' as paper;
 
 .contact {
   box-sizing: border-box;
   overflow-x: hidden;
-  background: vars.$background-primary-color url('../../assets/natural-paper.png');
   width: 100%;
   margin-top: 2rem;
+  @include paper.bg-texture(vars.$background-primary-color, 'natural-paper');
 
   /* ——— CV download bar ——— */
   &__download {
@@ -174,9 +175,7 @@
     transition: opacity 0.2s ease;
     display: block;
 
-    &:hover {
-      opacity: 0.7;
-    }
+    &:hover { opacity: 0.7; }
   }
 
   /* ——— Share button ——— */
@@ -187,9 +186,7 @@
     margin: 0;
     cursor: pointer;
 
-    &:focus {
-      outline: none;
-    }
+    &:focus { outline: none; }
   }
 
   /* ——— Responsive ——— */
@@ -212,20 +209,14 @@
     }
 
     &__intro,
-    &__form {
-      flex: 1 1 100%;
-    }
+    &__form { flex: 1 1 100%; }
   }
 }
 
-/* ——— Dark theme overrides ——— */
+/* ——— Dark theme overrides (spécifique contenu) ——— */
 html[data-theme="dark"] {
   .contact {
-    background: vars.$background-primary-color;
-
-    &__download {
-      background-color: vars.$font-primary-color;
-    }
+    &__download { background-color: vars.$font-primary-color; }
 
     &__title,
     &__intro,
@@ -245,25 +236,19 @@ html[data-theme="dark"] {
       color: vars.$font-primary-color;
     }
 
-    &__downloadLink {
-      color: vars.$light-font-tertiary-color;
-    }
+    &__downloadLink { color: vars.$light-font-tertiary-color; }
 
     &__title {
       color: vars.$font-quaternary-color;
 
-      &::before {
-        background-color: vars.$font-quaternary-color;
-      }
+      &::before { background-color: vars.$font-quaternary-color; }
     }
 
     &__form {
       border-color: vars.$font-quaternary-color;
 
       input,
-      textarea {
-        border-bottom-color: vars.$font-quaternary-color;
-      }
+      textarea { border-bottom-color: vars.$font-quaternary-color; }
 
       button[type='submit'] {
         background-color: vars.$font-quaternary-color;

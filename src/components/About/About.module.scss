@@ -1,5 +1,6 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
+@use '../../styles/paper' as paper;
 
 .about {
   display: flex;
@@ -97,12 +98,12 @@
 /* ——— Copy block (background + vertical line) ——— */
 .copy {
   position: relative;
-  background: vars.$background-primary-color url('../../assets/natural-paper.png');
   padding: 3.12rem;
   color: vars.$font-tertiary-color;
   line-height: 1.7;
   font-size: vars.$secondary-font-size;
   margin-bottom: 1.87rem;
+  @include paper.bg-texture(vars.$background-primary-color, 'natural-paper');
 
   &::before {
     content: "";

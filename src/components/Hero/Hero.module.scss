@@ -1,19 +1,20 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as *;
+@use '../../styles/paper' as paper;
 
+/* Hero is above the fold: keep it simple, isolate paints */
 .hero {
+  @include paper.bg-texture($background-primary-color, 'natural-paper');
   position: relative;
   width: 100%;
   height: 100vh;
-  background: $background-primary-color url('../../assets/natural-paper.png');
   overflow: hidden;
 }
 
 /* --- Top bar (name + role) --- */
 .topBar {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0 auto auto 0;
   right: 0;
   padding: 3rem 4.5rem;
   display: flex;
@@ -35,8 +36,7 @@
   transform: translateY(-50%);
   z-index: 1;
 
-  /* Make room for the typewriter word */
-  width: calc(10ch + 2 * 5rem);
+  width: calc(10ch + 10rem);
   display: inline-flex;
   justify-content: center;
 
@@ -61,6 +61,8 @@
   max-height: 100vh;
   z-index: 0;
 
+  contain: layout paint style;
+
   img {
     display: block;
     width: 100%;
@@ -71,8 +73,8 @@
 /* --- Call to action (“See my projects”) --- */
 .ctaLink {
   position: absolute;
-  bottom: 2rem;
   left: 50%;
+  bottom: 2rem;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -84,15 +86,18 @@
   letter-spacing: 0.1em;
   z-index: 2;
 
-  &:hover {
-    color: $font-primary-color;
-  }
+  &:hover { color: $font-primary-color; }
 }
 
 .ctaLine {
   width: 1px;
   height: 2rem;
   background-color: $font-tertiary-color;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition-duration: 0.001s !important; }
 }
 
 /* ——— Responsive ——— */
@@ -107,7 +112,7 @@
     grid-template-rows: auto auto 1fr auto;
     justify-items: center;
     padding-bottom: 2rem;
-    height: 100vh !important;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -137,9 +142,7 @@
     margin: 1rem 0;
     justify-self: end;
 
-    img {
-      object-fit: contain;
-    }
+    img { object-fit: contain; }
   }
 
   .ctaLink {
@@ -151,52 +154,32 @@
 }
 
 @media (max-width: 810px) {
-  .imageWrapper {
-    transform: translateY(2%) translateX(3%);
-    width: 65vw;
-  }
+  .imageWrapper { transform: translateY(2%) translateX(3%); width: 65vw; }
 }
 
 @media (max-width: 550px) {
-  .imageWrapper {
-    transform: translateY(7%) translateX(3%);
-    width: 83vw;
-  }
+  .imageWrapper { transform: translateY(7%) translateX(3%); width: 83vw; }
 }
 
 @media (max-width: 370px) {
-  .imageWrapper {
-    transform: translateY(0%) translateX(3%);
-    width: 84vw;
-  }
+  .imageWrapper { transform: translateY(0%) translateX(3%); width: 84vw; }
 }
 
 /* ——— Dark theme overrides ——— */
 :global(html[data-theme="dark"]) {
-
-  .hero {
-    background: var(--bg-neutral-light) !important;
-  }
+  .hero { background: var(--bg-neutral-light); }
 
   .topBar,
   .name,
-  .role {
-    color: var(--font-quaternary) !important; 
-  }
+  .role { color: var(--font-quaternary); }
 
   .title {
-    color: var(--font-quaternary) !important;
-    border-color: var(--font-quaternary) !important;
+    color: var(--font-quaternary);
+    border-color: var(--font-quaternary);
   }
 
-  .ctaLink {
-    color: var(--font-primary) !important;
-  }
-  .ctaLine {
-    background-color: var(--font-primary) !important;
-  }
+  .ctaLink { color: var(--font-primary); }
+  .ctaLine { background-color: var(--font-primary); }
 
-  .ctaLink:hover, .ctaLine:hover {
-    color: var(--font-quaternary) !important;
-  }
+  .ctaLink:hover { color: var(--font-quaternary); }
 }

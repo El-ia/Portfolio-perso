@@ -1,19 +1,14 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
+@use '../../styles/paper' as paper;
 
 /* ——— Wrapper ——— */
 .carouselSection {
+  @include paper.bg-texture(vars.$background-primary-color, 'natural-paper');
   position: relative;
   padding: 10.1rem 2rem;
-  background: vars.$background-primary-color;
-  background-image: url('../../assets/natural-paper.png');
   overflow-x: hidden;
   overflow-y: visible;
-
-  /* Supprimer texture en dark */
-  html[data-theme="dark"] & {
-    background-image: none;
-  }
 
   /* Top-left decorative line (2/3 width) */
   &::before {

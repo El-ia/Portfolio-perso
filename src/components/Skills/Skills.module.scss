@@ -1,5 +1,6 @@
 @use '../../styles/main' as *;
 @use '../../styles/variables' as vars;
+@use '../../styles/paper' as paper;
 
 .skills {
   padding: 7rem 3.43rem;
@@ -80,11 +81,8 @@
 
       .skills__category { color: vars.$background-primary-color; }
       .skills__icon {
-        background-color: vars.$background-primary-color;
+        @include paper.bg-texture(vars.$background-primary-color, 'natural-paper');
         color: vars.$font-tertiary-color;
-        background-image: url('../../assets/natural-paper.png');
-        background-repeat: repeat;
-        background-size: auto;
       }
     }
 
@@ -104,10 +102,7 @@
     /* Tools */
     &--tools {
       grid-area: tools;
-      background-color: vars.$background-primary-color;
-      background-image: url('../../assets/natural-paper.png');
-      background-repeat: repeat;
-      background-size: auto;
+      @include paper.bg-texture(vars.$background-primary-color, 'natural-paper');
       border: none;
 
       .skills__category { color: vars.$font-tertiary-color; }

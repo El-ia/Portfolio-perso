@@ -72,12 +72,12 @@
    /* ================================
       GLOBAL DARK MODE FIXES
       ================================ */
-   html[data-theme="dark"] {
-      .hero,
-      .copy,
-      .contact,
-      .carouselSection {
-        background-image: none !important;
-        background-color: var(--bg-neutral-light) !important;
-      }
-    }
+   // html[data-theme="dark"] {
+   //    .hero,
+   //    .copy,
+   //    .contact,
+   //    .carouselSection {
+   //      background-image: none !important;
+   //      background-color: var(--bg-neutral-light) !important;
+   //    }
+   //  }
