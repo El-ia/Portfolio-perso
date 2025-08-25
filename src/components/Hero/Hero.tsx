@@ -54,30 +54,46 @@ export default function Hero(): JSX.Element {
       {/* Image (LCP optimized + wrapper animation) */}
       <div className={styles.imageWrapper}>
         <Reveal direction="left" delay={200} as="div" className={styles.imageAnim}>
-          <picture>
-            {/* AVIF first */}
-            <source
-              type="image/avif"
-              srcSet="/images/hero/hero-image-640.avif 640w, /images/hero/hero-image-1280.avif 1280w, /images/hero/hero-image-2048.avif 2048w"
-              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
-            />
-            {/* WebP fallback */}
-            <source
-              type="image/webp"
-              srcSet="/images/hero/hero-image-640.webp 640w, /images/hero/hero-image-1280.webp 1280w, /images/hero/hero-image-2048.webp 2048w"
-              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
-            />
-            {/* PNG fallback (legacy browsers) */}
-            <img
-              src="/images/hero/hero-image.png"
-              alt="Clavier avec une plante"
-              width={2600}
-              height={1564}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </picture>
+        <picture>
+          {/* AVIF */}
+          <source
+            type="image/avif"
+            srcSet="/images/hero/hero-image-480.avif 480w,
+                    /images/hero/hero-image-640.avif 640w,
+                    /images/hero/hero-image-960.avif 960w,
+                    /images/hero/hero-image-1280.avif 1280w,
+                    /images/hero/hero-image-1600.avif 1600w,
+                    /images/hero/hero-image-2048.avif 2048w"
+            sizes="(max-width: 550px) 83vw,
+                  (max-width: 810px) 65vw,
+                  (max-width: 1050px) 55vw,
+                  45vw"
+          />
+          {/* WebP */}
+          <source
+            type="image/webp"
+            srcSet="/images/hero/hero-image-480.webp 480w,
+                    /images/hero/hero-image-640.webp 640w,
+                    /images/hero/hero-image-960.webp 960w,
+                    /images/hero/hero-image-1280.webp 1280w,
+                    /images/hero/hero-image-1600.webp 1600w,
+                    /images/hero/hero-image-2048.webp 2048w"
+            sizes="(max-width: 550px) 83vw,
+                  (max-width: 810px) 65vw,
+                  (max-width: 1050px) 55vw,
+                  45vw"
+          />
+          {/* PNG fallback */}
+          <img
+            src="/images/hero/hero-image.png"
+            alt="Clavier avec une plante"
+            width={2048}
+            height={2048}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
         </Reveal>
       </div>
 
