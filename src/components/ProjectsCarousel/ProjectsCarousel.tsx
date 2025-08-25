@@ -23,6 +23,16 @@ interface ProjectsCarouselProps {
   onProjectClick: (project: Project) => void;
 }
 
+/**
+ * Optionnel : si tu connais les dimensions réelles de chaque visuel,
+ * renseigne-les ici par id pour une réservation d’espace parfaite.
+ * À défaut, on utilisera un fallback 1200×800 (ratio 3:2) qui évite le CLS.
+ */
+const dimensionsById: Record<number, { w: number; h: number }> = {
+  // 1: { w: 1600, h: 900 },
+  // 2: { w: 1280, h: 853 },
+};
+
 export default function ProjectsCarousel({
   projects,
   onProjectClick,
@@ -123,6 +133,9 @@ export default function ProjectsCarousel({
             const title = projectText(project.id, 'title', '');
             const alt = projectText(project.id, 'alt', title || 'Project image');
 
+            // Dimensions connues ? sinon fallback (évite le CLS même si le ratio n’est pas parfait)
+            const dims = dimensionsById[project.id] ?? { w: 1200, h: 800 };
+
             // small stagger: 0ms, 100ms, 200ms, 300ms then repeats
             const delay = (idx % 4) * 100;
 
@@ -135,7 +148,14 @@ export default function ProjectsCarousel({
                 {/* Each card moves up individually */}
                 <Reveal direction="up" delay={delay}>
                   <div className={styles.card}>
-                    <img src={project.img} alt={alt} />
+                    <img
+                      src={project.img}
+                      alt={alt}
+                      width={dims.w}
+                      height={dims.h}
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <p className={styles.caption}>{title}</p>
                   </div>
                 </Reveal>

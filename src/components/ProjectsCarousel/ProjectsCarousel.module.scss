@@ -89,7 +89,8 @@
     background: vars.$background-primary-color;
 
     &:hover {
-      background: vars.$bg-neutral-light;
+      /* fix: variable cohérente avec les autres fichiers */
+      background: vars.$dark-bg-neutral-light;
     }
   }
 }
@@ -101,6 +102,8 @@
   overflow: visible !important;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  /* pour un meilleur scroll vertical sur mobile */
+  touch-action: pan-y;
 }
 
 /* Ensure swiper internals also allow overflow */

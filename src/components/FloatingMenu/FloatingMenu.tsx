@@ -80,7 +80,6 @@ export default function FloatingMenu({
 
     // Change in the middle of the animation
     setTimeout(() => {
-      // IMPORTANT: setLang expects a value, not a function
       setLang(lang === 'fr' ? 'en' : 'fr');
     }, 300);
 
@@ -122,7 +121,15 @@ export default function FloatingMenu({
         aria-label={flagAria}
         onClick={handleToggleLang}
       >
-        <img src={flagIcon} alt="" aria-hidden="true" />
+        <img
+          src={flagIcon}
+          alt=""
+          aria-hidden="true"
+          width={32}
+          height={32}
+          loading="lazy"
+          decoding="async"
+        />
       </button>
 
       {/* Theme button (above language) */}
@@ -134,7 +141,15 @@ export default function FloatingMenu({
         aria-label={themeAria}
         onClick={handleToggleTheme}
       >
-        <img src={themeIcon} alt="" aria-hidden="true" />
+        <img
+          src={themeIcon}
+          alt=""
+          aria-hidden="true"
+          width={32}
+          height={32}
+          loading="lazy"
+          decoding="async"
+        />
       </button>
 
       {/* Main gear button */}
@@ -144,7 +159,15 @@ export default function FloatingMenu({
         aria-label={open ? 'Fermer le menu rapide' : 'Ouvrir le menu rapide'}
         onClick={() => setOpen(o => !o)}
       >
-        <img src={gearIcon} alt="" aria-hidden="true" />
+        <img
+          src={gearIcon}
+          alt=""
+          aria-hidden="true"
+          width={32}
+          height={32}
+          loading="lazy"
+          decoding="async"
+        />
       </button>
     </div>
   );

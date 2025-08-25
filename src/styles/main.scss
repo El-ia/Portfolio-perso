@@ -80,3 +80,25 @@ html, body {
 #timeline{ scroll-margin-top: 10rem; }
 #contact { scroll-margin-top: 0rem; }
 #hero    { scroll-margin-top: 0; }
+
+/* ========================= */
+/* Global element resets     */
+/* ========================= */
+
+/* Images: never inline, and never overflow their container */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto; /* if width/height are set in HTML, ratio will be respected */
+}
+
+/* Video/iframe */
+video, iframe {
+  display: block;
+  max-width: 100%;
+}
+
+/* Icon utilities */
+.icon-24 { width: 24px; height: 24px; }
+.icon-32 { width: 32px; height: 32px; }
+.icon-36 { width: 36px; height: 36px; }

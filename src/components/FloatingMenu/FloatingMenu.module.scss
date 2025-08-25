@@ -46,6 +46,7 @@
   /* Icon inside button */
   img {
     width: 90%;
+    height: auto; /* ensure correct aspect ratio */
     object-fit: contain;
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;

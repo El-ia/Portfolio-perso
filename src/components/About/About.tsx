@@ -27,7 +27,15 @@ export default function About(): JSX.Element {
       <Reveal direction="up" delay={100}>
         <div className={styles.visual}>
           {/* Centered profile picture */}
-          <img src={photo} alt="Elia Berthier" className={styles.photo} />
+          <img
+            src={photo}
+            alt="Elia Berthier"
+            className={styles.photo}
+            width={1024}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+          />
 
           {/* SVG curved text wrapped around the photo */}
           <svg viewBox="0 0 200 200" className={curvedLoopClass} aria-hidden="true">

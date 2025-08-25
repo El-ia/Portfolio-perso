@@ -48,6 +48,8 @@ export default function Contact(): JSX.Element {
             src={downloadIcon}
             alt={downloadA11y}
             className={styles.contact__downloadIcon}
+            width={32}
+            height={32}
           />
         </a>
         </Reveal>
@@ -97,6 +99,8 @@ export default function Contact(): JSX.Element {
                   src={githubIcon}
                   alt="GitHub"
                   className={styles.contact__icon}
+                  width={36}
+                  height={36}
                 />
               </a>
               <a
@@ -109,6 +113,8 @@ export default function Contact(): JSX.Element {
                   src={linkedinIcon}
                   alt="LinkedIn"
                   className={styles.contact__icon}
+                  width={36}
+                  height={36}
                 />
               </a>
               <button
@@ -124,7 +130,7 @@ export default function Contact(): JSX.Element {
                   }
                 }}
               >
-                <img src={shareIcon} alt="" className={styles.contact__icon} />
+                <img src={shareIcon} alt="" className={styles.contact__icon} width={36} height={36} />
               </button>
             </dd>
           </dl>
