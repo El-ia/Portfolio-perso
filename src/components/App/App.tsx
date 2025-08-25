@@ -1,19 +1,27 @@
 // src/components/App/App.tsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 
 import NavBar from '../NavBar/NavBar';
 import FloatingMenu from '../FloatingMenu/FloatingMenu';
 import Hero from '../Hero/Hero';
-import About from '../About/About';
-import Skills from '../Skills/Skills';
-import ProjectsCarousel from '../ProjectsCarousel/ProjectsCarousel';
-import ProjectModal from '../ProjectModal/ProjectModal';
-import Timeline from '../Timeline/Timeline';
-import Contact from '../Contact/Contact';
-import Footer from '../Footer/Footer';
+// import About from '../About/About';
+// import Skills from '../Skills/Skills';
+// import ProjectsCarousel from '../ProjectsCarousel/ProjectsCarousel';
+// import ProjectModal from '../ProjectModal/ProjectModal';
+// import Timeline from '../Timeline/Timeline';
+// import Contact from '../Contact/Contact';
+// import Footer from '../Footer/Footer';
 
 import type { Project } from '../../types/projects';
 import { projects } from '../../types/projects';
+
+const About = lazy(() => import('../About/About'));
+const Skills = lazy(() => import('../Skills/Skills'));
+const ProjectsCarousel = lazy(() => import('../ProjectsCarousel/ProjectsCarousel'));
+const ProjectModal = lazy(() => import('../ProjectModal/ProjectModal'));
+const Timeline = lazy(() => import('../Timeline/Timeline'));
+const Contact = lazy(() => import('../Contact/Contact'));
+const Footer = lazy(() => import('../Footer/Footer'));
 
 type Theme = 'light' | 'dark';
 
@@ -43,26 +51,30 @@ export default function App(): JSX.Element {
       {/* Main navigation bar */}
       <NavBar />
 
-      {/* About section */}
-      <About />
+      <Suspense fallback={null}>
+        {/* About section */}
+        <About />
 
-      {/* Projects carousel */}
-      <ProjectsCarousel projects={projects} onProjectClick={handleProjectClick} />
+        {/* Projects carousel */}
+        <ProjectsCarousel projects={projects} onProjectClick={handleProjectClick} />
 
-      {/* Project modal */}
-      {selectedProject && <ProjectModal project={selectedProject} onClose={handleCloseModal} />}
+        {/* Project modal */}
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={handleCloseModal} />
+        )}
 
-      {/* Skills / expertise section */}
-      <Skills />
+        {/* Skills / expertise section */}
+        <Skills />
 
-      {/* Timeline / experience section */}
-      <Timeline />
+        {/* Timeline / experience section */}
+        <Timeline />
 
-      {/* Contact form / details */}
-      <Contact />
+        {/* Contact form / details */}
+        <Contact />
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
+      </Suspense>
 
       {/* Floating quick-access menu
          - Language is handled via Context inside FloatingMenu

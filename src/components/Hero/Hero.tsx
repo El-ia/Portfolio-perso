@@ -85,13 +85,13 @@ export default function Hero(): JSX.Element {
           />
           {/* PNG fallback */}
           <img
-            src="/images/hero/hero-image.png"
+            src="/images/hero/hero-image-960.avif"
             alt="Clavier avec une plante"
-            width={2048}
-            height={2048}
+            width={960}
+            height={960}
             loading="eager"
             decoding="async"
-            fetchPriority="high"
+            {...({ fetchpriority: 'high' } as Record<string, string>)}  // <- lowercase attribute
           />
         </picture>
         </Reveal>
