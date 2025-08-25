@@ -2,22 +2,19 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Elia Berthier — Portfolio Full-Stack Web Developer</title>
     <meta
       name="description"
       content="Discover the portfolio of Elia Berthier, a full-stack web developer specialized in JavaScript, React, Node.js, and UX/UI design."
     />
 
-    <!-- Preload LCP (AVIF + WebP, point de départ en 1280) -->
+    <!-- Preload LCP (cible 960px car c'est celle réellement chargée sur la plupart des viewports) -->
     <link
       rel="preload"
       as="image"
       type="image/avif"
-      href="/images/hero/hero-image-1280.avif"
+      href="/images/hero/hero-image-960.avif"
       imagesrcset="/images/hero/hero-image-480.avif 480w,
                    /images/hero/hero-image-640.avif 640w,
                    /images/hero/hero-image-960.avif 960w,
@@ -29,11 +26,12 @@
                   (max-width: 1050px) 55vw,
                   45vw"
     />
+    <!-- Optionnel : preload WebP pour navigateurs sans AVIF -->
     <link
       rel="preload"
       as="image"
       type="image/webp"
-      href="/images/hero/hero-image-1280.webp"
+      href="/images/hero/hero-image-960.webp"
       imagesrcset="/images/hero/hero-image-480.webp 480w,
                    /images/hero/hero-image-640.webp 640w,
                    /images/hero/hero-image-960.webp 960w,
@@ -47,20 +45,8 @@
     />
 
     <!-- Preload critical fonts (Regular + Bold) -->
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/SFPro-Regular.woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/SFPro-Bold.woff2"
-      crossorigin
-    />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/SFPro-Regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/SFPro-Bold.woff2" crossorigin>
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
