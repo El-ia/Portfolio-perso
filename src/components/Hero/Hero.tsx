@@ -72,10 +72,10 @@ export default function Hero(): JSX.Element {
               src="/images/hero/hero-image.png"
               alt="Clavier avec une plante"
               width={2048}
-              height={2048}
+              height={2048}   
               loading="eager"
               decoding="async"
-              {...{ fetchpriority: 'high' }} // lowercase attribute for the DOM
+              {...{ fetchpriority: 'high' }}
             />
           </picture>
         </Reveal>
