@@ -67,6 +67,8 @@
     display: block;
     width: 100%;
     height: auto; /* garde les proportions naturelles */
+    /* Stabilise l’espace avant chargement (CLS) — ratio de ton LCP 2600x1564 */
+    aspect-ratio: 2600 / 1564;
   }
 }
 

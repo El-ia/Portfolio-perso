@@ -18,9 +18,9 @@ interface SkillIcon extends BaseSkillIcon {
   h?: number;
 }
 
-// Dimensions d’icône par défaut
-const ICON_W = 48;
-const ICON_H = 48;
+// Dimensions d’icône par défaut (cohérentes avec le CSS ~2.5rem)
+const ICON_W = 36;
+const ICON_H = 36;
 
 export default function Skills(): JSX.Element {
   const { lang } = useLang();

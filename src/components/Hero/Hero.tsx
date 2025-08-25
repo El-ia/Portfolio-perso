@@ -71,11 +71,11 @@ export default function Hero(): JSX.Element {
             <img
               src="/images/hero/hero-image.png"
               alt="Clavier avec une plante"
-              width={2048}
-              height={2048}   
+              width={2600}
+              height={1564}
               loading="eager"
               decoding="async"
-              {...{ fetchpriority: 'high' }}
+              fetchPriority="high"
             />
           </picture>
         </Reveal>

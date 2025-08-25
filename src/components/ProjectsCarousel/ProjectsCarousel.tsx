@@ -23,14 +23,10 @@ interface ProjectsCarouselProps {
   onProjectClick: (project: Project) => void;
 }
 
-/**
- * Optionnel : si tu connais les dimensions réelles de chaque visuel,
- * renseigne-les ici par id pour une réservation d’espace parfaite.
- * À défaut, on utilisera un fallback 1200×800 (ratio 3:2) qui évite le CLS.
- */
 const dimensionsById: Record<number, { w: number; h: number }> = {
-  // 1: { w: 1600, h: 900 },
-  // 2: { w: 1280, h: 853 },
+  1: { w: 2600, h: 1564 },
+  2: { w: 2602, h: 1562 },
+  3: { w: 2470, h: 1486 },
 };
 
 export default function ProjectsCarousel({
