@@ -51,28 +51,38 @@ export default function Hero(): JSX.Element {
         </h1>
       </div>
 
-      {/* Image (LCP optimized + wrapper animation) */}
+      {/* Image (LCP optimized) */}
       <div className={styles.imageWrapper}>
         <Reveal direction="left" delay={200} as="div" className={styles.imageAnim}>
           <picture>
             {/* AVIF first */}
             <source
               type="image/avif"
-              srcSet="/images/hero/hero-image-640.avif 640w, /images/hero/hero-image-1280.avif 1280w, /images/hero/hero-image-2048.avif 2048w"
-              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
+              srcSet="/images/hero/hero-image-640.avif 640w,
+                      /images/hero/hero-image-1280.avif 1280w,
+                      /images/hero/hero-image-2048.avif 2048w"
+              sizes="(max-width: 550px) 83vw,
+                     (max-width: 810px) 65vw,
+                     (max-width: 1050px) 55vw,
+                     45vw"
             />
             {/* WebP fallback */}
             <source
               type="image/webp"
-              srcSet="/images/hero/hero-image-640.webp 640w, /images/hero/hero-image-1280.webp 1280w, /images/hero/hero-image-2048.webp 2048w"
-              sizes="(max-width: 550px) 83vw, (max-width: 810px) 65vw, (max-width: 1050px) 55vw, 45vw"
+              srcSet="/images/hero/hero-image-640.webp 640w,
+                      /images/hero/hero-image-1280.webp 1280w,
+                      /images/hero/hero-image-2048.webp 2048w"
+              sizes="(max-width: 550px) 83vw,
+                     (max-width: 810px) 65vw,
+                     (max-width: 1050px) 55vw,
+                     45vw"
             />
-            {/* PNG fallback (legacy browsers) */}
+            {/* PNG fallback */}
             <img
-              src="/images/hero/hero-image.png"
+              src="/images/hero/hero-image-1280.png"
               alt="Clavier avec une plante"
-              width={2048}
-              height={2048}   
+              width={1280}
+              height={1280}
               loading="eager"
               decoding="async"
               {...{ fetchpriority: 'high' }}
@@ -83,7 +93,6 @@ export default function Hero(): JSX.Element {
 
       {/* CTA */}
       <a href="#projectsCarousel" className={styles.ctaLink}>
-        {/* CTA text with fade-only animation (doesn't affect layout) */}
         <Reveal as="span" direction="fade" delay={150}>
           <span className={styles.ctaText}>{cta}</span>
         </Reveal>

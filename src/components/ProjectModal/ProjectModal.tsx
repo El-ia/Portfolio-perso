@@ -70,7 +70,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
     'touches' in (e as React.TouchEvent)
 
   const startDrag = (e: React.MouseEvent | React.TouchEvent) => {
-    // Allow preventDefault only for mouse; avoid it for touch to prevent passive warnings
     if (!isTouchEvent(e)) e.preventDefault()
 
     const cx = isTouchEvent(e) ? e.touches[0].clientX : (e as React.MouseEvent).clientX
@@ -92,7 +91,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
       setOffset({ x: 0, y: 0 })
     }
 
-    // Keep touchmove non-passive since we might extend logic later
     window.addEventListener('mousemove', handleMove)
     window.addEventListener('touchmove', handleMove, { passive: false })
     window.addEventListener('mouseup', handleUp)
