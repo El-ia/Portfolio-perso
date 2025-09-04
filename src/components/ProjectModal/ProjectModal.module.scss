@@ -94,7 +94,8 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
+  min-height: 0;
   height: 100%;
 }
 
@@ -111,11 +112,14 @@
 /* ——— Description Wrapper ——— */
 .modalDescriptionWrapper {
   margin: 1.68rem 0 4.5rem 0;
-  flex: 1;
-  overflow: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-right: .25rem;
 }
 
 /* ——— Paragraphs ——— */
@@ -205,14 +209,15 @@
     flex: 1;
     padding: 1.5rem;
     min-height: 0;
+    overflow: hidden;
     height: calc(72vh - 3rem);
   }
 
   .modalDescriptionWrapper {
     margin: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow: auto;
+    min-height: 0;
   }
 
   .modalLinks {
