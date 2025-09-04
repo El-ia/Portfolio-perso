@@ -136,15 +136,35 @@ export default function Contact(): JSX.Element {
           className={styles.contact__form}
           action="https://formspree.io/f/xpwlonke"
           method="POST"
+          autoComplete="on"            // allow browser autofill globally
         >
           <label htmlFor="name">{formName}</label>
-          <input type="text" id="name" name="name" required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autoComplete="name"        // full name (use given-name/family-name si tu sépares)
+          />
 
           <label htmlFor="email">{formEmail}</label>
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autoComplete="email"       // email autofill
+            inputMode="email"
+          />
 
           <label htmlFor="message">{formMessage}</label>
-          <textarea id="message" name="message" rows={6} required />
+          <textarea
+            id="message"
+            name="message"
+            rows={6}
+            required
+            autoComplete="off"
+          />
 
           <button type="submit">{formSubmit}</button>
         </form>
