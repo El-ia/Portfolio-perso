@@ -67,16 +67,17 @@
   &__intro {
     flex: 0 0 40%;
     color: vars.$font-tertiary-color;
-    font-weight: bold;
+    font-weight: normal;
     line-height: 1.6;
 
     p {
       margin-bottom: 1rem;
       font-size: vars.$secondary-font-size;
+      font-weight: normal;
 
       &:first-of-type {
         font-size: vars.$primary-font-size;
-        font-weight: bold;
+        font-weight: bold; // ✅ première phrase en gras
       }
     }
 
@@ -92,16 +93,12 @@
       dd {
         margin: 0.25rem 0 0;
         font-size: vars.$secondary-font-size;
+        font-weight: normal;
 
         a {
           color: vars.$font-tertiary-color;
           text-decoration: none;
         }
-      }
-
-      dt:last-of-type {
-        margin-top: 1.5rem;
-        font-size: 1rem;
       }
 
       dd.contact__links {
@@ -137,11 +134,13 @@
       padding: 0.5rem 0.25rem;
       margin-top: 0.5rem;
       font-size: vars.$primary-font-size;
-      font-family: inherit; 
-      font-weight: inherit; 
+      font-family: inherit;
+      font-weight: inherit;
       color: vars.$font-tertiary-color;
       resize: none;
-      &:focus { outline: none; }
+      &:focus {
+        outline: none;
+      }
     }
 
     button[type='submit'] {
@@ -168,7 +167,9 @@
     width: 2.2rem;
     display: block;
     transition: opacity 0.2s ease;
-    &:hover { opacity: 0.7; }
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   /* ——— Share button ——— */
@@ -178,7 +179,9 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    &:focus { outline: none; }
+    &:focus {
+      outline: none;
+    }
   }
 
   /* ——— Responsive ——— */
@@ -201,13 +204,17 @@
     }
 
     &__intro,
-    &__form { flex: 1 1 100%; }
+    &__form {
+      flex: 1 1 100%;
+    }
   }
 }
 
-/* ——— Dark theme overrides (spécifique contenu) ——— */
+/* ——— Dark theme overrides ——— */
 html[data-theme="dark"] .contact {
-  &__download { background-color: vars.$font-primary-color; }
+  &__download {
+    background-color: vars.$font-primary-color;
+  }
 
   &__title,
   &__intro,
@@ -227,18 +234,25 @@ html[data-theme="dark"] .contact {
     color: vars.$font-primary-color;
   }
 
-  &__downloadLink { color: vars.$light-font-tertiary-color; }
+  &__downloadLink {
+    color: vars.$light-font-tertiary-color;
+  }
 
   &__title {
     color: vars.$font-quaternary-color;
-    &::before { background-color: vars.$font-quaternary-color; }
+    &::before {
+      background-color: vars.$font-quaternary-color;
+    }
   }
 
   &__form {
     border-color: vars.$font-quaternary-color;
 
     input,
-    textarea { border-bottom-color: vars.$font-quaternary-color; }
+    textarea {
+      border-bottom-color: vars.$font-quaternary-color;
+      background: transparent;
+    }
 
     button[type='submit'] {
       background-color: vars.$font-quaternary-color;

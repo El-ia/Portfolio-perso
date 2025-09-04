@@ -7,8 +7,8 @@
     url('../assets/#{$fileName}.png') type("image/png")
   );
   background-repeat: repeat;
-  background-position: 0 0;       // pas de décalage subpixel
-  background-size: 523px 384px;   // taille fixe = dimensions exactes de ton motif
+  background-position: 0 0;    
+  background-size: 523px 384px;  
   background-attachment: scroll;
 
   html[data-theme="dark"] & {
