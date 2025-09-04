@@ -15,12 +15,8 @@
   transition: opacity 0.3s ease;
   padding: 1rem;
 
-  &.opening {
-    opacity: 1;
-  }
-  &.closing {
-    opacity: 0;
-  }
+  &.opening { opacity: 1; }
+  &.closing { opacity: 0; }
 }
 
 /* ——— Modal Container ——— */
@@ -38,18 +34,12 @@
   transform: scale(0.9);
   transition: transform 0.3s ease, opacity 0.3s ease;
 
-  &.opening {
-    opacity: 1;
-    transform: scale(1);
-  }
-  &.closing {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  &.dragging {
-    transition: none;
-    cursor: grabbing;
-  }
+  /* ✅ Allow JS drag without triggering default touch scrolling/gestures */
+  touch-action: none;
+
+  &.opening { opacity: 1; transform: scale(1); }
+  &.closing { opacity: 0; transform: scale(0.9); }
+  &.dragging { transition: none; cursor: grabbing; }
 
   /* ——— Dark mode background ——— */
   html[data-theme="dark"] & {
@@ -94,6 +84,8 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+
+  /* Keep internal scrolling clean for children */
   overflow: hidden;
   min-height: 0;
   height: 100%;
@@ -112,13 +104,19 @@
 /* ——— Description Wrapper ——— */
 .modalDescriptionWrapper {
   margin: 1.68rem 0 4.5rem 0;
+
+  /* Take remaining space and scroll if needed */
   flex: 1 1 auto;
   min-height: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+
+  /* Avoid vertical centering that can conflict with scroll */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  /* Small padding so scrollbar doesn't overlap text */
   padding-right: .25rem;
 }
 
@@ -139,10 +137,7 @@
   margin-top: 1.5rem;
   flex-shrink: 0;
 
-  img {
-    width: 3rem;
-    height: auto;
-  }
+  img { width: 3rem; height: auto; }
 }
 
 /* ——— Links Container ——— */
@@ -169,18 +164,14 @@
   font-size: vars.$secondary-font-size;
   transition: opacity 0.2s;
 
-  &:hover {
-    opacity: 0.8;
-  }
+  &:hover { opacity: 0.8; }
 
   html[data-theme="dark"] & {
     color: vars.$light-font-tertiary-color;
   }
 }
 
-.modalLinkIcon {
-  width: 1.875rem;
-}
+.modalLinkIcon { width: 1.875rem; }
 
 /* ——— Responsive ——— */
 @media (max-width: 1250px) {
@@ -220,16 +211,11 @@
     min-height: 0;
   }
 
-  .modalLinks {
-    justify-content: space-around;
-  }
+  .modalLinks { justify-content: space-around; }
 }
 
 @media (max-width: 768px) {
-  .modalContent {
-    width: 95vw;
-    height: 95vh;
-  }
+  .modalContent { width: 95vw; height: 95vh; }
 
   .modalImageWrapper {
     flex: 0 0 15vh;
@@ -248,12 +234,6 @@
 }
 
 @media (max-width: 450px) {
-  .modalDescription {
-    line-height: 1.2;
-    margin: 0 0 1rem;
-  }
-
-  .modalImageWrapper {
-    width: 70%;
-  }
+  .modalDescription { line-height: 1.2; margin: 0 0 1rem; }
+  .modalImageWrapper { width: 70%; }
 }

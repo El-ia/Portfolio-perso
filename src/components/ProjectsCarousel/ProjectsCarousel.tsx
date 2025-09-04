@@ -108,6 +108,9 @@ export default function ProjectsCarousel({
           spaceBetween={-100}
           speed={500}
           pagination={{ clickable: true }}
+          passiveListeners={false}
+          touchStartPreventDefault={false}
+
           onSwiper={(swiper: SwiperClass) => {
             swiperRef.current = swiper;
           }}
