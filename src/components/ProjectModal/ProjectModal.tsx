@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import type { Project } from '../../types/projects'
 import styles from './ProjectModal.module.scss'
 
@@ -26,13 +26,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
   // Helpers to safely fetch strings/arrays from i18n with graceful fallbacks
   const safeString = (path: string, fallback: string): string => {
     const raw = t<string>(path)
-    // If the key is missing, t(...) returns the path itself; detect and fallback.
     return typeof raw === 'string' && raw.includes(path) ? fallback : raw
   }
   const safeStringArray = (path: string, fallback: string[]): string[] => {
     const raw = t(path) as unknown
     if (Array.isArray(raw)) return raw as string[]
-    // If missing, t(...) returns the path as a string
     if (typeof raw === 'string' && raw.includes(path)) return fallback
     return fallback
   }
@@ -63,49 +61,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
     // wait for CSS transition before actually unmounting
     window.setTimeout(onClose, 300)
   }
-
-  // ----- Drag to move -----
-  const [dragging, setDragging] = useState(false)
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const startRef = useRef({ x: 0, y: 0 })
-
-  // Narrow helper to discriminate touch vs mouse
-  const isTouchEvent = (e: React.MouseEvent | React.TouchEvent): e is React.TouchEvent =>
-    'touches' in (e as React.TouchEvent)
-
-  const startDrag = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isTouchEvent(e)) e.preventDefault()
-
-    const cx = isTouchEvent(e) ? e.touches[0].clientX : (e as React.MouseEvent).clientX
-    const cy = isTouchEvent(e) ? e.touches[0].clientY : (e as React.MouseEvent).clientY
-    startRef.current = { x: cx - offset.x, y: cy - offset.y }
-    setDragging(true)
-  }
-
-  useEffect(() => {
-    if (!dragging) return
-
-    const handleMove = (e: MouseEvent | TouchEvent) => {
-      const cx = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX
-      const cy = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY
-      setOffset({ x: cx - startRef.current.x, y: cy - startRef.current.y })
-    }
-    const handleUp = () => {
-      setDragging(false)
-      setOffset({ x: 0, y: 0 })
-    }
-
-    window.addEventListener('mousemove', handleMove)
-    window.addEventListener('touchmove', handleMove, { passive: false })
-    window.addEventListener('mouseup', handleUp)
-    window.addEventListener('touchend', handleUp)
-    return () => {
-      window.removeEventListener('mousemove', handleMove)
-      window.removeEventListener('touchmove', handleMove)
-      window.removeEventListener('mouseup', handleUp)
-      window.removeEventListener('touchend', handleUp)
-    }
-  }, [dragging])
 
   // ----- Detect dark mode and swap icons for HTML/JS -----
   const getIsDark = () =>
@@ -145,7 +100,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
     styles.modalContent,
     opening ? styles.opening : '',
     closing ? styles.closing : '',
-    dragging ? styles.dragging : '',
   ]
     .join(' ')
     .trim()
@@ -155,9 +109,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
       <div
         className={contentClass}
         onClick={(e) => e.stopPropagation()}
-        onMouseDown={startDrag}
-        onTouchStart={startDrag}
-        style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
       >
         {/* Close button */}
         <button className={styles.modalClose} onClick={handleClose} aria-label={closeAria}>
