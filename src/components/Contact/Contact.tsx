@@ -144,7 +144,7 @@ export default function Contact(): JSX.Element {
             id="name"
             name="name"
             required
-            autoComplete="name"        // full name (use given-name/family-name si tu sépares)
+            autoComplete="name"        // full name (use given-name/family-name if seperate))
           />
 
           <label htmlFor="email">{formEmail}</label>

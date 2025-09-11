@@ -5,6 +5,10 @@ import styles from './ProjectModal.module.scss'
 import githubIcon from '../../assets/icons/github-icon.png'
 import eyeIcon from '../../assets/icons/eye-icon.png'
 
+// --- Dark mode variants for HTML & JS icons ---
+import htmlDarkIcon from '../../assets/icons/html-dark-icon.png'
+import jsDarkIcon from '../../assets/icons/js-dark-icon.png'
+
 // i18n + language
 import { createTranslator } from '../../i18n/i18n'
 import { useLang } from '../../context/useLang'
@@ -103,6 +107,31 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
     }
   }, [dragging])
 
+  // ----- Detect dark mode and swap icons for HTML/JS -----
+  const getIsDark = () =>
+    (typeof document !== 'undefined' &&
+      document.documentElement.getAttribute('data-theme') === 'dark') || false
+
+  const [isDark, setIsDark] = useState<boolean>(getIsDark())
+
+  useEffect(() => {
+    const el = document.documentElement
+    const update = () => setIsDark(el.getAttribute('data-theme') === 'dark')
+    update()
+    const obs = new MutationObserver(update)
+    obs.observe(el, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => obs.disconnect()
+  }, [])
+
+  // Only swap HTML & JS icons when dark mode is active
+  const resolveTechIcon = (src: string): string => {
+    if (!isDark) return src
+    const file = src.toLowerCase()
+    if (file.includes('html')) return htmlDarkIcon
+    if (file.includes('js-icon') || file.includes('javascript')) return jsDarkIcon
+    return src
+  }
+
   // ----- Dynamic classes -----
   const overlayClass = [
     styles.modalOverlay,
@@ -147,7 +176,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
           {/* Tech icons */}
           <div className={styles.modalTech}>
             {project.techIcons.map((icon, i) => (
-              <img key={i} src={icon} alt="" aria-hidden="true" className={styles.modalTechIcon} />
+              <img
+                key={i}
+                src={resolveTechIcon(icon)}
+                alt=""
+                aria-hidden="true"
+                className={styles.modalTechIcon}
+              />
             ))}
           </div>
 
