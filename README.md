@@ -23,9 +23,7 @@ Includes smooth animations, dynamic components, and multi-language support for a
 
 - **Hero section**: Visual intro with name
 - **About**: Personal presentation
-- £
 - **Projects carousel**: Smooth navigation (Swiper.js)+ modal
-- 
 - **Skills**: Typed and visual list
 - **Timeline**: Animated career path
 - **Contact**: Form or direct links
