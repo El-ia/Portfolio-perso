@@ -23,7 +23,9 @@ Includes smooth animations, dynamic components, and multi-language support for a
 
 - **Hero section**: Visual intro with name
 - **About**: Personal presentation
-- **Projects carousel**: Smooth navigation (Swiper.js)
+- £
+- **Projects carousel**: Smooth navigation (Swiper.js)+ modal
+- 
 - **Skills**: Typed and visual list
 - **Timeline**: Animated career path
 - **Contact**: Form or direct links
@@ -78,11 +80,16 @@ npm run build
 mon-portfolio/
 │
 ├── public/                               # Static files
+│   │── fonts/                            # Fonts
+│   └── images/                           # Images
+│       └── hero/         
+│
+├── scripts/                              # Utility scripts
+│   └── subset-all.mjs                    # Font subsetting script (optimizes TTF → WOFF2)
 │
 ├── src/
 │   ├── assets/                           # Assets
-│   │   ├── fonts/                        # Fonts
-│   │   └── icons/                        # Icons
+│   │   └── icons/                 
 │   │
 │   ├── components/                       # Reusable components
 │   │   ├── About/
@@ -110,6 +117,7 @@ mon-portfolio/
 │   │   └── i18n.ts                       # Config & translation dictionaries
 │   │
 │   ├── styles/                           # Global styles
+│   │   ├── _paper.scss
 │   │   ├── _reset.scss
 │   │   ├── _variables.scss
 │   │   └── main.scss
@@ -132,7 +140,6 @@ mon-portfolio/
 ├── tsconfig.node.json
 ├── tsconfig.tsbuildinfo
 ├── vite.config.d.ts
-├── vite.config.js
 └── vite.config.ts
 ```
 
