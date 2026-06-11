@@ -2,6 +2,7 @@ import studiolabCloud from '../assets/studiolab-cloud-preview.png';
 import incoming from '../assets/incoming-website.png';
 import watheringCan from '../assets/icons/watering-can-icon.png';
 import portfolio from '../assets/portfolio-preview.png';
+import adoptAPlant from '../assets/adopt-a-plant-preview.png';
 
 import reactIcon from '../assets/icons/react-icon.png';
 import typescriptIcon from '../assets/icons/typescript-icon.png';
@@ -10,6 +11,9 @@ import sassIcon from '../assets/icons/sass-icon.png';
 import htmlIcon from '../assets/icons/html-icon.png';
 import cssIcon from '../assets/icons/css-icon.png';
 import jsIcon from '../assets/icons/js-icon.png';
+import angularIcon from '../assets/icons/angular-icon.png';
+import firebaseGreenIcon from '../assets/icons/firebase-green-icon.png';
+import tailwindIcon from '../assets/icons/tailwind-icon.png';
 
 // Shape of a project item
 export interface Project {
@@ -40,6 +44,14 @@ export const projects: Project[] = [
   },
   {
     id: 3,
+    img: adoptAPlant,
+    year: 2026,
+    techIcons: [angularIcon, typescriptIcon, tailwindIcon, firebaseGreenIcon],
+    githubUrl: 'https://github.com/El-ia/adopt-a-plant-app',
+    liveUrl: 'https://adopt-a-plant-app.web.app/'
+  },
+  {
+    id: 4,
     img: incoming,
     year: 2025,
     techIcons: [watheringCan]

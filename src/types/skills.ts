@@ -27,6 +27,8 @@ import nginxIcon from '../assets/icons/nginx-icon.png';
 import macIcon from '../assets/icons/mac-icon.png';
 import linuxIcon from '../assets/icons/linux-icon.png';
 import bashIcon from '../assets/icons/bash-icon.png';
+import firebaseIcon from '../assets/icons/firebase-icon.png';
+import angularIcon from '../assets/icons/angular-icon.png';
 
 import vscodeIcon from '../assets/icons/vscode-icon.png';
 import figmaIcon from '../assets/icons/figma-icon.png';
@@ -58,6 +60,7 @@ import postgreDarkIcon from '../assets/icons/postgresql-dark-icon.png';
 import sequelizeDarkIcon from '../assets/icons/sequelize-dark-icon.png';
 import swaggerDarkIcon from '../assets/icons/swagger-dark-icon.png';
 import linuxDarkIcon from '../assets/icons/linux-dark-icon.png';
+import firebaseDarkIcon from '../assets/icons/firebase-dark-icon.png';
 
 /*
   SkillIcon represents a single technology with:
@@ -101,6 +104,7 @@ export const skillsData: SkillCategory[] = [
       { icon: sassIcon,                           label: 'Sass' },
       { icon: ejsIcon,                            label: 'EJS' },
       { icon: viteIcon,                           label: 'Vite' },
+      { icon: angularIcon,                        label: 'Angular' },
     ],
   },
   {
@@ -114,6 +118,7 @@ export const skillsData: SkillCategory[] = [
       { icon: expressIcon,   darkIcon: expressDarkIcon, label: 'Express.js' },
       { icon: apiIcon,       darkIcon: apiDarkIcon,     label: 'API REST' },
       { icon: swaggerIcon,   darkIcon: swaggerDarkIcon, label: 'Swagger' },
+      { icon: firebaseIcon,  darkIcon: firebaseDarkIcon, label: 'Firebase' },
     ],
   },
   {

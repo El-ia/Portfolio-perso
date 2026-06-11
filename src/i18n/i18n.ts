@@ -190,6 +190,16 @@ export const messages: Record<Lang, Dict> = {
           liveUrl: 'https://studiolabcloud.com/',
         },
         3: {
+          title: 'ADOPT A PLANT • 2026',
+          alt: "Aperçu de l’application Adopt A Plant",
+          year: 2026,
+          description: [
+            'Petite application full stack kawaii en pixel art pour adopter des plantes virtuelles.',
+            "Conçue avec Angular 17 et stylisée avec Tailwind CSS, elle s’appuie sur Firestore pour une lecture en temps réel et une Cloud Function Node.js serverless sur GCP pour sécuriser la logique métier côté serveur.",
+            'Le déploiement est automatisé via un pipeline CI/CD GitHub Actions sur Firebase Hosting.',
+          ],
+        },
+        4: {
           title: 'EN PRÉPARATION',
           alt: 'Browser mockup',
           year: 2025,
@@ -386,6 +396,16 @@ export const messages: Record<Lang, Dict> = {
           liveUrl: 'https://studiolabcloud.com/',
         },
         3: {
+          title: 'ADOPT A PLANT • 2026',
+          alt: 'Adopt A Plant app preview',
+          year: 2026,
+          description: [
+            'A small full-stack kawaii pixel-art app for adopting virtual plants.',
+            'Built with Angular 17 and styled with Tailwind CSS, it uses Firestore for real-time data and a serverless Node.js Cloud Function on GCP to secure the business logic server-side.',
+            'Deployment is automated via a GitHub Actions CI/CD pipeline to Firebase Hosting.',
+          ],
+        },
+        4: {
           title: 'COMING SOON',
           alt: 'Browser mockup',
           year: 2025,

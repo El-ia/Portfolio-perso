@@ -121,6 +121,14 @@
   overflow: visible;
 }
 
+/* Transparent full-width wrapper that owns the click + cursor.
+   Placed outside Reveal so its hit area equals the full 20rem slide width,
+   which after coverflow projection covers the entire visible card surface. */
+.slideClickWrapper {
+  width: 100%;
+  cursor: pointer;
+}
+
 /* Position pagination bullets lower */
 :global(.swiper-pagination) {
   bottom: -3.125rem !important;
@@ -128,6 +136,7 @@
 
 /* ——— Card styling ——— */
 .card {
+  width: 100%;
   background: vars.$font-tertiary-color;
   overflow: hidden;
   text-align: center;
