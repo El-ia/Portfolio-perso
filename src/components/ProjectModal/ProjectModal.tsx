@@ -115,9 +115,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps): J
           ×
         </button>
 
-        {/* Left column: image */}
+        {/* Left column: image — clicks through to live URL if available */}
         <div className={styles.modalImageWrapper}>
-          <img src={project.img} alt={alt} className={styles.modalImage} />
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noreferrer" className={styles.modalImageLink}>
+              <img src={project.img} alt={alt} className={styles.modalImage} />
+            </a>
+          ) : (
+            <img src={project.img} alt={alt} className={styles.modalImage} />
+          )}
         </div>
 
         {/* Right column: content */}
