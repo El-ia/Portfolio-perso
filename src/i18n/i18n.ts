@@ -205,6 +205,16 @@ export const messages: Record<Lang, Dict> = {
           year: 2025,
           description: ["C’est pas encore prêt, mais c’est bio."],
         },
+        5: {
+          title: 'JESSICA ROZYCKA PHOTOGRAPHE • 2026',
+          alt: "Aperçu du portfolio de Jessica Rozycka Photographe",
+          year: 2026,
+          description: [
+            'Portfolio professionnel développé pour une photographe, pensé pour mettre en valeur son travail avec une navigation fluide et un design épuré.',
+            'Conçu avec Next.js et TypeScript pour des performances optimales et un rendu statique rapide, et alimenté par Sanity CMS pour une gestion du contenu simple et autonome.',
+          ],
+          liveUrl: 'https://jessicarozyckaphoto.fr',
+        },
       },
       modal: {
         githubBtn: 'GitHub',
@@ -410,6 +420,16 @@ export const messages: Record<Lang, Dict> = {
           alt: 'Browser mockup',
           year: 2025,
           description: ["It’s not ready yet, but it’s organic."],
+        },
+        5: {
+          title: 'JESSICA ROZYCKA PHOTOGRAPHER • 2026',
+          alt: 'Jessica Rozycka Photographer portfolio preview',
+          year: 2026,
+          description: [
+            'Professional portfolio developed for a photographer, designed to showcase her work with smooth navigation and a clean, elegant design.',
+            'Built with Next.js and TypeScript for optimal performance and fast static rendering, and powered by Sanity CMS for straightforward, autonomous content management.',
+          ],
+          liveUrl: 'https://jessicarozyckaphoto.fr',
         },
       },
       modal: {

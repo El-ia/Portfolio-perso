@@ -10,6 +10,7 @@ import bootStrapIcon from '../assets/icons/bootstrap-icon.png';
 import sassIcon from '../assets/icons/sass-icon.png';
 import ejsIcon from '../assets/icons/ejs-icon.png';
 import viteIcon from '../assets/icons/vite-icon.png';
+import nextjsIcon from '../assets/icons/nextjs-icon.png';
 
 import jsWhiteIcon from '../assets/icons/js-white-icon.png';
 import nodeIcon from '../assets/icons/nodejs-icon.png';
@@ -30,6 +31,7 @@ import bashIcon from '../assets/icons/bash-icon.png';
 import firebaseIcon from '../assets/icons/firebase-icon.png';
 import angularIcon from '../assets/icons/angular-icon.png';
 
+import sanityIcon from '../assets/icons/sanity-icon.png';
 import vscodeIcon from '../assets/icons/vscode-icon.png';
 import figmaIcon from '../assets/icons/figma-icon.png';
 import discordIcon from '../assets/icons/discord-icon.png';
@@ -105,6 +107,7 @@ export const skillsData: SkillCategory[] = [
       { icon: ejsIcon,                            label: 'EJS' },
       { icon: viteIcon,                           label: 'Vite' },
       { icon: angularIcon,                        label: 'Angular' },
+      { icon: nextjsIcon,                         label: 'Next.js' },
     ],
   },
   {
@@ -149,6 +152,7 @@ export const skillsData: SkillCategory[] = [
       { icon: eslintIcon,   label: 'ESLint' },
       { icon: jestIcon,     label: 'Jest' },
       { icon: cypressIcon,  label: 'Cypress' },
+      { icon: sanityIcon,   label: 'Sanity CMS' },
     ],
   },
 ];
